@@ -1,4 +1,4 @@
-.PHONY: sync sync-strict discover-repos verify-g1-docs verify-g1-docs-strict render-support index query site coverage pipeline validate-skill
+.PHONY: sync sync-strict sync-full discover-repos discover-repos-all verify-g1-docs verify-g1-docs-strict render-support index query site coverage mirrors archives repo-lock max-collect pipeline validate-skill
 
 sync:
 	python3 scripts/sync_sources.py
@@ -6,8 +6,14 @@ sync:
 sync-strict:
 	python3 scripts/sync_sources.py --fail-on-error
 
+sync-full:
+	python3 scripts/sync_sources.py --full-history
+
 discover-repos:
 	python3 scripts/discover_unitree_repos.py --update-manifest
+
+discover-repos-all:
+	python3 scripts/discover_unitree_repos.py --include-all --update-manifest
 
 verify-g1-docs:
 	python3 scripts/verify_g1_docs.py --update-manifest
@@ -29,6 +35,18 @@ site:
 
 coverage:
 	python3 scripts/build_coverage_report.py
+
+mirrors:
+	python3 scripts/sync_repo_mirrors.py
+
+archives:
+	python3 scripts/download_repo_archives.py
+
+repo-lock:
+	python3 scripts/build_repo_lock.py
+
+max-collect:
+	bash scripts/max_collect.sh
 
 pipeline:
 	bash scripts/run_pipeline.sh

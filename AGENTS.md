@@ -9,10 +9,14 @@ Answer Unitree G1 questions with verifiable local evidence and source citations.
 ## Mandatory Workflow
 
 1. Refresh sources when stale:
+   - `python3 scripts/discover_unitree_repos.py --include-all --update-manifest`
    - `python3 scripts/sync_sources.py`
+   - `python3 scripts/sync_repo_mirrors.py`
+   - `python3 scripts/download_repo_archives.py`
 2. For JS-heavy support pages:
    - `python3 scripts/verify_g1_docs.py --update-manifest`
    - `python3 scripts/build_knowledge_index.py`
+   - `python3 scripts/build_repo_lock.py`
    - `python3 scripts/build_coverage_report.py`
 3. Retrieve evidence:
    - `python3 scripts/query_index.py "<question>" --format json`
@@ -26,6 +30,7 @@ Answer Unitree G1 questions with verifiable local evidence and source citations.
 - Source manifest: `sources/unitree_g1_sources.yaml`
 - Main index: `data/index/knowledge_index.jsonl`
 - Verification report: `docs/verification/g1_docs_verification.md`
+- Repo lock report: `docs/verification/repo_lock.md`
 - Coverage report: `docs/verification/coverage_report.md`
 - Skill instructions: `skills/unitree-g1-expert/SKILL.md`
 

@@ -1,6 +1,6 @@
 {
   "root_url": "https://support.unitree.com/home/en/G1_developer/",
-  "timestamp_unix": 1771887292,
+  "timestamp_unix": 1771890742,
   "total_urls": 5,
   "manifest_urls": 5,
   "verified": 0,
@@ -12,7 +12,7 @@
       "id": "home-en-g1_developer",
       "url": "https://support.unitree.com/home/en/G1_developer/",
       "status": "blocked_access",
-      "render_time_unix": 1771887279,
+      "render_time_unix": 1771890729,
       "title": "Access Restricted",
       "text_chars": 394,
       "html_file": "data/support_pages/home-en-g1_developer.rendered.html",
@@ -25,9 +25,9 @@
       "id": "g1-basic-motion",
       "url": "https://support.unitree.com/home/en/G1_developer/basic_motion_development",
       "status": "blocked_access",
-      "render_time_unix": 1771887281,
+      "render_time_unix": 1771890732,
       "title": "Access Restricted",
-      "text_chars": 393,
+      "text_chars": 394,
       "html_file": "data/support_pages/g1-basic-motion.rendered.html",
       "text_file": "data/support_pages/g1-basic-motion.rendered.txt",
       "topics": [
@@ -39,9 +39,9 @@
       "id": "g1-dds-services-interface",
       "url": "https://support.unitree.com/home/en/G1_developer/dds_services_interface",
       "status": "blocked_access",
-      "render_time_unix": 1771887284,
+      "render_time_unix": 1771890734,
       "title": "Access Restricted",
-      "text_chars": 393,
+      "text_chars": 394,
       "html_file": "data/support_pages/g1-dds-services-interface.rendered.html",
       "text_file": "data/support_pages/g1-dds-services-interface.rendered.txt",
       "topics": [
@@ -53,7 +53,7 @@
       "id": "g1-quick-start",
       "url": "https://support.unitree.com/home/en/G1_developer/quick_start",
       "status": "blocked_access",
-      "render_time_unix": 1771887287,
+      "render_time_unix": 1771890737,
       "title": "Access Restricted",
       "text_chars": 394,
       "html_file": "data/support_pages/g1-quick-start.rendered.html",
@@ -67,7 +67,7 @@
       "id": "g1-sdk-overview",
       "url": "https://support.unitree.com/home/en/G1_developer/sdk_overview",
       "status": "blocked_access",
-      "render_time_unix": 1771887289,
+      "render_time_unix": 1771890739,
       "title": "Access Restricted",
       "text_chars": 394,
       "html_file": "data/support_pages/g1-sdk-overview.rendered.html",
@@ -77,5 +77,8 @@
         "sdk"
       ]
     }
-  ]
+  ],
+  "manifest_updates": {
+    "support_docs": 5
+  }
 }

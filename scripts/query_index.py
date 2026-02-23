@@ -69,6 +69,7 @@ def score(query_tokens: list[str], record: dict[str, Any]) -> float:
         "support_doc": 1.3,
         "curated_doc": 1.2,
         "skill_doc": 1.1,
+        "source_manifest": 0.65,
         "repo_file": 1.0,
     }.get(str(record.get("source_type", "")), 1.0)
     if "support_unverified" in record.get("tags", []):

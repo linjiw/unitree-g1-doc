@@ -21,6 +21,7 @@
 
 Additional discovered Unitree repositories are maintained in:
 - [sources/unitree_g1_sources.yaml](/Users/linji/projects/unitree-g1-doc/sources/unitree_g1_sources.yaml)
+- [sources/unitree_org_repo_catalog.json](/Users/linji/projects/unitree-g1-doc/sources/unitree_org_repo_catalog.json)
 - Latest discovery snapshot under `data/snapshots/repo_discovery_*.json` (generated, gitignored)
 
 ## Local Pointers

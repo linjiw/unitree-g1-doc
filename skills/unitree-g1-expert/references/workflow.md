@@ -4,6 +4,7 @@
 
 1. Run local retrieval first.
    - Prefer `python3 scripts/query_index.py "<question>" --format json`.
+   - For a full refresh, prefer `bash scripts/max_collect.sh`.
 2. Open top-matched records.
 3. Identify whether question is about:
    - SDK and DDS interfaces

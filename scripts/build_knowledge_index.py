@@ -240,6 +240,12 @@ def parse_args() -> argparse.Namespace:
         help="Directory containing skill definitions",
     )
     parser.add_argument(
+        "--sources-dir",
+        type=Path,
+        default=Path("sources"),
+        help="Directory containing source manifests/catalogs",
+    )
+    parser.add_argument(
         "--index-jsonl",
         type=Path,
         default=Path("data/index/knowledge_index.jsonl"),
@@ -419,6 +425,25 @@ def main() -> int:
                 rec_prefix=f"skill:{rel}",
                 source_type="skill_doc",
                 tags=["skill", "agent"],
+                url=None,
+                chunk_chars=args.chunk_chars,
+                overlap_chars=args.overlap_chars,
+            )
+
+    # Source manifests/catalogs.
+    if args.sources_dir.exists():
+        for source_path in sorted(args.sources_dir.rglob("*")):
+            if source_path.suffix.lower() not in {".yaml", ".yml", ".json", ".md"}:
+                continue
+            if not source_path.is_file():
+                continue
+            rel = source_path.relative_to(args.sources_dir).as_posix()
+            add_file_records(
+                records=records,
+                path=source_path,
+                rec_prefix=f"source:{rel}",
+                source_type="source_manifest",
+                tags=["source", "manifest"],
                 url=None,
                 chunk_chars=args.chunk_chars,
                 overlap_chars=args.overlap_chars,

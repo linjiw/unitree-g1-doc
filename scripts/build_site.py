@@ -43,6 +43,12 @@ def parse_args() -> argparse.Namespace:
         help="Verification report path",
     )
     parser.add_argument(
+        "--repo-lock-json",
+        type=Path,
+        default=Path("docs/verification/repo_lock.json"),
+        help="Repo lock report path",
+    )
+    parser.add_argument(
         "--out-dir",
         type=Path,
         default=Path("site/data"),
@@ -108,6 +114,7 @@ def main() -> int:
     meta = read_json(args.index_meta)
     manifest = read_yaml(args.manifest)
     verification = read_json(args.verification_json)
+    repo_lock = read_json(args.repo_lock_json)
 
     overview = {
         "index_meta": meta,
@@ -121,6 +128,11 @@ def main() -> int:
             "blocked_access": verification.get("blocked_access", 0),
             "needs_review": verification.get("needs_review", 0),
             "errors": verification.get("errors", 0),
+        },
+        "repo_lock": {
+            "total": repo_lock.get("summary", {}).get("total", 0),
+            "worktree_present": repo_lock.get("summary", {}).get("worktree_present", 0),
+            "mirror_present": repo_lock.get("summary", {}).get("mirror_present", 0),
         },
     }
     (args.out_dir / "overview.json").write_text(

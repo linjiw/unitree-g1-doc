@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-"""Discover Unitree organization repos relevant to G1 and optionally update manifest."""
+"""Discover Unitree organization repositories and optionally update manifest."""
 
 from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 import time
 from pathlib import Path
@@ -32,6 +31,23 @@ DEFAULT_KEYWORDS = [
     "mujoco",
     "dds",
 ]
+
+CORE_REPO_HINTS = {
+    "unitree_sdk2",
+    "unitree_sdk2_python",
+    "unitree_rl_lab",
+    "unitree_rl_gym",
+    "unitree_ros2",
+    "unitree_ros",
+    "unitree_mujoco",
+    "unitree_sim_isaaclab",
+    "unitree_rl_mjlab",
+    "unitree_ros2_to_real",
+    "unitree_ros_to_real",
+    "unitree_il_lerobot",
+    "kinect_teleoperate",
+    "xr_teleoperate",
+}
 
 
 def fetch_json(url: str) -> Any:
@@ -68,6 +84,11 @@ def infer_topics(name: str, description: str) -> list[str]:
         "dds": "dds",
         "g1": "g1",
         "humanoid": "humanoid",
+        "teleoperate": "teleoperation",
+        "reality": "deployment",
+        "real": "deployment",
+        "camera": "sensor",
+        "lidar": "sensor",
     }
     for key, topic in mapping.items():
         if key in text and topic not in topics:
@@ -80,8 +101,26 @@ def repo_matches(repo: dict[str, Any], keywords: list[str]) -> bool:
     return any(kw in text for kw in keywords)
 
 
+def to_repo_entry(repo: dict[str, Any]) -> dict[str, Any]:
+    name = str(repo.get("name", "")).strip()
+    description = str(repo.get("description") or "")
+    lower = name.lower()
+    priority = "core" if ("g1" in lower or lower in CORE_REPO_HINTS) else "supporting"
+    return {
+        "name": name,
+        "url": str(repo.get("html_url", "")),
+        "branch": str(repo.get("default_branch", "main")),
+        "topics": infer_topics(name, description),
+        "priority": priority,
+        "description": description,
+        "archived": bool(repo.get("archived", False)),
+        "private": bool(repo.get("private", False)),
+        "pushed_at": str(repo.get("pushed_at") or ""),
+    }
+
+
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Discover Unitree repos relevant to G1")
+    parser = argparse.ArgumentParser(description="Discover Unitree repositories")
     parser.add_argument("--org", default="unitreerobotics", help="GitHub organization name")
     parser.add_argument(
         "--manifest",
@@ -97,7 +136,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--max-pages",
         type=int,
-        default=5,
+        default=6,
         help="Maximum GitHub API pages (100 repos per page)",
     )
     parser.add_argument(
@@ -107,9 +146,25 @@ def parse_args() -> argparse.Namespace:
         help="Output directory for discovery snapshot",
     )
     parser.add_argument(
+        "--catalog-out",
+        type=Path,
+        default=Path("sources/unitree_org_repo_catalog.json"),
+        help="Output JSON catalog of all discovered org repos",
+    )
+    parser.add_argument(
+        "--include-all",
+        action="store_true",
+        help="Include all public org repos in manifest, not only keyword-matched repos",
+    )
+    parser.add_argument(
+        "--include-archived",
+        action="store_true",
+        help="Include archived repositories in selected results",
+    )
+    parser.add_argument(
         "--update-manifest",
         action="store_true",
-        help="Merge discovered repos into source manifest",
+        help="Merge selected repos into source manifest",
     )
     return parser.parse_args()
 
@@ -118,9 +173,7 @@ def main() -> int:
     args = parse_args()
     keywords = [k.strip().lower() for k in args.keywords.split(",") if k.strip()]
 
-    discovered: list[dict[str, Any]] = []
-    all_repos: list[dict[str, Any]] = []
-
+    all_repos_raw: list[dict[str, Any]] = []
     for page in range(1, args.max_pages + 1):
         url = f"https://api.github.com/orgs/{args.org}/repos?per_page=100&page={page}"
         try:
@@ -131,39 +184,45 @@ def main() -> int:
 
         if not isinstance(data, list) or not data:
             break
+        all_repos_raw.extend(data)
 
-        all_repos.extend(data)
-        for repo in data:
-            if not repo_matches(repo, keywords):
-                continue
-            name = str(repo.get("name", "")).strip()
-            if not name:
-                continue
-            description = str(repo.get("description") or "")
-            discovered.append(
-                {
-                    "name": name,
-                    "url": str(repo.get("html_url", "")),
-                    "branch": str(repo.get("default_branch", "main")),
-                    "topics": infer_topics(name, description),
-                    "priority": "core" if "g1" in name.lower() else "supporting",
-                    "description": description,
-                    "archived": bool(repo.get("archived", False)),
-                }
-            )
+    all_public = [r for r in all_repos_raw if not bool(r.get("private", False))]
+    matched = [r for r in all_public if repo_matches(r, keywords)]
 
-    dedup: dict[str, dict[str, Any]] = {}
-    for repo in discovered:
-        dedup[repo["name"]] = repo
-    discovered_sorted = sorted(dedup.values(), key=lambda x: x["name"].lower())
+    if args.include_all:
+        selected_raw = all_public
+    else:
+        selected_raw = matched
+
+    if not args.include_archived:
+        selected_raw = [r for r in selected_raw if not bool(r.get("archived", False))]
+
+    selected_entries = [to_repo_entry(r) for r in selected_raw]
+    selected_entries.sort(key=lambda x: x["name"].lower())
+
+    # Catalog of all repos (tracked in sources/ for transparency)
+    all_catalog = [to_repo_entry(r) for r in all_public]
+    all_catalog.sort(key=lambda x: x["name"].lower())
+    catalog_payload = {
+        "org": args.org,
+        "timestamp_unix": int(time.time()),
+        "total_public_repos": len(all_catalog),
+        "repos": all_catalog,
+    }
+    args.catalog_out.parent.mkdir(parents=True, exist_ok=True)
+    args.catalog_out.write_text(json.dumps(catalog_payload, indent=2), encoding="utf-8")
+    print(f"[OK] Wrote repo catalog: {args.catalog_out}")
 
     snapshot = {
         "org": args.org,
         "timestamp_unix": int(time.time()),
         "keywords": keywords,
-        "all_repo_count": len(all_repos),
-        "matched_repo_count": len(discovered_sorted),
-        "matched_repos": discovered_sorted,
+        "all_repo_count": len(all_public),
+        "matched_repo_count": len(matched),
+        "selected_repo_count": len(selected_entries),
+        "include_all": args.include_all,
+        "include_archived": args.include_archived,
+        "selected_repos": selected_entries,
     }
 
     args.snapshot_out.mkdir(parents=True, exist_ok=True)
@@ -180,9 +239,7 @@ def main() -> int:
         }
 
         merged = dict(existing)
-        for repo in discovered_sorted:
-            if repo["name"] in merged:
-                continue
+        for repo in selected_entries:
             merged[repo["name"]] = {
                 "name": repo["name"],
                 "url": repo["url"],
@@ -192,17 +249,19 @@ def main() -> int:
             }
 
         manifest_data["repos"] = [merged[k] for k in sorted(merged.keys(), key=str.lower)]
+        manifest_data["updated_at"] = time.strftime("%Y-%m-%d")
         args.manifest.write_text(
             yaml.safe_dump(manifest_data, sort_keys=False),
             encoding="utf-8",
         )
         print(
             f"[OK] Updated manifest repos: {len(existing)} -> {len(manifest_data['repos'])} "
-            f"({len(manifest_data['repos']) - len(existing)} added)"
+            f"({len(manifest_data['repos']) - len(existing)} added/updated)"
         )
 
-    print(f"[INFO] Total repos seen: {len(all_repos)}")
-    print(f"[INFO] G1-related matches: {len(discovered_sorted)}")
+    print(f"[INFO] Total public repos seen: {len(all_public)}")
+    print(f"[INFO] Keyword matches: {len(matched)}")
+    print(f"[INFO] Selected repos for manifest: {len(selected_entries)}")
     return 0
 
 

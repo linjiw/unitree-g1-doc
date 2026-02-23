@@ -12,4 +12,5 @@ python3 scripts/build_knowledge_index.py
 if [[ "${BUILD_SITE:-1}" == "1" ]]; then
   python3 scripts/build_site.py
 fi
+python3 scripts/build_repo_lock.py
 python3 scripts/build_coverage_report.py

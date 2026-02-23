@@ -14,11 +14,12 @@ A local-first repository to collect, verify, index, and search Unitree G1 docume
 ```text
 AGENTS.md                        # Agent operating contract
 sources/unitree_g1_sources.yaml  # Canonical source manifest
+sources/unitree_org_repo_catalog.json  # Full org repo catalog snapshot
 scripts/                         # Sync, verify, index, query, and site build tools
 docs/                            # Human docs, pipeline guides, verification reports
 skills/unitree-g1-expert/        # Reusable Codex skill
 site/                            # GitHub Pages demo site
-data/                            # Generated artifacts (repos, docs snapshots, index)
+data/                            # Generated artifacts (repos, mirrors, archives, docs snapshots, index)
 ```
 
 ## Quick Start (Human)
@@ -27,6 +28,12 @@ One-command bootstrap:
 
 ```bash
 bash scripts/bootstrap.sh
+```
+
+Maximum collection mode (all org repos + mirrors + archives):
+
+```bash
+bash scripts/max_collect.sh
 ```
 
 1. Install base dependencies:
@@ -49,6 +56,7 @@ python3 scripts/discover_unitree_repos.py --update-manifest
 python3 scripts/sync_sources.py
 python3 scripts/verify_g1_docs.py --update-manifest
 python3 scripts/build_knowledge_index.py
+python3 scripts/build_repo_lock.py
 python3 scripts/build_coverage_report.py
 ```
 
@@ -85,8 +93,13 @@ python3 scripts/build_site.py
 make discover-repos
 make sync
 make sync-strict
+make sync-full
 make verify-g1-docs
 make verify-g1-docs-strict
+make mirrors
+make archives
+make repo-lock
+make max-collect
 make index
 make query q="g1 dds interface"
 make site
@@ -100,12 +113,13 @@ make site
 - GitHub Pages guide: [docs/github-pages.md](/Users/linji/projects/unitree-g1-doc/docs/github-pages.md)
 - Source map: [docs/source-map.md](/Users/linji/projects/unitree-g1-doc/docs/source-map.md)
 - Verification report: [docs/verification/g1_docs_verification.md](/Users/linji/projects/unitree-g1-doc/docs/verification/g1_docs_verification.md)
+- Repo lock report: [docs/verification/repo_lock.md](/Users/linji/projects/unitree-g1-doc/docs/verification/repo_lock.md)
 - Coverage report: [docs/verification/coverage_report.md](/Users/linji/projects/unitree-g1-doc/docs/verification/coverage_report.md)
 
 ## Scope and Completeness Notes
 
 - This repo can continuously keep coverage high, but no static snapshot can guarantee forever-complete coverage because upstream Unitree docs/repos may change.
-- Use `discover_unitree_repos.py` and `verify_g1_docs.py` before claiming complete coverage.
+- Use `discover_unitree_repos.py --include-all`, mirror/archive sync, and `verify_g1_docs.py` before claiming complete coverage.
 - For strict checks in CI, use `--fail-on-error` flags.
 - If Unitree support pages are blocked by upstream security controls from your network, the verification report will mark URLs as `blocked_access` and fail strict verification.
 

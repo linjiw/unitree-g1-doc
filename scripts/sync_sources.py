@@ -51,10 +51,15 @@ def update_repo(repo: dict[str, Any], repos_dir: Path, depth: int | None) -> dic
     try:
         if (target / ".git").exists():
             print(f"[SYNC] Updating repo: {name}")
-            fetch_cmd = ["git", "-C", str(target), "fetch", "origin", branch]
+            shallow_file = target / ".git" / "shallow"
             if depth and depth > 0:
-                fetch_cmd.extend(["--depth", str(depth)])
-            run_command(fetch_cmd)
+                fetch_cmd = ["git", "-C", str(target), "fetch", "--tags", "origin", branch, "--depth", str(depth)]
+                run_command(fetch_cmd)
+            else:
+                if shallow_file.exists():
+                    run_command(["git", "-C", str(target), "fetch", "--unshallow", "--tags", "origin", branch])
+                else:
+                    run_command(["git", "-C", str(target), "fetch", "--tags", "origin", branch])
             run_command(["git", "-C", str(target), "checkout", branch])
             run_command(["git", "-C", str(target), "pull", "--ff-only", "origin", branch])
             result["status"] = "updated"
@@ -166,6 +171,11 @@ def parse_args() -> argparse.Namespace:
         help="Git clone/fetch depth. Use 0 for full history",
     )
     parser.add_argument(
+        "--full-history",
+        action="store_true",
+        help="Fetch full git history for every repo (equivalent to --depth 0)",
+    )
+    parser.add_argument(
         "--timeout",
         default=20,
         type=int,
@@ -191,6 +201,8 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
+    if args.full_history:
+        args.depth = 0
     manifest = load_manifest(args.manifest)
 
     repos_dir: Path = args.repos_dir

@@ -10,7 +10,9 @@ Use local indexed sources first, then provide a concise answer with explicit fil
 ## Quick Workflow
 
 1. Ensure local data is fresh:
+   - Run `python3 scripts/discover_unitree_repos.py --include-all --update-manifest` for maximum repo coverage.
    - Run `python3 scripts/sync_sources.py` at repo root when sources may be stale.
+   - Run `python3 scripts/sync_repo_mirrors.py` and `python3 scripts/download_repo_archives.py` for raw retention.
    - Run `python3 scripts/verify_g1_docs.py --update-manifest` to discover and verify G1 developer docs.
    - Run `python3 scripts/render_support_docs.py` when support pages are JS-rendered and text is missing.
    - Run `python3 scripts/build_knowledge_index.py` after sync.
@@ -34,7 +36,7 @@ Use local indexed sources first, then provide a concise answer with explicit fil
    - `Verified` when directly supported by a cited source
    - `Inference` when reasoned from architecture/constraints
 3. If local index misses the answer, request a sync before guessing.
-4. Always check `docs/verification/g1_docs_verification.md` and `docs/verification/coverage_report.md` before claiming full docs coverage.
+4. Always check `docs/verification/g1_docs_verification.md`, `docs/verification/repo_lock.md`, and `docs/verification/coverage_report.md` before claiming full docs coverage.
 
 ## Workflow Shortcuts
 

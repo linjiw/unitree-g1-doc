@@ -21,12 +21,22 @@ One command:
 bash scripts/bootstrap.sh
 ```
 
+Maximum retention mode:
+
+```bash
+bash scripts/max_collect.sh
+```
+
 Step-by-step:
 
 ```bash
+python3 scripts/discover_unitree_repos.py --include-all --update-manifest
 python3 scripts/sync_sources.py
+python3 scripts/sync_repo_mirrors.py
+python3 scripts/download_repo_archives.py
 python3 scripts/verify_g1_docs.py --update-manifest
 python3 scripts/build_knowledge_index.py
+python3 scripts/build_repo_lock.py
 python3 scripts/build_coverage_report.py
 ```
 

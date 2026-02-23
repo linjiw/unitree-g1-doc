@@ -8,9 +8,13 @@ Give any AI agent a deterministic path to answer Unitree G1 questions with local
 
 1. Read [AGENTS.md](/Users/linji/projects/unitree-g1-doc/AGENTS.md).
 2. Refresh and verify data:
+   - `python3 scripts/discover_unitree_repos.py --include-all --update-manifest`
    - `python3 scripts/sync_sources.py`
+   - `python3 scripts/sync_repo_mirrors.py`
+   - `python3 scripts/download_repo_archives.py`
    - `python3 scripts/verify_g1_docs.py --update-manifest`
    - `python3 scripts/build_knowledge_index.py`
+   - `python3 scripts/build_repo_lock.py`
    - `python3 scripts/build_coverage_report.py`
 3. Retrieve evidence:
    - `python3 scripts/query_index.py "<question>" --format json`

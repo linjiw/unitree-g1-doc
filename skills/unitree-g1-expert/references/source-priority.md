@@ -6,6 +6,7 @@ Always prefer these sources in order:
 2. Official Unitree GitHub repositories listed in the same manifest.
 3. Curated digests in `docs/source-digests/`.
 4. Verification outputs in `docs/verification/`.
+5. Source catalogs in `sources/`.
 
 ## Evidence Rules
 

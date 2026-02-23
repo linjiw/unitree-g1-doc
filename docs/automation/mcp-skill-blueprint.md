@@ -6,11 +6,13 @@ Goal: make this repository answer Unitree questions automatically with grounded 
 
 1. Run `scripts/discover_unitree_repos.py --update-manifest` daily/weekly.
 2. Run `scripts/sync_sources.py` on schedule.
-3. Run `scripts/verify_g1_docs.py --update-manifest` for JS-rendered support pages.
-4. Run `scripts/build_knowledge_index.py` right after sync/verify.
-5. Run `scripts/build_site.py` to refresh GitHub Pages search payloads.
-6. Run retrieval (`scripts/query_index.py`) for incoming questions.
-7. Route top matches to a skill prompt that enforces citation-first answers.
+3. Run `scripts/sync_repo_mirrors.py` and `scripts/download_repo_archives.py` for raw retention.
+4. Run `scripts/verify_g1_docs.py --update-manifest` for JS-rendered support pages.
+5. Run `scripts/build_knowledge_index.py` right after sync/verify.
+6. Run `scripts/build_repo_lock.py` and `scripts/build_coverage_report.py`.
+7. Run `scripts/build_site.py` to refresh GitHub Pages search payloads.
+8. Run retrieval (`scripts/query_index.py`) for incoming questions.
+9. Route top matches to a skill prompt that enforces citation-first answers.
 
 ## Recommended Scheduling
 

@@ -52,9 +52,11 @@ function renderStats() {
   const docs = state.overview.manifest?.support_docs || 0;
   const verified = state.overview.verification?.verified || 0;
   const blocked = state.overview.verification?.blocked_access || 0;
+  const mirrored = state.overview.repo_lock?.mirror_present || 0;
 
   stats.push(`<span class="pill">Records: ${records}</span>`);
   stats.push(`<span class="pill">Repos: ${repos}</span>`);
+  stats.push(`<span class="pill">Mirrored repos: ${mirrored}</span>`);
   stats.push(`<span class="pill">G1 docs in manifest: ${docs}</span>`);
   stats.push(`<span class="pill">Verified support pages: ${verified}</span>`);
   stats.push(`<span class="pill">Blocked support pages: ${blocked}</span>`);

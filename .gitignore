@@ -1,5 +1,7 @@
 # Downloaded or generated artifacts
 data/repos/
+data/repo_mirrors/
+data/repo_archives/
 data/support_pages/*.html
 data/support_pages/*.json
 data/support_pages/*.rendered.html

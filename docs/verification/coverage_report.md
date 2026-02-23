@@ -1,15 +1,25 @@
 # Coverage Report
 
-- Latest sync summary: `data/snapshots/sync_summary_1771885297.json`
-- Latest repo discovery: `data/snapshots/repo_discovery_1771885289.json`
+- Latest sync summary: `data/snapshots/sync_summary_1771889845.json`
+- Latest repo discovery: `data/snapshots/repo_discovery_1771889839.json`
+- Latest mirror summary: `data/snapshots/repo_mirror_summary_1771889961.json`
+- Latest archive summary: `data/snapshots/repo_archive_summary_1771890115.json`
 
 ## Repo Coverage
 
-- Repos in latest sync: 27
-- Synced successfully: 27
+- Repos in latest sync: 43
+- Synced successfully: 43
 - Sync errors: 0
 - Org repos discovered: 43
-- G1-related discovery matches: 27
+- Keyword-matched discovery repos: 27
+- Selected repos in discovery run: 43
+
+## Raw Retention
+
+- Bare mirrors synced: 43
+- Bare mirror errors: 0
+- Repo archives downloaded/cached: 43
+- Repo archive errors: 0
 
 ## G1 Docs Verification
 

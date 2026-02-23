@@ -23,6 +23,8 @@ Open `/site/index.html` locally.
 - `/site/data/search-index.json`: Browser-searchable record subset
 - `/site/data/overview.json`: Index and verification stats
 
+The overview payload also includes repo lock stats (`total/worktree_present/mirror_present`) for retention visibility.
+
 ## Note
 
 If support docs are blocked from the current network, the site will display non-zero `Blocked support pages` in the stats pills.
