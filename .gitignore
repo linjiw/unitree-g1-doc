@@ -1,0 +1,19 @@
+# Downloaded or generated artifacts
+data/repos/
+data/support_pages/*.html
+data/support_pages/*.json
+data/support_pages/*.rendered.html
+data/support_pages/*.rendered.txt
+data/support_pages/*.rendered.json
+data/snapshots/*
+data/index/knowledge_index.jsonl
+data/index/knowledge_index.md
+data/index/knowledge_index.meta.json
+
+# Python cache
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local environment
+.venv/

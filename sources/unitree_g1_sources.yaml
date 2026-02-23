@@ -1,0 +1,218 @@
+version: 1
+updated_at: '2026-02-23'
+support_docs:
+- id: home-en-g1_developer
+  title: G1 Developer Home
+  url: https://support.unitree.com/home/en/G1_developer/
+  topics:
+  - g1
+  priority: core
+- id: g1-basic-motion
+  title: G1 Basic Motion Development
+  url: https://support.unitree.com/home/en/G1_developer/basic_motion_development
+  topics:
+  - g1
+  - motion
+  priority: core
+- id: g1-dds-services-interface
+  title: G1 DDS Services Interface
+  url: https://support.unitree.com/home/en/G1_developer/dds_services_interface
+  topics:
+  - g1
+  - dds
+  priority: core
+- id: g1-quick-start
+  title: G1 Developer Quick Start
+  url: https://support.unitree.com/home/en/G1_developer/quick_start
+  topics:
+  - g1
+  - quick
+  priority: core
+- id: g1-sdk-overview
+  title: G1 SDK Overview
+  url: https://support.unitree.com/home/en/G1_developer/sdk_overview
+  topics:
+  - g1
+  - sdk
+  priority: core
+repos:
+- name: aliengo_sdk
+  url: https://github.com/unitreerobotics/aliengo_sdk
+  branch: master
+  topics:
+  - sdk
+  priority: supporting
+- name: brainco_hand_service
+  url: https://github.com/unitreerobotics/brainco_hand_service
+  branch: main
+  topics:
+  - dds
+  priority: supporting
+- name: dex1_1_service
+  url: https://github.com/unitreerobotics/dex1_1_service
+  branch: main
+  topics:
+  - dds
+  priority: supporting
+- name: kinect_teleoperate
+  url: https://github.com/unitreerobotics/kinect_teleoperate
+  branch: main
+  topics:
+  - g1
+  - humanoid
+  priority: supporting
+- name: laikago_ros
+  url: https://github.com/unitreerobotics/laikago_ros
+  branch: master
+  topics:
+  - ros
+  priority: supporting
+- name: unifolm-world-model-action
+  url: https://github.com/unitreerobotics/unifolm-world-model-action
+  branch: main
+  topics:
+  - rl
+  priority: supporting
+- name: unilidar_sdk
+  url: https://github.com/unitreerobotics/unilidar_sdk
+  branch: main
+  topics:
+  - sdk
+  priority: supporting
+- name: unilidar_sdk2
+  url: https://github.com/unitreerobotics/unilidar_sdk2
+  branch: main
+  topics:
+  - sdk
+  priority: supporting
+- name: unitree_actuator_sdk
+  url: https://github.com/unitreerobotics/unitree_actuator_sdk
+  branch: main
+  topics:
+  - sdk
+  priority: supporting
+- name: unitree_dds_wrapper
+  url: https://github.com/unitreerobotics/unitree_dds_wrapper
+  branch: main
+  topics:
+  - simulation
+  - dds
+  priority: supporting
+- name: unitree_IL_lerobot
+  url: https://github.com/unitreerobotics/unitree_IL_lerobot
+  branch: main
+  topics:
+  - g1
+  priority: supporting
+- name: unitree_legged_sdk
+  url: https://github.com/unitreerobotics/unitree_legged_sdk
+  branch: go1
+  topics:
+  - sdk
+  priority: supporting
+- name: unitree_mujoco
+  url: https://github.com/unitreerobotics/unitree_mujoco
+  branch: main
+  topics:
+  - mujoco
+  - simulation
+  priority: supporting
+- name: unitree_rl_gym
+  url: https://github.com/unitreerobotics/unitree_rl_gym
+  branch: main
+  topics:
+  - rl
+  - training
+  - deployment
+  priority: core
+- name: unitree_rl_lab
+  url: https://github.com/unitreerobotics/unitree_rl_lab
+  branch: main
+  topics:
+  - rl
+  - sim2sim
+  - sim2real
+  - deployment
+  priority: core
+- name: unitree_rl_mjlab
+  url: https://github.com/unitreerobotics/unitree_rl_mjlab
+  branch: main
+  topics:
+  - rl
+  - mujoco
+  priority: supporting
+- name: unitree_ros
+  url: https://github.com/unitreerobotics/unitree_ros
+  branch: master
+  topics:
+  - ros1
+  - simulation
+  priority: supporting
+- name: unitree_ros2
+  url: https://github.com/unitreerobotics/unitree_ros2
+  branch: master
+  topics:
+  - ros2
+  - communication
+  - simulation
+  priority: core
+- name: unitree_ros2_to_real
+  url: https://github.com/unitreerobotics/unitree_ros2_to_real
+  branch: main
+  topics:
+  - ros
+  priority: supporting
+- name: unitree_ros_to_real
+  url: https://github.com/unitreerobotics/unitree_ros_to_real
+  branch: master
+  topics:
+  - ros
+  priority: supporting
+- name: unitree_sdk2
+  url: https://github.com/unitreerobotics/unitree_sdk2
+  branch: main
+  topics:
+  - sdk
+  - dds
+  - low-level-control
+  priority: core
+- name: unitree_sdk2_python
+  url: https://github.com/unitreerobotics/unitree_sdk2_python
+  branch: master
+  topics:
+  - sdk
+  - python
+  - examples
+  priority: core
+- name: unitree_sim_isaaclab
+  url: https://github.com/unitreerobotics/unitree_sim_isaaclab
+  branch: main
+  topics:
+  - isaaclab
+  - simulation
+  priority: supporting
+- name: UnitreecameraSDK
+  url: https://github.com/unitreerobotics/UnitreecameraSDK
+  branch: main
+  topics:
+  - sdk
+  priority: supporting
+- name: xr_teleoperate
+  url: https://github.com/unitreerobotics/xr_teleoperate
+  branch: main
+  topics:
+  - humanoid
+  priority: supporting
+- name: z1_ros
+  url: https://github.com/unitreerobotics/z1_ros
+  branch: noetic
+  topics:
+  - ros
+  - simulation
+  priority: supporting
+- name: z1_sdk
+  url: https://github.com/unitreerobotics/z1_sdk
+  branch: master
+  topics:
+  - sdk
+  priority: supporting

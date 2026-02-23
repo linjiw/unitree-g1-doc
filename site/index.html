@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unitree G1 Knowledge Hub</title>
+    <meta
+      name="description"
+      content="Searchable Unitree G1 SDK, docs, and simulation knowledge base for humans and AI agents."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+
+    <main class="page">
+      <header class="hero reveal">
+        <p class="eyebrow">Unitree G1 Knowledge Hub</p>
+        <h1>Local-first answers for SDK, simulation, and deployment</h1>
+        <p class="subtext">
+          This site is generated from repo-indexed Unitree sources so engineers and AI agents can
+          retrieve grounded answers with traceable citations.
+        </p>
+        <div class="stats" id="stats"></div>
+      </header>
+
+      <section class="panel reveal delay-1">
+        <div class="panel-head">
+          <h2>Search</h2>
+          <span class="hint">Client-side lexical retrieval</span>
+        </div>
+        <div class="searchbar">
+          <input id="query" type="text" placeholder="Try: how to deploy g1 policy from sim2real" />
+          <button id="searchBtn">Search</button>
+        </div>
+        <p class="hint mono" id="searchMeta">Load index to start searching...</p>
+        <div id="results" class="results"></div>
+      </section>
+
+      <section class="grid reveal delay-2">
+        <article class="panel compact">
+          <h3>Human Quick Start</h3>
+          <ol>
+            <li><code>python3 scripts/sync_sources.py --fail-on-error</code></li>
+            <li><code>python3 scripts/build_knowledge_index.py</code></li>
+            <li><code>python3 scripts/query_index.py "your question"</code></li>
+          </ol>
+        </article>
+
+        <article class="panel compact">
+          <h3>AI Agent Quick Start</h3>
+          <ol>
+            <li>Read <code>AGENTS.md</code></li>
+            <li>Use <code>skills/unitree-g1-expert/SKILL.md</code></li>
+            <li>Query <code>data/index/knowledge_index.jsonl</code></li>
+          </ol>
+        </article>
+
+        <article class="panel compact">
+          <h3>Core Source Entrypoints</h3>
+          <ul>
+            <li><a href="https://support.unitree.com/home/en/G1_developer/" target="_blank">Unitree G1 developer docs</a></li>
+            <li><a href="https://github.com/unitreerobotics/unitree_sdk2" target="_blank">unitree_sdk2</a></li>
+            <li><a href="https://github.com/unitreerobotics/unitree_rl_lab" target="_blank">unitree_rl_lab</a></li>
+          </ul>
+        </article>
+      </section>
+
+      <footer class="foot mono">
+        Built from local index records. Refresh data with <code>python3 scripts/build_site.py</code>.
+      </footer>
+    </main>
+
+    <script src="./assets/app.js"></script>
+  </body>
+</html>

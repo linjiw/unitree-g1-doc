@@ -1,0 +1,28 @@
+{
+  "index_meta": {
+    "records": 17825,
+    "by_source_type": {
+      "repo_file": 17793,
+      "support_doc": 5,
+      "curated_doc": 23,
+      "skill_doc": 4
+    },
+    "manifest": "sources/unitree_g1_sources.yaml",
+    "repos_indexed": 27,
+    "support_docs_indexed": 5,
+    "max_file_bytes": 250000,
+    "chunk_chars": 1600,
+    "overlap_chars": 220
+  },
+  "manifest": {
+    "support_docs": 5,
+    "repos": 27
+  },
+  "verification": {
+    "total_urls": 5,
+    "verified": 0,
+    "blocked_access": 5,
+    "needs_review": 0,
+    "errors": 0
+  }
+}

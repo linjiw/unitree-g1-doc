@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unitree G1 Expert"
+  short_description: "Grounded Unitree G1 SDK/RL/ROS deployment answers"
+  default_prompt: "Answer Unitree G1 questions using local indexed sources, cite exact files and URLs, and clearly separate verified facts from inference."
