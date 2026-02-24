@@ -42,8 +42,12 @@ TEXT_EXTENSIONS = {
     ".hpp",
     ".java",
     ".js",
+    ".mjs",
     ".ts",
     ".tsx",
+    ".html",
+    ".htm",
+    ".css",
     ".xml",
     ".launch",
     ".urdf",
@@ -64,6 +68,7 @@ EXCLUDED_DIRS = {
     ".git",
     "build",
     "dist",
+    "node_modules",
     "__pycache__",
     ".pytest_cache",
     ".mypy_cache",
@@ -71,6 +76,40 @@ EXCLUDED_DIRS = {
     "logs",
     "outputs",
 }
+
+REPO_NOISE_PARTS = {
+    "thirdparty",
+    "third-party",
+    "extern",
+    "external",
+    "vendor",
+    "deps",
+    ".github",
+}
+
+REPO_NOISE_NAMES = {
+    "license",
+    "license.txt",
+    "copying",
+}
+
+PROJECT_ROOT_FILES = {
+    "AGENTS.md",
+    "README.md",
+    "Makefile",
+}
+
+
+def unique_list(values: Iterable[str]) -> list[str]:
+    out: list[str] = []
+    seen: set[str] = set()
+    for value in values:
+        item = value.strip()
+        if not item or item in seen:
+            continue
+        seen.add(item)
+        out.append(item)
+    return out
 
 
 def load_manifest(path: Path) -> dict[str, Any]:
@@ -134,8 +173,47 @@ def iter_repo_files(repo_root: Path, max_file_bytes: int) -> Iterable[Path]:
             continue
         if any(part in EXCLUDED_DIRS for part in path.parts):
             continue
+        rel = path.relative_to(repo_root)
+        rel_parts = {part.lower() for part in rel.parts}
+        if rel_parts & REPO_NOISE_PARTS:
+            continue
+        if path.name.lower() in REPO_NOISE_NAMES:
+            continue
         if should_index_file(path, max_file_bytes):
             yield path
+
+
+def iter_project_files(base_dir: Path, max_file_bytes: int) -> Iterable[Path]:
+    for path in base_dir.rglob("*"):
+        if not path.is_file():
+            continue
+        if any(part in EXCLUDED_DIRS for part in path.parts):
+            continue
+        if should_index_file(path, max_file_bytes):
+            yield path
+
+
+def infer_project_tags(rel_path: Path) -> list[str]:
+    parts = {part.lower() for part in rel_path.parts}
+    name = rel_path.name.lower()
+    tags: list[str] = ["project"]
+
+    if name == "agents.md":
+        tags.extend(["codex", "agent", "workflow", "verified", "inference"])
+    if "scripts" in parts:
+        tags.extend(["script", "command", "pipeline"])
+    if "benchmarks" in parts:
+        tags.extend(["benchmark", "evaluation"])
+    if "site" in parts:
+        tags.extend(["site", "website"])
+    if "verification" in parts:
+        tags.append("verification")
+    if name in {"how-we-design.html", "examples.html"}:
+        tags.extend(["methodology", "examples", "codex"])
+    if name == "benchmark_examples.json":
+        tags.extend(["examples", "payload"])
+
+    return unique_list(tags)
 
 
 def chunk_text(text: str, chunk_chars: int, overlap_chars: int) -> list[str]:
@@ -246,6 +324,30 @@ def parse_args() -> argparse.Namespace:
         help="Directory containing source manifests/catalogs",
     )
     parser.add_argument(
+        "--project-root",
+        type=Path,
+        default=Path("."),
+        help="Project root directory for codex-facing governance files",
+    )
+    parser.add_argument(
+        "--scripts-dir",
+        type=Path,
+        default=Path("scripts"),
+        help="Directory containing operational scripts",
+    )
+    parser.add_argument(
+        "--benchmarks-dir",
+        type=Path,
+        default=Path("benchmarks"),
+        help="Directory containing benchmark definitions",
+    )
+    parser.add_argument(
+        "--site-dir",
+        type=Path,
+        default=Path("site"),
+        help="Directory containing static website files",
+    )
+    parser.add_argument(
         "--index-jsonl",
         type=Path,
         default=Path("data/index/knowledge_index.jsonl"),
@@ -293,6 +395,7 @@ def add_file_records(
     url: str | None,
     chunk_chars: int,
     overlap_chars: int,
+    path_value: str | None = None,
 ) -> None:
     raw_text = path.read_text(encoding="utf-8", errors="replace")
     normalized = normalize_text_by_path(path, raw_text)
@@ -307,7 +410,7 @@ def add_file_records(
                 title=path.name,
                 source_type=source_type,
                 text=chunk,
-                path=str(path),
+                path=path_value or str(path),
                 url=url,
                 tags=tags,
                 rank=idx,
@@ -447,6 +550,57 @@ def main() -> int:
                 url=None,
                 chunk_chars=args.chunk_chars,
                 overlap_chars=args.overlap_chars,
+            )
+
+    # Project-level governance and evaluation files for codex-centric queries.
+    project_root = args.project_root.resolve()
+    for root_name in sorted(PROJECT_ROOT_FILES):
+        root_path = project_root / root_name
+        if not should_index_file(root_path, args.max_file_bytes):
+            continue
+        rel = root_path.relative_to(project_root)
+        add_file_records(
+            records=records,
+            path=root_path,
+            rec_prefix=f"project:{rel.as_posix()}",
+            source_type="project_doc",
+            tags=infer_project_tags(rel),
+            url=None,
+            chunk_chars=args.chunk_chars,
+            overlap_chars=args.overlap_chars,
+            path_value=rel.as_posix(),
+        )
+
+    project_dirs: list[tuple[Path, str]] = [
+        (args.scripts_dir, "project_script"),
+        (args.benchmarks_dir, "benchmark_spec"),
+        (args.site_dir, "site_doc"),
+    ]
+    for base_dir_arg, source_type in project_dirs:
+        base_dir = (
+            base_dir_arg.resolve()
+            if base_dir_arg.is_absolute()
+            else (project_root / base_dir_arg).resolve()
+        )
+        if not base_dir.exists():
+            continue
+        for path in iter_project_files(base_dir, args.max_file_bytes):
+            rel = path.relative_to(project_root)
+            tags = infer_project_tags(rel)
+            if "data" in {part.lower() for part in rel.parts} and source_type == "site_doc":
+                source_type_value = "site_data"
+            else:
+                source_type_value = source_type
+            add_file_records(
+                records=records,
+                path=path,
+                rec_prefix=f"project:{rel.as_posix()}",
+                source_type=source_type_value,
+                tags=tags,
+                url=None,
+                chunk_chars=args.chunk_chars,
+                overlap_chars=args.overlap_chars,
+                path_value=rel.as_posix(),
             )
 
     args.index_jsonl.parent.mkdir(parents=True, exist_ok=True)

@@ -52,6 +52,7 @@
           <li>Build a local index (<code>data/index/knowledge_index.jsonl</code>).</li>
           <li>Evaluate lexical retrieval on benchmark question cases.</li>
           <li>Evaluate model source-selection from retrieved candidates.</li>
+          <li>Apply benchmark leakage guard (exclude benchmark YAML unless a case expects it).</li>
           <li>Track quality gates and failed case IDs to guide improvements.</li>
         </ol>
       </section>
@@ -78,9 +79,11 @@
         <h2>Scoring Logic</h2>
         <h3>Retriever Test</h3>
         <ul>
-          <li>Top-K lexical search over the local index (default K=8).</li>
+          <li>Top-K lexical search over the local index with intent-aware scoring (default K=8).</li>
+          <li>Results are path-deduplicated to avoid chunk-level duplicates inflating rankings.</li>
           <li>A case passes if any expected path pattern appears in top-K results.</li>
           <li>Source types are weighted (<code>support_doc</code>, <code>curated_doc</code>, <code>skill_doc</code>, etc.).</li>
+          <li>Optional hard-negative fields (<code>forbidden_path_patterns</code>, <code>require_all_expected</code>) stress-test ranking robustness.</li>
           <li>Strict mode fails CI/local run when pass rate is below configured threshold.</li>
         </ul>
         <h3>Llama Source-Selection Test</h3>
@@ -106,6 +109,14 @@
           Design details are tracked in
           <code>docs/verification/codex_agent_experiments.md</code>.
         </p>
+        <h3>Hard-Negative Follow-up</h3>
+        <p>
+          We also run a hard-negative retrieval track to catch ranking noise and leakage behavior:
+        </p>
+        <ul>
+          <li><code>make eval-retrieval-codex-hardneg</code></li>
+          <li><code>make eval-agent-ollama-codex-hardneg</code></li>
+        </ul>
       </section>
 
       <section class="panel reveal delay-3 prose">

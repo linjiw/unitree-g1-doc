@@ -48,6 +48,8 @@ The agent should be able to handle questions spanning:
    - `make eval-agent-ollama-qbank`
    - `make eval-retrieval-codex-stretch`
    - `make eval-agent-ollama-codex-stretch`
+   - `make eval-retrieval-codex-hardneg`
+   - `make eval-agent-ollama-codex-hardneg`
 5. Respond with:
    - direct answer
    - exact cited file paths/URLs

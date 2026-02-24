@@ -6,12 +6,10 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import re
 import sys
 import time
 import urllib.error
 import urllib.request
-from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
@@ -20,63 +18,7 @@ try:
 except ImportError as exc:  # pragma: no cover - dependency check
     raise SystemExit("Missing dependency: pyyaml. Install with `pip install pyyaml`.") from exc
 
-
-TOKEN_RE = re.compile(r"[a-zA-Z0-9_]+")
-
-
-@dataclass
-class Match:
-    score: float
-    record: dict[str, Any]
-
-
-def tokenize(text: str) -> list[str]:
-    return TOKEN_RE.findall(text.lower())
-
-
-def score(query_tokens: list[str], record: dict[str, Any]) -> float:
-    if not query_tokens:
-        return 0.0
-
-    content = str(record.get("content", "")).lower()
-    title = str(record.get("title", "")).lower()
-    tags = " ".join(record.get("tags", [])).lower()
-
-    content_tokens = tokenize(content)
-    title_tokens = tokenize(title)
-    tag_tokens = tokenize(tags)
-
-    if not content_tokens and not title_tokens:
-        return 0.0
-
-    query_set = set(query_tokens)
-    content_set = set(content_tokens)
-    title_set = set(title_tokens)
-    tag_set = set(tag_tokens)
-
-    overlap = query_set & (content_set | title_set | tag_set)
-    coverage = len(overlap) / max(len(query_set), 1)
-
-    content_hits = sum(min(content_tokens.count(tok), 5) for tok in query_set)
-    title_hits = sum(min(title_tokens.count(tok), 3) for tok in query_set)
-    tag_hits = sum(min(tag_tokens.count(tok), 2) for tok in query_set)
-
-    phrase = " ".join(query_tokens[:4])
-    phrase_bonus = 2.0 if phrase and phrase in content else 0.0
-
-    source_boost = {
-        "support_doc": 1.3,
-        "curated_doc": 1.2,
-        "skill_doc": 1.1,
-        "source_manifest": 0.65,
-        "repo_file": 1.0,
-    }.get(str(record.get("source_type", "")), 1.0)
-
-    if "support_unverified" in record.get("tags", []):
-        source_boost *= 0.35
-
-    raw = content_hits + (title_hits * 2.2) + (tag_hits * 1.6) + (coverage * 8.0) + phrase_bonus
-    return raw * source_boost
+from retrieval_scoring import Match, rank_records
 
 
 def load_index(path: Path) -> list[dict[str, Any]]:
@@ -90,15 +32,33 @@ def load_index(path: Path) -> list[dict[str, Any]]:
     return records
 
 
-def search(records: list[dict[str, Any]], query: str, top_k: int) -> list[Match]:
-    query_tokens = tokenize(query)
-    ranked: list[Match] = []
-    for rec in records:
-        s = score(query_tokens, rec)
-        if s > 0:
-            ranked.append(Match(s, rec))
-    ranked.sort(key=lambda x: x.score, reverse=True)
-    return ranked[:top_k]
+def path_matches_patterns(path: str, patterns: list[str]) -> bool:
+    if not path or not patterns:
+        return False
+    lowered = path.lower()
+    return any(pattern.lower() in lowered for pattern in patterns)
+
+
+def filter_leaky_records(
+    records: list[dict[str, Any]],
+    benchmark_path: Path,
+    expected_patterns: list[str],
+) -> list[dict[str, Any]]:
+    bench_rel = benchmark_path.as_posix().lower()
+    bench_abs = benchmark_path.resolve().as_posix().lower()
+    filtered: list[dict[str, Any]] = []
+
+    for record in records:
+        path = str(record.get("path", "")).lower()
+        if not path:
+            filtered.append(record)
+            continue
+        is_benchmark_doc = bench_rel in path or bench_abs in path
+        if is_benchmark_doc and not path_matches_patterns(path, expected_patterns):
+            continue
+        filtered.append(record)
+
+    return filtered
 
 
 def shrink(text: str, max_chars: int = 220) -> str:
@@ -307,8 +267,12 @@ def main() -> int:
         cid = str(case.get("id", f"case_{i}"))
         query = str(case.get("query", "")).strip()
         expected = [str(x) for x in case.get("expected_path_patterns", [])]
+        forbidden = [str(x) for x in case.get("forbidden_path_patterns", [])]
+        require_all_expected = bool(case.get("require_all_expected", False))
+        max_forbidden_hits = int(case.get("max_forbidden_hits", 0 if forbidden else 999999))
 
-        ranked = search(records, query, args.top_k)
+        eval_records = filter_leaky_records(records, args.benchmark, expected)
+        ranked = rank_records(records=eval_records, query=query, top_k=args.top_k)
         candidates = unique_candidates(ranked, args.candidates)
 
         candidate_lines: list[str] = []
@@ -342,6 +306,9 @@ def main() -> int:
             "id": cid,
             "query": query,
             "expected_path_patterns": expected,
+            "forbidden_path_patterns": forbidden,
+            "require_all_expected": require_all_expected,
+            "max_forbidden_hits": max_forbidden_hits,
             "candidates": candidates,
         }
         try:
@@ -362,11 +329,16 @@ def main() -> int:
                 selected_paths = selected_paths[: args.select_k]
 
             matched_expected, expected_total = match_patterns(selected_paths, expected)
+            matched_forbidden, _ = match_patterns(selected_paths, forbidden)
             selected_relevant = count_selected_relevant(selected_paths, expected)
 
             recall = (matched_expected / expected_total) if expected_total else 1.0
             precision = (selected_relevant / len(selected_paths)) if selected_paths else 0.0
-            passed = matched_expected > 0
+            expected_ok = (
+                matched_expected == expected_total if require_all_expected else matched_expected > 0
+            ) if expected_total else True
+            forbidden_ok = matched_forbidden <= max_forbidden_hits
+            passed = expected_ok and forbidden_ok
 
             pass_count += 1 if passed else 0
             precision_sum += precision
@@ -381,6 +353,7 @@ def main() -> int:
                     "recall": round(recall, 4),
                     "matched_expected": matched_expected,
                     "expected_total": expected_total,
+                    "matched_forbidden": matched_forbidden,
                     "raw_response": raw[:1200],
                 }
             )
@@ -391,6 +364,7 @@ def main() -> int:
                     "selected_paths": [],
                     "precision": 0.0,
                     "recall": 0.0,
+                    "matched_forbidden": 0,
                     "error": str(exc),
                 }
             )

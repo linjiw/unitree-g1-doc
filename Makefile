@@ -1,4 +1,4 @@
-.PHONY: sync sync-strict sync-full discover-repos discover-repos-all verify-g1-docs verify-g1-docs-strict render-support index query site coverage mirrors archives repo-lock max-collect pipeline validate-skill eval-retrieval eval-agent eval-agent-ollama gen-questions-ollama eval-retrieval-ollama-qbank eval-agent-ollama-qbank eval-retrieval-codex-stretch eval-agent-ollama-codex-stretch
+.PHONY: sync sync-strict sync-full discover-repos discover-repos-all verify-g1-docs verify-g1-docs-strict render-support index query site coverage mirrors archives repo-lock max-collect pipeline validate-skill eval-retrieval eval-agent eval-agent-ollama gen-questions-ollama eval-retrieval-ollama-qbank eval-agent-ollama-qbank eval-retrieval-codex-stretch eval-agent-ollama-codex-stretch eval-retrieval-codex-hardneg eval-agent-ollama-codex-hardneg
 
 PYTHON ?= python3
 ifneq ("$(wildcard .venv/bin/python)","")
@@ -111,3 +111,20 @@ eval-agent-ollama-codex-stretch:
 		--json-out docs/verification/codex_stretch_agent_eval.json \
 		--md-out docs/verification/codex_stretch_agent_eval.md \
 		--strict --fail-below 0.60
+
+eval-retrieval-codex-hardneg:
+	$(PYTHON) scripts/eval_retrieval.py \
+		--benchmark benchmarks/codex_agent_hardneg_benchmark.yaml \
+		--json-out docs/verification/codex_hardneg_retrieval_eval.json \
+		--md-out docs/verification/codex_hardneg_retrieval_eval.md \
+		--strict --fail-below 0.75
+
+eval-agent-ollama-codex-hardneg:
+	OPENAI_API_BASE=$${OPENAI_API_BASE:-http://127.0.0.1:11434/v1} \
+	OPENAI_API_KEY=$${OPENAI_API_KEY:-ollama} \
+	OPENAI_MODEL=$${OPENAI_MODEL:-llama3.1} \
+	$(PYTHON) scripts/eval_openai_compatible.py \
+		--benchmark benchmarks/codex_agent_hardneg_benchmark.yaml \
+		--json-out docs/verification/codex_hardneg_agent_eval.json \
+		--md-out docs/verification/codex_hardneg_agent_eval.md \
+		--strict --fail-below 0.65

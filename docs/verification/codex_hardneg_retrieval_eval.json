@@ -1,0 +1,686 @@
+{
+  "timestamp_unix": 1771960324,
+  "benchmark": "benchmarks/codex_agent_hardneg_benchmark.yaml",
+  "index": "data/index/knowledge_index.jsonl",
+  "total": 8,
+  "passed": 7,
+  "pass_rate": 0.875,
+  "top_k": 8,
+  "fail_below": 0.75,
+  "results": [
+    {
+      "id": "codex_goal_statement_hardneg",
+      "query": "what is the primary goal of this repository for codex",
+      "pass": true,
+      "reason": "matched pattern `AGENTS.md` at rank 1",
+      "expected_path_patterns": [
+        "AGENTS.md",
+        "skills/unitree-g1-expert/SKILL.md"
+      ],
+      "forbidden_path_patterns": [
+        "benchmarks/codex_agent_stretch_benchmark.yaml",
+        "/thirdparty/"
+      ],
+      "require_all_expected": false,
+      "max_forbidden_hits": 0,
+      "matched_expected": 2,
+      "expected_total": 2,
+      "forbidden_hits": 0,
+      "top_results": [
+        {
+          "score": 54.064,
+          "id": "project:AGENTS.md:chunk-0000",
+          "type": "project_doc",
+          "path": "AGENTS.md",
+          "url": null,
+          "title": "AGENTS.md"
+        },
+        {
+          "score": 41.412,
+          "id": "skill:unitree-g1-expert/SKILL.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "url": null,
+          "title": "SKILL.md"
+        },
+        {
+          "score": 26.8734,
+          "id": "doc:verification/codex_agent_experiments.md:chunk-0000",
+          "type": "curated_doc",
+          "path": "docs/verification/codex_agent_experiments.md",
+          "url": null,
+          "title": "codex_agent_experiments.md"
+        },
+        {
+          "score": 18.216,
+          "id": "project:site/how-we-design.html:chunk-0000",
+          "type": "site_doc",
+          "path": "site/how-we-design.html",
+          "url": null,
+          "title": "how-we-design.html"
+        },
+        {
+          "score": 14.8078,
+          "id": "doc:verification/agent_eval_playbook.md:chunk-0000",
+          "type": "curated_doc",
+          "path": "docs/verification/agent_eval_playbook.md",
+          "url": null,
+          "title": "agent_eval_playbook.md"
+        },
+        {
+          "score": 14.8078,
+          "id": "project:scripts/build_site.py:chunk-0006",
+          "type": "project_script",
+          "path": "scripts/build_site.py",
+          "url": null,
+          "title": "build_site.py"
+        },
+        {
+          "score": 13.175,
+          "id": "project:README.md:chunk-0000",
+          "type": "project_doc",
+          "path": "README.md",
+          "url": null,
+          "title": "README.md"
+        },
+        {
+          "score": 11.736,
+          "id": "project:site/examples.html:chunk-0000",
+          "type": "site_doc",
+          "path": "site/examples.html",
+          "url": null,
+          "title": "examples.html"
+        }
+      ]
+    },
+    {
+      "id": "codex_refresh_pipeline_hardneg",
+      "query": "which commands refresh and index all unitree g1 sources",
+      "pass": true,
+      "reason": "matched pattern `AGENTS.md` at rank 2",
+      "expected_path_patterns": [
+        "AGENTS.md",
+        "scripts/sync_sources.py"
+      ],
+      "forbidden_path_patterns": [
+        "benchmarks/codex_agent_stretch_benchmark.yaml"
+      ],
+      "require_all_expected": false,
+      "max_forbidden_hits": 0,
+      "matched_expected": 1,
+      "expected_total": 2,
+      "forbidden_hits": 0,
+      "top_results": [
+        {
+          "score": 53.5961,
+          "id": "skill:unitree-g1-expert/SKILL.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "url": null,
+          "title": "SKILL.md"
+        },
+        {
+          "score": 43.4,
+          "id": "project:AGENTS.md:chunk-0000",
+          "type": "project_doc",
+          "path": "AGENTS.md",
+          "url": null,
+          "title": "AGENTS.md"
+        },
+        {
+          "score": 38.1189,
+          "id": "project:site/index.html:chunk-0000",
+          "type": "site_doc",
+          "path": "site/index.html",
+          "url": null,
+          "title": "index.html"
+        },
+        {
+          "score": 36.3411,
+          "id": "skill:unitree-g1-expert/references/source-priority.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/references/source-priority.md",
+          "url": null,
+          "title": "source-priority.md"
+        },
+        {
+          "score": 34.1,
+          "id": "project:README.md:chunk-0000",
+          "type": "project_doc",
+          "path": "README.md",
+          "url": null,
+          "title": "README.md"
+        },
+        {
+          "score": 31.59,
+          "id": "project:scripts/max_collect.sh:chunk-0000",
+          "type": "project_script",
+          "path": "scripts/max_collect.sh",
+          "url": null,
+          "title": "max_collect.sh"
+        },
+        {
+          "score": 31.59,
+          "id": "project:scripts/build_site.py:chunk-0002",
+          "type": "project_script",
+          "path": "scripts/build_site.py",
+          "url": null,
+          "title": "build_site.py"
+        },
+        {
+          "score": 27.36,
+          "id": "project:site/data/benchmark_examples.json:chunk-0004",
+          "type": "site_data",
+          "path": "site/data/benchmark_examples.json",
+          "url": null,
+          "title": "benchmark_examples.json"
+        }
+      ]
+    },
+    {
+      "id": "codex_ros2_lowlevel_example_hardneg",
+      "query": "where is the g1 ros2 low level example source file",
+      "pass": true,
+      "reason": "matched pattern `data/repos/unitree_ros2/README.md` at rank 1",
+      "expected_path_patterns": [
+        "data/repos/unitree_ros2/example/src/src/g1/lowlevel/g1_low_level_example.cpp",
+        "data/repos/unitree_ros2/README.md"
+      ],
+      "forbidden_path_patterns": [
+        "skills/unitree-g1-expert/SKILL.md",
+        "benchmarks/codex_agent_stretch_benchmark.yaml"
+      ],
+      "require_all_expected": false,
+      "max_forbidden_hits": 0,
+      "matched_expected": 2,
+      "expected_total": 2,
+      "forbidden_hits": 0,
+      "top_results": [
+        {
+          "score": 57.5344,
+          "id": "repo:unitree_ros2:README.md:chunk-0003",
+          "type": "repo_file",
+          "path": "data/repos/unitree_ros2/README.md",
+          "url": "https://github.com/unitreerobotics/unitree_ros2",
+          "title": "README.md"
+        },
+        {
+          "score": 50.0385,
+          "id": "repo:unitree_ros2:example/src/src/g1/lowlevel/g1_low_level_example.cpp:chunk-0000",
+          "type": "repo_file",
+          "path": "data/repos/unitree_ros2/example/src/src/g1/lowlevel/g1_low_level_example.cpp",
+          "url": "https://github.com/unitreerobotics/unitree_ros2",
+          "title": "g1_low_level_example.cpp"
+        },
+        {
+          "score": 40.833,
+          "id": "repo:unitree_ros2:example/src/src/g1/high_level/g1_arm_action_example.cpp:chunk-0000",
+          "type": "repo_file",
+          "path": "data/repos/unitree_ros2/example/src/src/g1/high_level/g1_arm_action_example.cpp",
+          "url": "https://github.com/unitreerobotics/unitree_ros2",
+          "title": "g1_arm_action_example.cpp"
+        },
+        {
+          "score": 38.5316,
+          "id": "repo:unitree_ros2:example/src/src/g1/audio_client/g1_audio_client_example.cpp:chunk-0004",
+          "type": "repo_file",
+          "path": "data/repos/unitree_ros2/example/src/src/g1/audio_client/g1_audio_client_example.cpp",
+          "url": "https://github.com/unitreerobotics/unitree_ros2",
+          "title": "g1_audio_client_example.cpp"
+        },
+        {
+          "score": 38.5316,
+          "id": "repo:unitree_ros2:example/src/src/g1/lowlevel/g1_ankle_swing_example.cpp:chunk-0007",
+          "type": "repo_file",
+          "path": "data/repos/unitree_ros2/example/src/src/g1/lowlevel/g1_ankle_swing_example.cpp",
+          "url": "https://github.com/unitreerobotics/unitree_ros2",
+          "title": "g1_ankle_swing_example.cpp"
+        },
+        {
+          "score": 36.822,
+          "id": "repo:unitree_ros2:README _zh.md:chunk-0001",
+          "type": "repo_file",
+          "path": "data/repos/unitree_ros2/README _zh.md",
+          "url": "https://github.com/unitreerobotics/unitree_ros2",
+          "title": "README _zh.md"
+        },
+        {
+          "score": 35.1,
+          "id": "doc:verification/ollama_question_bank.md:chunk-0000",
+          "type": "curated_doc",
+          "path": "docs/verification/ollama_question_bank.md",
+          "url": null,
+          "title": "ollama_question_bank.md"
+        },
+        {
+          "score": 34.992,
+          "id": "project:site/data/benchmark_examples.json:chunk-0004",
+          "type": "site_data",
+          "path": "site/data/benchmark_examples.json",
+          "url": null,
+          "title": "benchmark_examples.json"
+        }
+      ]
+    },
+    {
+      "id": "codex_site_payload_hardneg",
+      "query": "what file stores benchmark example payloads for the website",
+      "pass": false,
+      "reason": "matched 1 forbidden patterns (limit 0)",
+      "expected_path_patterns": [
+        "site/data/benchmark_examples.json",
+        "scripts/build_site.py"
+      ],
+      "forbidden_path_patterns": [
+        "benchmarks/codex_agent_stretch_benchmark.yaml"
+      ],
+      "require_all_expected": false,
+      "max_forbidden_hits": 0,
+      "matched_expected": 1,
+      "expected_total": 2,
+      "forbidden_hits": 1,
+      "top_results": [
+        {
+          "score": 73.7165,
+          "id": "project:site/data/benchmark_examples.json:chunk-0006",
+          "type": "site_data",
+          "path": "site/data/benchmark_examples.json",
+          "url": null,
+          "title": "benchmark_examples.json"
+        },
+        {
+          "score": 43.6312,
+          "id": "project:benchmarks/codex_agent_stretch_benchmark.yaml:chunk-0002",
+          "type": "benchmark_spec",
+          "path": "benchmarks/codex_agent_stretch_benchmark.yaml",
+          "url": null,
+          "title": "codex_agent_stretch_benchmark.yaml"
+        },
+        {
+          "score": 38.6208,
+          "id": "project:site/assets/examples.js:chunk-0001",
+          "type": "site_doc",
+          "path": "site/assets/examples.js",
+          "url": null,
+          "title": "examples.js"
+        },
+        {
+          "score": 37.8432,
+          "id": "project:site/data/overview.json:chunk-0003",
+          "type": "site_data",
+          "path": "site/data/overview.json",
+          "url": null,
+          "title": "overview.json"
+        },
+        {
+          "score": 28.2528,
+          "id": "project:site/examples.html:chunk-0000",
+          "type": "site_doc",
+          "path": "site/examples.html",
+          "url": null,
+          "title": "examples.html"
+        },
+        {
+          "score": 25.2288,
+          "id": "project:site/assets/styles.css:chunk-0003",
+          "type": "site_doc",
+          "path": "site/assets/styles.css",
+          "url": null,
+          "title": "styles.css"
+        },
+        {
+          "score": 21.2875,
+          "id": "project:benchmarks/ollama_question_bank.yaml:chunk-0000",
+          "type": "benchmark_spec",
+          "path": "benchmarks/ollama_question_bank.yaml",
+          "url": null,
+          "title": "ollama_question_bank.yaml"
+        },
+        {
+          "score": 21.2875,
+          "id": "project:benchmarks/ollama_question_benchmark.yaml:chunk-0000",
+          "type": "benchmark_spec",
+          "path": "benchmarks/ollama_question_benchmark.yaml",
+          "url": null,
+          "title": "ollama_question_benchmark.yaml"
+        }
+      ]
+    },
+    {
+      "id": "codex_repo_catalog_manifest_hardneg",
+      "query": "where is the full unitree org repo catalog snapshot and main source manifest",
+      "pass": true,
+      "reason": "matched pattern `sources/unitree_org_repo_catalog.json` at rank 1",
+      "expected_path_patterns": [
+        "sources/unitree_org_repo_catalog.json",
+        "sources/unitree_g1_sources.yaml"
+      ],
+      "forbidden_path_patterns": [
+        "scripts/discover_unitree_repos.py"
+      ],
+      "require_all_expected": true,
+      "max_forbidden_hits": 1,
+      "matched_expected": 2,
+      "expected_total": 2,
+      "forbidden_hits": 1,
+      "top_results": [
+        {
+          "score": 98.8106,
+          "id": "source:unitree_org_repo_catalog.json:chunk-0004",
+          "type": "source_manifest",
+          "path": "sources/unitree_org_repo_catalog.json",
+          "url": null,
+          "title": "unitree_org_repo_catalog.json"
+        },
+        {
+          "score": 88.3606,
+          "id": "source:unitree_g1_sources.yaml:chunk-0000",
+          "type": "source_manifest",
+          "path": "sources/unitree_g1_sources.yaml",
+          "url": null,
+          "title": "unitree_g1_sources.yaml"
+        },
+        {
+          "score": 42.3667,
+          "id": "project:AGENTS.md:chunk-0001",
+          "type": "project_doc",
+          "path": "AGENTS.md",
+          "url": null,
+          "title": "AGENTS.md"
+        },
+        {
+          "score": 37.3146,
+          "id": "skill:unitree-g1-expert/references/source-priority.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/references/source-priority.md",
+          "url": null,
+          "title": "source-priority.md"
+        },
+        {
+          "score": 35.451,
+          "id": "project:scripts/discover_unitree_repos.py:chunk-0002",
+          "type": "project_script",
+          "path": "scripts/discover_unitree_repos.py",
+          "url": null,
+          "title": "discover_unitree_repos.py"
+        },
+        {
+          "score": 32.292,
+          "id": "project:scripts/sync_sources.py:chunk-0003",
+          "type": "project_script",
+          "path": "scripts/sync_sources.py",
+          "url": null,
+          "title": "sync_sources.py"
+        },
+        {
+          "score": 28.2555,
+          "id": "project:scripts/download_repo_archives.py:chunk-0001",
+          "type": "project_script",
+          "path": "scripts/download_repo_archives.py",
+          "url": null,
+          "title": "download_repo_archives.py"
+        },
+        {
+          "score": 26.7754,
+          "id": "skill:unitree-g1-expert/SKILL.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "url": null,
+          "title": "SKILL.md"
+        }
+      ]
+    },
+    {
+      "id": "codex_experiment_design_hardneg",
+      "query": "where is the codex stretch experiment design documented",
+      "pass": true,
+      "reason": "matched pattern `benchmarks/codex_agent_stretch_benchmark.yaml` at rank 3",
+      "expected_path_patterns": [
+        "docs/verification/codex_agent_experiments.md",
+        "benchmarks/codex_agent_stretch_benchmark.yaml"
+      ],
+      "forbidden_path_patterns": [
+        "/thirdparty/"
+      ],
+      "require_all_expected": true,
+      "max_forbidden_hits": 0,
+      "matched_expected": 2,
+      "expected_total": 2,
+      "forbidden_hits": 0,
+      "top_results": [
+        {
+          "score": 44.4893,
+          "id": "doc:verification/agent_eval_playbook.md:chunk-0000",
+          "type": "curated_doc",
+          "path": "docs/verification/agent_eval_playbook.md",
+          "url": null,
+          "title": "agent_eval_playbook.md"
+        },
+        {
+          "score": 43.7472,
+          "id": "project:AGENTS.md:chunk-0001",
+          "type": "project_doc",
+          "path": "AGENTS.md",
+          "url": null,
+          "title": "AGENTS.md"
+        },
+        {
+          "score": 37.7813,
+          "id": "project:benchmarks/codex_agent_stretch_benchmark.yaml:chunk-0002",
+          "type": "benchmark_spec",
+          "path": "benchmarks/codex_agent_stretch_benchmark.yaml",
+          "url": null,
+          "title": "codex_agent_stretch_benchmark.yaml"
+        },
+        {
+          "score": 35.712,
+          "id": "project:site/how-we-design.html:chunk-0001",
+          "type": "site_doc",
+          "path": "site/how-we-design.html",
+          "url": null,
+          "title": "how-we-design.html"
+        },
+        {
+          "score": 30.8003,
+          "id": "doc:verification/codex_agent_experiments.md:chunk-0000",
+          "type": "curated_doc",
+          "path": "docs/verification/codex_agent_experiments.md",
+          "url": null,
+          "title": "codex_agent_experiments.md"
+        },
+        {
+          "score": 27.0558,
+          "id": "skill:unitree-g1-expert/SKILL.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "url": null,
+          "title": "SKILL.md"
+        },
+        {
+          "score": 25.8863,
+          "id": "project:scripts/build_site.py:chunk-0009",
+          "type": "project_script",
+          "path": "scripts/build_site.py",
+          "url": null,
+          "title": "build_site.py"
+        },
+        {
+          "score": 21.45,
+          "id": "project:benchmarks/ollama_question_bank.yaml:chunk-0001",
+          "type": "benchmark_spec",
+          "path": "benchmarks/ollama_question_bank.yaml",
+          "url": null,
+          "title": "ollama_question_bank.yaml"
+        }
+      ]
+    },
+    {
+      "id": "codex_support_verification_hardneg",
+      "query": "where can codex verify blocked access status for support unitree g1 pages",
+      "pass": true,
+      "reason": "matched pattern `docs/verification/g1_docs_verification.md` at rank 4",
+      "expected_path_patterns": [
+        "docs/verification/g1_docs_verification.md",
+        "docs/verification/coverage_report.md"
+      ],
+      "forbidden_path_patterns": [
+        "benchmarks/codex_agent_stretch_benchmark.yaml"
+      ],
+      "require_all_expected": false,
+      "max_forbidden_hits": 0,
+      "matched_expected": 2,
+      "expected_total": 2,
+      "forbidden_hits": 0,
+      "top_results": [
+        {
+          "score": 114.08,
+          "id": "project:AGENTS.md:chunk-0001",
+          "type": "project_doc",
+          "path": "AGENTS.md",
+          "url": null,
+          "title": "AGENTS.md"
+        },
+        {
+          "score": 108.8544,
+          "id": "skill:unitree-g1-expert/SKILL.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "url": null,
+          "title": "SKILL.md"
+        },
+        {
+          "score": 107.3088,
+          "id": "project:site/data/benchmark_examples.json:chunk-0003",
+          "type": "site_data",
+          "path": "site/data/benchmark_examples.json",
+          "url": null,
+          "title": "benchmark_examples.json"
+        },
+        {
+          "score": 85.6879,
+          "id": "doc:verification/g1_docs_verification.md:chunk-0000",
+          "type": "curated_doc",
+          "path": "docs/verification/g1_docs_verification.md",
+          "url": null,
+          "title": "g1_docs_verification.md"
+        },
+        {
+          "score": 56.8181,
+          "id": "doc:verification/coverage_report.md:chunk-0000",
+          "type": "curated_doc",
+          "path": "docs/verification/coverage_report.md",
+          "url": null,
+          "title": "coverage_report.md"
+        },
+        {
+          "score": 53.7469,
+          "id": "doc:verification/ollama_question_bank.md:chunk-0000",
+          "type": "curated_doc",
+          "path": "docs/verification/ollama_question_bank.md",
+          "url": null,
+          "title": "ollama_question_bank.md"
+        },
+        {
+          "score": 52.6176,
+          "id": "project:site/how-we-design.html:chunk-0001",
+          "type": "site_doc",
+          "path": "site/how-we-design.html",
+          "url": null,
+          "title": "how-we-design.html"
+        },
+        {
+          "score": 52.0608,
+          "id": "skill:unitree-g1-expert/references/source-priority.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/references/source-priority.md",
+          "url": null,
+          "title": "source-priority.md"
+        }
+      ]
+    },
+    {
+      "id": "codex_sim2real_stages_hardneg",
+      "query": "what are the stages from simulation to real for g1",
+      "pass": true,
+      "reason": "matched pattern `docs/pipelines/sim2sim-sim2real.md` at rank 5",
+      "expected_path_patterns": [
+        "docs/pipelines/sim2sim-sim2real.md",
+        "data/repos/unitree_rl_gym/deploy/deploy_real/README.md"
+      ],
+      "forbidden_path_patterns": [
+        "benchmarks/codex_agent_stretch_benchmark.yaml"
+      ],
+      "require_all_expected": false,
+      "max_forbidden_hits": 0,
+      "matched_expected": 1,
+      "expected_total": 2,
+      "forbidden_hits": 0,
+      "top_results": [
+        {
+          "score": 23.5407,
+          "id": "skill:unitree-g1-expert/SKILL.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "url": null,
+          "title": "SKILL.md"
+        },
+        {
+          "score": 21.4988,
+          "id": "doc:verification/ollama_question_bank.md:chunk-0000",
+          "type": "curated_doc",
+          "path": "docs/verification/ollama_question_bank.md",
+          "url": null,
+          "title": "ollama_question_bank.md"
+        },
+        {
+          "score": 20.52,
+          "id": "project:site/data/benchmark_examples.json:chunk-0002",
+          "type": "site_data",
+          "path": "site/data/benchmark_examples.json",
+          "url": null,
+          "title": "benchmark_examples.json"
+        },
+        {
+          "score": 17.9887,
+          "id": "project:scripts/discover_unitree_repos.py:chunk-0001",
+          "type": "project_script",
+          "path": "scripts/discover_unitree_repos.py",
+          "url": null,
+          "title": "discover_unitree_repos.py"
+        },
+        {
+          "score": 17.68,
+          "id": "doc:pipelines/sim2sim-sim2real.md:chunk-0000",
+          "type": "curated_doc",
+          "path": "docs/pipelines/sim2sim-sim2real.md",
+          "url": null,
+          "title": "sim2sim-sim2real.md"
+        },
+        {
+          "score": 14.9175,
+          "id": "project:scripts/verify_g1_docs.py:chunk-0000",
+          "type": "project_script",
+          "path": "scripts/verify_g1_docs.py",
+          "url": null,
+          "title": "verify_g1_docs.py"
+        },
+        {
+          "score": 14.6775,
+          "id": "repo:unitree_sdk2:include/unitree/dds_wrapper/robots/g1/g1.h:chunk-0000",
+          "type": "repo_file",
+          "path": "data/repos/unitree_sdk2/include/unitree/dds_wrapper/robots/g1/g1.h",
+          "url": "https://github.com/unitreerobotics/unitree_sdk2",
+          "title": "g1.h"
+        },
+        {
+          "score": 14.4875,
+          "id": "repo:unitree_rl_mjlab:README.md:chunk-0003",
+          "type": "repo_file",
+          "path": "data/repos/unitree_rl_mjlab/README.md",
+          "url": "https://github.com/unitreerobotics/unitree_rl_mjlab",
+          "title": "README.md"
+        }
+      ]
+    }
+  ]
+}

@@ -170,6 +170,18 @@ def parse_args() -> argparse.Namespace:
         help="Codex stretch agent source-selection evaluation JSON path",
     )
     parser.add_argument(
+        "--codex-hardneg-retrieval-eval-json",
+        type=Path,
+        default=Path("docs/verification/codex_hardneg_retrieval_eval.json"),
+        help="Codex hard-negative retrieval evaluation JSON path",
+    )
+    parser.add_argument(
+        "--codex-hardneg-agent-eval-json",
+        type=Path,
+        default=Path("docs/verification/codex_hardneg_agent_eval.json"),
+        help="Codex hard-negative agent source-selection evaluation JSON path",
+    )
+    parser.add_argument(
         "--ollama-question-bank-yaml",
         type=Path,
         default=Path("benchmarks/ollama_question_bank.yaml"),
@@ -468,6 +480,18 @@ def main() -> int:
             "agent",
             "make eval-agent-ollama-codex-stretch",
         ),
+        summarize_eval(
+            args.codex_hardneg_retrieval_eval_json,
+            "Codex Hard-Negative Retrieval",
+            "retrieval",
+            "make eval-retrieval-codex-hardneg",
+        ),
+        summarize_eval(
+            args.codex_hardneg_agent_eval_json,
+            "Codex Hard-Negative Llama Source-Selection",
+            "agent",
+            "make eval-agent-ollama-codex-hardneg",
+        ),
     ]
 
     latest_eval_ts = max(
@@ -529,6 +553,14 @@ def main() -> int:
                     "command": "make eval-agent-ollama-codex-stretch",
                     "description": "Llama source-selection on Codex-first stretch benchmark.",
                 },
+                {
+                    "command": "make eval-retrieval-codex-hardneg",
+                    "description": "Retriever benchmark with forbidden-pattern hard negatives.",
+                },
+                {
+                    "command": "make eval-agent-ollama-codex-hardneg",
+                    "description": "Llama source-selection benchmark with hard negatives.",
+                },
             ],
             "quality_gates": {
                 "baseline_retrieval_min": 0.75,
@@ -537,6 +569,8 @@ def main() -> int:
                 "qbank_agent_min": 0.60,
                 "codex_stretch_retrieval_min": 0.70,
                 "codex_stretch_agent_min": 0.60,
+                "codex_hardneg_retrieval_min": 0.75,
+                "codex_hardneg_agent_min": 0.65,
             },
         },
     }

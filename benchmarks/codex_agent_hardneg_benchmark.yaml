@@ -1,0 +1,71 @@
+version: 1
+name: codex_agent_hardneg
+cases:
+  - id: codex_goal_statement_hardneg
+    query: what is the primary goal of this repository for codex
+    expected_path_patterns:
+      - AGENTS.md
+      - skills/unitree-g1-expert/SKILL.md
+    forbidden_path_patterns:
+      - benchmarks/codex_agent_stretch_benchmark.yaml
+      - /thirdparty/
+
+  - id: codex_refresh_pipeline_hardneg
+    query: which commands refresh and index all unitree g1 sources
+    expected_path_patterns:
+      - AGENTS.md
+      - scripts/sync_sources.py
+    forbidden_path_patterns:
+      - benchmarks/codex_agent_stretch_benchmark.yaml
+
+  - id: codex_ros2_lowlevel_example_hardneg
+    query: where is the g1 ros2 low level example source file
+    expected_path_patterns:
+      - data/repos/unitree_ros2/example/src/src/g1/lowlevel/g1_low_level_example.cpp
+      - data/repos/unitree_ros2/README.md
+    forbidden_path_patterns:
+      - skills/unitree-g1-expert/SKILL.md
+      - benchmarks/codex_agent_stretch_benchmark.yaml
+
+  - id: codex_site_payload_hardneg
+    query: what file stores benchmark example payloads for the website
+    expected_path_patterns:
+      - site/data/benchmark_examples.json
+      - scripts/build_site.py
+    forbidden_path_patterns:
+      - benchmarks/codex_agent_stretch_benchmark.yaml
+
+  - id: codex_repo_catalog_manifest_hardneg
+    query: where is the full unitree org repo catalog snapshot and main source manifest
+    expected_path_patterns:
+      - sources/unitree_org_repo_catalog.json
+      - sources/unitree_g1_sources.yaml
+    require_all_expected: true
+    max_forbidden_hits: 1
+    forbidden_path_patterns:
+      - scripts/discover_unitree_repos.py
+
+  - id: codex_experiment_design_hardneg
+    query: where is the codex stretch experiment design documented
+    expected_path_patterns:
+      - docs/verification/codex_agent_experiments.md
+      - benchmarks/codex_agent_stretch_benchmark.yaml
+    require_all_expected: true
+    forbidden_path_patterns:
+      - /thirdparty/
+
+  - id: codex_support_verification_hardneg
+    query: where can codex verify blocked access status for support unitree g1 pages
+    expected_path_patterns:
+      - docs/verification/g1_docs_verification.md
+      - docs/verification/coverage_report.md
+    forbidden_path_patterns:
+      - benchmarks/codex_agent_stretch_benchmark.yaml
+
+  - id: codex_sim2real_stages_hardneg
+    query: what are the stages from simulation to real for g1
+    expected_path_patterns:
+      - docs/pipelines/sim2sim-sim2real.md
+      - data/repos/unitree_rl_gym/deploy/deploy_real/README.md
+    forbidden_path_patterns:
+      - benchmarks/codex_agent_stretch_benchmark.yaml

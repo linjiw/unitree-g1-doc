@@ -90,10 +90,37 @@ Benchmark file:
 - `benchmarks/codex_agent_stretch_benchmark.yaml`
 - experiment design doc: `docs/verification/codex_agent_experiments.md`
 
-## 7) Suggested Quality Gates
+## 7) Codex Hard-Negative Benchmark
+
+Retriever-only:
+
+```bash
+make eval-retrieval-codex-hardneg
+```
+
+Model source-selection:
+
+```bash
+make eval-agent-ollama-codex-hardneg
+```
+
+Benchmark file:
+- `benchmarks/codex_agent_hardneg_benchmark.yaml`
+
+Hard-negative fields:
+- `forbidden_path_patterns`: fail when noisy distractors appear in top-k/selected paths beyond the allowed limit
+- `require_all_expected`: require all expected patterns instead of any-match
+- `max_forbidden_hits`: per-case tolerance for unavoidable distractors
+
+Evaluation validity guard:
+- benchmark leakage prevention is enabled in eval scripts: benchmark YAML is excluded unless explicitly expected by that case.
+
+## 8) Suggested Quality Gates
 
 - Retriever pass rate: `>= 0.75`
 - Agent source-selection pass rate: `>= 0.70`
 - Codex stretch retriever pass rate: `>= 0.70`
 - Codex stretch agent pass rate: `>= 0.60`
+- Codex hard-negative retriever pass rate: `>= 0.75`
+- Codex hard-negative agent pass rate: `>= 0.65`
 - Raise thresholds after adding more benchmark cases.

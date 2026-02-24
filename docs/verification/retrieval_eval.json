@@ -1,10 +1,10 @@
 {
-  "timestamp_unix": 1771955226,
+  "timestamp_unix": 1771960165,
   "benchmark": "benchmarks/retrieval_benchmark.yaml",
   "index": "data/index/knowledge_index.jsonl",
   "total": 12,
-  "passed": 11,
-  "pass_rate": 0.9166666666666666,
+  "passed": 9,
+  "pass_rate": 0.75,
   "top_k": 8,
   "fail_below": 0.75,
   "results": [
@@ -12,14 +12,22 @@
       "id": "remote_pc_deployment",
       "query": "how to deploy g1 policy on remote pc",
       "pass": true,
-      "reason": "matched pattern `docs/pipelines/deployment-onboard-vs-remote-pc.md` at rank 1",
+      "reason": "matched pattern `docs/pipelines/deployment-onboard-vs-remote-pc.md` at rank 2",
       "expected_path_patterns": [
         "docs/pipelines/deployment-onboard-vs-remote-pc.md",
         "data/repos/unitree_rl_gym/deploy/deploy_real/README.md"
       ],
       "top_results": [
         {
-          "score": 31.68,
+          "score": 41.04,
+          "id": "project:site/data/benchmark_examples.json:chunk-0000",
+          "type": "site_data",
+          "path": "site/data/benchmark_examples.json",
+          "url": null,
+          "title": "benchmark_examples.json"
+        },
+        {
+          "score": 40.3,
           "id": "doc:pipelines/deployment-onboard-vs-remote-pc.md:chunk-0000",
           "type": "curated_doc",
           "path": "docs/pipelines/deployment-onboard-vs-remote-pc.md",
@@ -27,60 +35,52 @@
           "title": "deployment-onboard-vs-remote-pc.md"
         },
         {
-          "score": 21.0,
-          "id": "repo:unitree_rl_gym:deploy/deploy_real/README.md:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/unitree_rl_gym/deploy/deploy_real/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_rl_gym",
-          "title": "README.md"
-        },
-        {
-          "score": 20.6,
-          "id": "repo:unitree_IL_lerobot:README.md:chunk-0002",
-          "type": "repo_file",
-          "path": "data/repos/unitree_IL_lerobot/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_IL_lerobot",
-          "title": "README.md"
-        },
-        {
-          "score": 20.4,
-          "id": "doc:pipelines/sim2sim-sim2real.md:chunk-0000",
+          "score": 39.4875,
+          "id": "doc:verification/ollama_question_bank.md:chunk-0000",
           "type": "curated_doc",
-          "path": "docs/pipelines/sim2sim-sim2real.md",
+          "path": "docs/verification/ollama_question_bank.md",
           "url": null,
-          "title": "sim2sim-sim2real.md"
+          "title": "ollama_question_bank.md"
         },
         {
-          "score": 20.0,
-          "id": "repo:unitree_rl_mjlab:README.md:chunk-0003",
-          "type": "repo_file",
-          "path": "data/repos/unitree_rl_mjlab/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_rl_mjlab",
-          "title": "README.md"
+          "score": 35.9775,
+          "id": "doc:verification/ollama_question_bank.md:chunk-0001",
+          "type": "curated_doc",
+          "path": "docs/verification/ollama_question_bank.md",
+          "url": null,
+          "title": "ollama_question_bank.md"
         },
         {
-          "score": 19.0,
-          "id": "repo:unitree_rl_gym:deploy/deploy_real/README.md:chunk-0001",
-          "type": "repo_file",
-          "path": "data/repos/unitree_rl_gym/deploy/deploy_real/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_rl_gym",
-          "title": "README.md"
+          "score": 34.017,
+          "id": "skill:unitree-g1-expert/SKILL.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "url": null,
+          "title": "SKILL.md"
         },
         {
-          "score": 18.6,
-          "id": "repo:kinect_teleoperate:src/extern/glfw/src/docs/build.md:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/build.md",
-          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
-          "title": "build.md"
+          "score": 30.073,
+          "id": "skill:unitree-g1-expert/references/workflow.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/references/workflow.md",
+          "url": null,
+          "title": "workflow.md"
         },
         {
-          "score": 18.6,
-          "id": "repo:kinect_teleoperate:src/extern/glfw/src/deps/wayland/wayland.xml:chunk-0039",
-          "type": "repo_file",
-          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/deps/wayland/wayland.xml",
-          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
-          "title": "wayland.xml"
+          "score": 29.087,
+          "id": "skill:unitree-g1-expert/SKILL.md:chunk-0001",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "url": null,
+          "title": "SKILL.md"
+        },
+        {
+          "score": 26.622,
+          "id": "skill:unitree-g1-expert/SKILL.md:chunk-0002",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "url": null,
+          "title": "SKILL.md"
         }
       ]
     },
@@ -95,7 +95,7 @@
       ],
       "top_results": [
         {
-          "score": 38.88,
+          "score": 64.064,
           "id": "doc:pipelines/sim2sim-sim2real.md:chunk-0000",
           "type": "curated_doc",
           "path": "docs/pipelines/sim2sim-sim2real.md",
@@ -103,7 +103,23 @@
           "title": "sim2sim-sim2real.md"
         },
         {
-          "score": 27.5,
+          "score": 53.4905,
+          "id": "skill:unitree-g1-expert/references/workflow.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/references/workflow.md",
+          "url": null,
+          "title": "workflow.md"
+        },
+        {
+          "score": 47.74,
+          "id": "project:AGENTS.md:chunk-0000",
+          "type": "project_doc",
+          "path": "AGENTS.md",
+          "url": null,
+          "title": "AGENTS.md"
+        },
+        {
+          "score": 46.342,
           "id": "skill:unitree-g1-expert/SKILL.md:chunk-0000",
           "type": "skill_doc",
           "path": "skills/unitree-g1-expert/SKILL.md",
@@ -111,52 +127,36 @@
           "title": "SKILL.md"
         },
         {
-          "score": 25.2,
-          "id": "doc:source-digests/unitree_rl_lab.md:chunk-0000",
-          "type": "curated_doc",
-          "path": "docs/source-digests/unitree_rl_lab.md",
+          "score": 36.482,
+          "id": "skill:unitree-g1-expert/SKILL.md:chunk-0002",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/SKILL.md",
           "url": null,
-          "title": "unitree_rl_lab.md"
+          "title": "SKILL.md"
         },
         {
-          "score": 24.0,
-          "id": "repo:unitree_rl_gym:README.md:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/unitree_rl_gym/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_rl_gym",
-          "title": "README.md"
+          "score": 31.59,
+          "id": "doc:verification/ollama_question_bank.md:chunk-0000",
+          "type": "curated_doc",
+          "path": "docs/verification/ollama_question_bank.md",
+          "url": null,
+          "title": "ollama_question_bank.md"
         },
         {
-          "score": 22.6,
-          "id": "repo:kinect_teleoperate:src/extern/glfw/src/docs/main.md:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/main.md",
-          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
-          "title": "main.md"
+          "score": 28.8,
+          "id": "project:site/data/benchmark_examples.json:chunk-0001",
+          "type": "site_data",
+          "path": "site/data/benchmark_examples.json",
+          "url": null,
+          "title": "benchmark_examples.json"
         },
         {
-          "score": 22.6,
-          "id": "repo:kinect_teleoperate:src/extern/glfw/src/docs/CONTRIBUTING.md:chunk-0007",
-          "type": "repo_file",
-          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/CONTRIBUTING.md",
-          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
-          "title": "CONTRIBUTING.md"
-        },
-        {
-          "score": 22.6,
-          "id": "repo:kinect_teleoperate:src/extern/glfw/src/deps/wayland/xdg-shell.xml:chunk-0002",
-          "type": "repo_file",
-          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/deps/wayland/xdg-shell.xml",
-          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
-          "title": "xdg-shell.xml"
-        },
-        {
-          "score": 21.6,
-          "id": "repo:kinect_teleoperate:src/extern/glfw/src/docs/input.md:chunk-0018",
-          "type": "repo_file",
-          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/input.md",
-          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
-          "title": "input.md"
+          "score": 28.8,
+          "id": "project:site/data/benchmark_examples.json:chunk-0002",
+          "type": "site_data",
+          "path": "site/data/benchmark_examples.json",
+          "url": null,
+          "title": "benchmark_examples.json"
         }
       ]
     },
@@ -171,7 +171,7 @@
       ],
       "top_results": [
         {
-          "score": 23.6667,
+          "score": 36.8758,
           "id": "repo:unitree_sdk2_python:README.md:chunk-0000",
           "type": "repo_file",
           "path": "data/repos/unitree_sdk2_python/README.md",
@@ -179,7 +179,7 @@
           "title": "README.md"
         },
         {
-          "score": 22.6667,
+          "score": 35.2608,
           "id": "repo:unitree_sdk2_python:README zh.md:chunk-0000",
           "type": "repo_file",
           "path": "data/repos/unitree_sdk2_python/README zh.md",
@@ -187,7 +187,15 @@
           "title": "README zh.md"
         },
         {
-          "score": 17.3333,
+          "score": 30.42,
+          "id": "doc:verification/ollama_question_bank.md:chunk-0000",
+          "type": "curated_doc",
+          "path": "docs/verification/ollama_question_bank.md",
+          "url": null,
+          "title": "ollama_question_bank.md"
+        },
+        {
+          "score": 26.9167,
           "id": "repo:unitree_ros2:README _zh.md:chunk-0000",
           "type": "repo_file",
           "path": "data/repos/unitree_ros2/README _zh.md",
@@ -195,7 +203,15 @@
           "title": "README _zh.md"
         },
         {
-          "score": 16.6667,
+          "score": 26.35,
+          "id": "project:AGENTS.md:chunk-0000",
+          "type": "project_doc",
+          "path": "AGENTS.md",
+          "url": null,
+          "title": "AGENTS.md"
+        },
+        {
+          "score": 25.5708,
           "id": "repo:unitree_ros2:README.md:chunk-0000",
           "type": "repo_file",
           "path": "data/repos/unitree_ros2/README.md",
@@ -203,23 +219,7 @@
           "title": "README.md"
         },
         {
-          "score": 16.4,
-          "id": "doc:source-digests/unitree_sdk2_python.md:chunk-0000",
-          "type": "curated_doc",
-          "path": "docs/source-digests/unitree_sdk2_python.md",
-          "url": null,
-          "title": "unitree_sdk2_python.md"
-        },
-        {
-          "score": 16.0,
-          "id": "repo:unitree_actuator_sdk:thirdparty/pybind11/.github/workflows/ci.yml:chunk-0001",
-          "type": "repo_file",
-          "path": "data/repos/unitree_actuator_sdk/thirdparty/pybind11/.github/workflows/ci.yml",
-          "url": "https://github.com/unitreerobotics/unitree_actuator_sdk",
-          "title": "ci.yml"
-        },
-        {
-          "score": 16.0,
+          "score": 25.0325,
           "id": "repo:unitree_mujoco:readme_zh.md:chunk-0000",
           "type": "repo_file",
           "path": "data/repos/unitree_mujoco/readme_zh.md",
@@ -227,12 +227,12 @@
           "title": "readme_zh.md"
         },
         {
-          "score": 15.0,
-          "id": "repo:unitree_actuator_sdk:thirdparty/pybind11/.github/workflows/ci.yml:chunk-0018",
-          "type": "repo_file",
-          "path": "data/repos/unitree_actuator_sdk/thirdparty/pybind11/.github/workflows/ci.yml",
-          "url": "https://github.com/unitreerobotics/unitree_actuator_sdk",
-          "title": "ci.yml"
+          "score": 23.2696,
+          "id": "skill:unitree-g1-expert/SKILL.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "url": null,
+          "title": "SKILL.md"
         }
       ]
     },
@@ -246,7 +246,7 @@
       ],
       "top_results": [
         {
-          "score": 25.4,
+          "score": 56.6138,
           "id": "repo:unitree_ros2:README.md:chunk-0003",
           "type": "repo_file",
           "path": "data/repos/unitree_ros2/README.md",
@@ -254,7 +254,7 @@
           "title": "README.md"
         },
         {
-          "score": 18.0,
+          "score": 55.6933,
           "id": "repo:unitree_ros2:example/src/src/g1/lowlevel/g1_low_level_example.cpp:chunk-0000",
           "type": "repo_file",
           "path": "data/repos/unitree_ros2/example/src/src/g1/lowlevel/g1_low_level_example.cpp",
@@ -262,7 +262,31 @@
           "title": "g1_low_level_example.cpp"
         },
         {
-          "score": 17.8,
+          "score": 43.2658,
+          "id": "repo:unitree_ros2:example/src/src/g1/lowlevel/g1_low_level_example.cpp:chunk-0005",
+          "type": "repo_file",
+          "path": "data/repos/unitree_ros2/example/src/src/g1/lowlevel/g1_low_level_example.cpp",
+          "url": "https://github.com/unitreerobotics/unitree_ros2",
+          "title": "g1_low_level_example.cpp"
+        },
+        {
+          "score": 43.2658,
+          "id": "repo:unitree_ros2:example/src/src/g1/lowlevel/g1_ankle_swing_example.cpp:chunk-0007",
+          "type": "repo_file",
+          "path": "data/repos/unitree_ros2/example/src/src/g1/lowlevel/g1_ankle_swing_example.cpp",
+          "url": "https://github.com/unitreerobotics/unitree_ros2",
+          "title": "g1_ankle_swing_example.cpp"
+        },
+        {
+          "score": 40.0439,
+          "id": "repo:unitree_ros2:example/src/src/g1/high_level/g1_arm_action_example.cpp:chunk-0000",
+          "type": "repo_file",
+          "path": "data/repos/unitree_ros2/example/src/src/g1/high_level/g1_arm_action_example.cpp",
+          "url": "https://github.com/unitreerobotics/unitree_ros2",
+          "title": "g1_arm_action_example.cpp"
+        },
+        {
+          "score": 39.5836,
           "id": "repo:unitree_ros2:README.md:chunk-0004",
           "type": "repo_file",
           "path": "data/repos/unitree_ros2/README.md",
@@ -270,44 +294,20 @@
           "title": "README.md"
         },
         {
-          "score": 17.4,
-          "id": "repo:unitree_ros2_to_real:README.md:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/unitree_ros2_to_real/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_ros2_to_real",
-          "title": "README.md"
-        },
-        {
-          "score": 16.08,
-          "id": "doc:source-digests/unitree_sdk2_python.md:chunk-0000",
-          "type": "curated_doc",
-          "path": "docs/source-digests/unitree_sdk2_python.md",
+          "score": 38.1024,
+          "id": "project:site/data/benchmark_examples.json:chunk-0004",
+          "type": "site_data",
+          "path": "site/data/benchmark_examples.json",
           "url": null,
-          "title": "unitree_sdk2_python.md"
+          "title": "benchmark_examples.json"
         },
         {
-          "score": 16.0,
-          "id": "repo:unitree_ros2:README.md:chunk-0002",
+          "score": 37.7426,
+          "id": "repo:unitree_ros2:example/src/src/g1/audio_client/g1_audio_client_example.cpp:chunk-0003",
           "type": "repo_file",
-          "path": "data/repos/unitree_ros2/README.md",
+          "path": "data/repos/unitree_ros2/example/src/src/g1/audio_client/g1_audio_client_example.cpp",
           "url": "https://github.com/unitreerobotics/unitree_ros2",
-          "title": "README.md"
-        },
-        {
-          "score": 15.8,
-          "id": "repo:unitree_ros2:README _zh.md:chunk-0001",
-          "type": "repo_file",
-          "path": "data/repos/unitree_ros2/README _zh.md",
-          "url": "https://github.com/unitreerobotics/unitree_ros2",
-          "title": "README _zh.md"
-        },
-        {
-          "score": 14.8,
-          "id": "repo:unitree_sdk2_python:README.md:chunk-0001",
-          "type": "repo_file",
-          "path": "data/repos/unitree_sdk2_python/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_sdk2_python",
-          "title": "README.md"
+          "title": "g1_audio_client_example.cpp"
         }
       ]
     },
@@ -321,7 +321,7 @@
       ],
       "top_results": [
         {
-          "score": 24.6667,
+          "score": 54.8494,
           "id": "repo:unitree_ros2:README.md:chunk-0003",
           "type": "repo_file",
           "path": "data/repos/unitree_ros2/README.md",
@@ -329,56 +329,284 @@
           "title": "README.md"
         },
         {
-          "score": 17.0,
-          "id": "repo:unitree_ros2_to_real:README.md:chunk-0001",
-          "type": "repo_file",
-          "path": "data/repos/unitree_ros2_to_real/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_ros2_to_real",
-          "title": "README.md"
-        },
-        {
-          "score": 16.4,
-          "id": "doc:source-digests/unitree_sdk2_python.md:chunk-0000",
-          "type": "curated_doc",
-          "path": "docs/source-digests/unitree_sdk2_python.md",
+          "score": 46.2672,
+          "id": "project:site/data/benchmark_examples.json:chunk-0003",
+          "type": "site_data",
+          "path": "site/data/benchmark_examples.json",
           "url": null,
-          "title": "unitree_sdk2_python.md"
+          "title": "benchmark_examples.json"
         },
         {
-          "score": 16.0,
-          "id": "repo:unitree_sdk2_python:README.md:chunk-0001",
+          "score": 39.4302,
+          "id": "repo:unitree_ros2:example/src/src/g1/lowlevel/g1_low_level_example.cpp:chunk-0000",
           "type": "repo_file",
-          "path": "data/repos/unitree_sdk2_python/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_sdk2_python",
-          "title": "README.md"
+          "path": "data/repos/unitree_ros2/example/src/src/g1/lowlevel/g1_low_level_example.cpp",
+          "url": "https://github.com/unitreerobotics/unitree_ros2",
+          "title": "g1_low_level_example.cpp"
         },
         {
-          "score": 15.0,
+          "score": 37.8432,
+          "id": "project:site/data/benchmark_examples.json:chunk-0000",
+          "type": "site_data",
+          "path": "site/data/benchmark_examples.json",
+          "url": null,
+          "title": "benchmark_examples.json"
+        },
+        {
+          "score": 37.8432,
+          "id": "project:site/data/benchmark_examples.json:chunk-0004",
+          "type": "site_data",
+          "path": "site/data/benchmark_examples.json",
+          "url": null,
+          "title": "benchmark_examples.json"
+        },
+        {
+          "score": 37.0656,
+          "id": "project:site/examples.html:chunk-0000",
+          "type": "site_doc",
+          "path": "site/examples.html",
+          "url": null,
+          "title": "examples.html"
+        },
+        {
+          "score": 33.4368,
+          "id": "project:site/how-we-design.html:chunk-0000",
+          "type": "site_doc",
+          "path": "site/how-we-design.html",
+          "url": null,
+          "title": "how-we-design.html"
+        },
+        {
+          "score": 33.3699,
           "id": "repo:unitree_ros2:README.md:chunk-0004",
+          "type": "repo_file",
+          "path": "data/repos/unitree_ros2/README.md",
+          "url": "https://github.com/unitreerobotics/unitree_ros2",
+          "title": "README.md"
+        }
+      ]
+    },
+    {
+      "id": "mujoco_bridge",
+      "query": "unitree mujoco simulator and sdk2 integration",
+      "pass": true,
+      "reason": "matched pattern `data/repos/unitree_mujoco/readme.md` at rank 3",
+      "expected_path_patterns": [
+        "data/repos/unitree_mujoco/readme.md",
+        "data/repos/unitree_mujoco/README.md"
+      ],
+      "top_results": [
+        {
+          "score": 36.482,
+          "id": "skill:unitree-g1-expert/SKILL.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "url": null,
+          "title": "SKILL.md"
+        },
+        {
+          "score": 30.073,
+          "id": "skill:unitree-g1-expert/references/workflow.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/references/workflow.md",
+          "url": null,
+          "title": "workflow.md"
+        },
+        {
+          "score": 22.8,
+          "id": "repo:unitree_mujoco:readme.md:chunk-0000",
+          "type": "repo_file",
+          "path": "data/repos/unitree_mujoco/readme.md",
+          "url": "https://github.com/unitreerobotics/unitree_mujoco",
+          "title": "readme.md"
+        },
+        {
+          "score": 21.08,
+          "id": "project:AGENTS.md:chunk-0000",
+          "type": "project_doc",
+          "path": "AGENTS.md",
+          "url": null,
+          "title": "AGENTS.md"
+        },
+        {
+          "score": 19.656,
+          "id": "doc:verification/ollama_question_bank.md:chunk-0001",
+          "type": "curated_doc",
+          "path": "docs/verification/ollama_question_bank.md",
+          "url": null,
+          "title": "ollama_question_bank.md"
+        },
+        {
+          "score": 18.62,
+          "id": "repo:unitree_mujoco:readme.md:chunk-0001",
+          "type": "repo_file",
+          "path": "data/repos/unitree_mujoco/readme.md",
+          "url": "https://github.com/unitreerobotics/unitree_mujoco",
+          "title": "readme.md"
+        },
+        {
+          "score": 17.765,
+          "id": "repo:kinect_teleoperate:src/mujoco-3.1.5/include/mujoco/mujoco.h:chunk-0000",
+          "type": "repo_file",
+          "path": "data/repos/kinect_teleoperate/src/mujoco-3.1.5/include/mujoco/mujoco.h",
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "title": "mujoco.h"
+        },
+        {
+          "score": 17.67,
+          "id": "repo:unitree_mujoco:readme_zh.md:chunk-0000",
+          "type": "repo_file",
+          "path": "data/repos/unitree_mujoco/readme_zh.md",
+          "url": "https://github.com/unitreerobotics/unitree_mujoco",
+          "title": "readme_zh.md"
+        }
+      ]
+    },
+    {
+      "id": "isaaclab_repo",
+      "query": "unitree isaaclab simulation g1",
+      "pass": false,
+      "reason": "no expected path pattern found in top-k",
+      "expected_path_patterns": [
+        "data/repos/unitree_sim_isaaclab/README.md",
+        "docs/source-digests/unitree_sim_isaaclab.md"
+      ],
+      "top_results": [
+        {
+          "score": 49.5465,
+          "id": "skill:unitree-g1-expert/SKILL.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "url": null,
+          "title": "SKILL.md"
+        },
+        {
+          "score": 34.7565,
+          "id": "skill:unitree-g1-expert/SKILL.md:chunk-0001",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "url": null,
+          "title": "SKILL.md"
+        },
+        {
+          "score": 32.2915,
+          "id": "skill:unitree-g1-expert/SKILL.md:chunk-0002",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "url": null,
+          "title": "SKILL.md"
+        },
+        {
+          "score": 32.2915,
+          "id": "skill:unitree-g1-expert/references/source-priority.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/references/source-priority.md",
+          "url": null,
+          "title": "source-priority.md"
+        },
+        {
+          "score": 31.2,
+          "id": "doc:pipelines/sim2sim-sim2real.md:chunk-0000",
+          "type": "curated_doc",
+          "path": "docs/pipelines/sim2sim-sim2real.md",
+          "url": null,
+          "title": "sim2sim-sim2real.md"
+        },
+        {
+          "score": 30.2738,
+          "id": "doc:verification/ollama_question_bank.md:chunk-0001",
+          "type": "curated_doc",
+          "path": "docs/verification/ollama_question_bank.md",
+          "url": null,
+          "title": "ollama_question_bank.md"
+        },
+        {
+          "score": 28.5188,
+          "id": "doc:verification/ollama_question_bank.md:chunk-0000",
+          "type": "curated_doc",
+          "path": "docs/verification/ollama_question_bank.md",
+          "url": null,
+          "title": "ollama_question_bank.md"
+        },
+        {
+          "score": 27.3615,
+          "id": "skill:unitree-g1-expert/references/workflow.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/references/workflow.md",
+          "url": null,
+          "title": "workflow.md"
+        }
+      ]
+    },
+    {
+      "id": "ros2_to_real",
+      "query": "unitree ros2 to real deployment bridge",
+      "pass": false,
+      "reason": "no expected path pattern found in top-k",
+      "expected_path_patterns": [
+        "docs/source-digests/unitree_ros2_to_real.md",
+        "data/repos/unitree_ros2_to_real"
+      ],
+      "top_results": [
+        {
+          "score": 39.2768,
+          "id": "repo:unitree_ros2:README _zh.md:chunk-0000",
+          "type": "repo_file",
+          "path": "data/repos/unitree_ros2/README _zh.md",
+          "url": "https://github.com/unitreerobotics/unitree_ros2",
+          "title": "README _zh.md"
+        },
+        {
+          "score": 39.2768,
+          "id": "repo:unitree_ros2:README _zh.md:chunk-0001",
+          "type": "repo_file",
+          "path": "data/repos/unitree_ros2/README _zh.md",
+          "url": "https://github.com/unitreerobotics/unitree_ros2",
+          "title": "README _zh.md"
+        },
+        {
+          "score": 39.2768,
+          "id": "repo:unitree_ros2:README.md:chunk-0000",
           "type": "repo_file",
           "path": "data/repos/unitree_ros2/README.md",
           "url": "https://github.com/unitreerobotics/unitree_ros2",
           "title": "README.md"
         },
         {
-          "score": 15.0,
-          "id": "repo:unitree_ros2_to_real:README.md:chunk-0000",
+          "score": 39.2768,
+          "id": "repo:unitree_ros2:README.md:chunk-0001",
           "type": "repo_file",
-          "path": "data/repos/unitree_ros2_to_real/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_ros2_to_real",
+          "path": "data/repos/unitree_ros2/README.md",
+          "url": "https://github.com/unitreerobotics/unitree_ros2",
           "title": "README.md"
         },
         {
-          "score": 14.3333,
-          "id": "repo:unitree_ros:README.md:chunk-0000",
+          "score": 33.1398,
+          "id": "repo:unitree_ros2:example/src/src/h1-2/lowlevel/low_level_ctrl_hg.cpp:chunk-0005",
           "type": "repo_file",
-          "path": "data/repos/unitree_ros/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_ros",
+          "path": "data/repos/unitree_ros2/example/src/src/h1-2/lowlevel/low_level_ctrl_hg.cpp",
+          "url": "https://github.com/unitreerobotics/unitree_ros2",
+          "title": "low_level_ctrl_hg.cpp"
+        },
+        {
+          "score": 29.1856,
+          "id": "skill:unitree-g1-expert/SKILL.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "url": null,
+          "title": "SKILL.md"
+        },
+        {
+          "score": 27.0028,
+          "id": "repo:unitree_ros2:README.md:chunk-0002",
+          "type": "repo_file",
+          "path": "data/repos/unitree_ros2/README.md",
+          "url": "https://github.com/unitreerobotics/unitree_ros2",
           "title": "README.md"
         },
         {
-          "score": 14.3333,
-          "id": "repo:unitree_ros2:example/src/src/g1/lowlevel/g1_low_level_example.cpp:chunk-0000",
+          "score": 27.0028,
+          "id": "repo:unitree_ros2:example/src/src/g1/lowlevel/g1_low_level_example.cpp:chunk-0005",
           "type": "repo_file",
           "path": "data/repos/unitree_ros2/example/src/src/g1/lowlevel/g1_low_level_example.cpp",
           "url": "https://github.com/unitreerobotics/unitree_ros2",
@@ -387,253 +615,25 @@
       ]
     },
     {
-      "id": "mujoco_bridge",
-      "query": "unitree mujoco simulator and sdk2 integration",
-      "pass": true,
-      "reason": "matched pattern `data/repos/unitree_mujoco/readme.md` at rank 1",
-      "expected_path_patterns": [
-        "data/repos/unitree_mujoco/readme.md",
-        "data/repos/unitree_mujoco/README.md"
-      ],
-      "top_results": [
-        {
-          "score": 29.2667,
-          "id": "repo:unitree_mujoco:readme.md:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/unitree_mujoco/readme.md",
-          "url": "https://github.com/unitreerobotics/unitree_mujoco",
-          "title": "readme.md"
-        },
-        {
-          "score": 24.9333,
-          "id": "repo:unitree_mujoco:readme.md:chunk-0001",
-          "type": "repo_file",
-          "path": "data/repos/unitree_mujoco/readme.md",
-          "url": "https://github.com/unitreerobotics/unitree_mujoco",
-          "title": "readme.md"
-        },
-        {
-          "score": 19.6,
-          "id": "repo:unitree_rl_mjlab:README.md:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/unitree_rl_mjlab/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_rl_mjlab",
-          "title": "README.md"
-        },
-        {
-          "score": 17.9667,
-          "id": "skill:unitree-g1-expert/SKILL.md:chunk-0000",
-          "type": "skill_doc",
-          "path": "skills/unitree-g1-expert/SKILL.md",
-          "url": null,
-          "title": "SKILL.md"
-        },
-        {
-          "score": 17.6,
-          "id": "repo:unitree_mujoco:readme_zh.md:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/unitree_mujoco/readme_zh.md",
-          "url": "https://github.com/unitreerobotics/unitree_mujoco",
-          "title": "readme_zh.md"
-        },
-        {
-          "score": 16.0,
-          "id": "doc:pipelines/deployment-onboard-vs-remote-pc.md:chunk-0000",
-          "type": "curated_doc",
-          "path": "docs/pipelines/deployment-onboard-vs-remote-pc.md",
-          "url": null,
-          "title": "deployment-onboard-vs-remote-pc.md"
-        },
-        {
-          "score": 15.6,
-          "id": "repo:unitree_guide:README.md:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/unitree_guide/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_guide",
-          "title": "README.md"
-        },
-        {
-          "score": 15.6,
-          "id": "repo:unitree_mujoco:readme.md:chunk-0002",
-          "type": "repo_file",
-          "path": "data/repos/unitree_mujoco/readme.md",
-          "url": "https://github.com/unitreerobotics/unitree_mujoco",
-          "title": "readme.md"
-        }
-      ]
-    },
-    {
-      "id": "isaaclab_repo",
-      "query": "unitree isaaclab simulation g1",
-      "pass": true,
-      "reason": "matched pattern `data/repos/unitree_sim_isaaclab/README.md` at rank 3",
-      "expected_path_patterns": [
-        "data/repos/unitree_sim_isaaclab/README.md",
-        "docs/source-digests/unitree_sim_isaaclab.md"
-      ],
-      "top_results": [
-        {
-          "score": 20.4,
-          "id": "repo:unitree_sim_isaaclab:robots/unitree.py:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/unitree_sim_isaaclab/robots/unitree.py",
-          "url": "https://github.com/unitreerobotics/unitree_sim_isaaclab",
-          "title": "unitree.py"
-        },
-        {
-          "score": 20.2,
-          "id": "repo:unitree_sim_isaaclab:README_zh-CN.md:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/unitree_sim_isaaclab/README_zh-CN.md",
-          "url": "https://github.com/unitreerobotics/unitree_sim_isaaclab",
-          "title": "README_zh-CN.md"
-        },
-        {
-          "score": 19.2,
-          "id": "repo:unitree_sim_isaaclab:README.md:chunk-0001",
-          "type": "repo_file",
-          "path": "data/repos/unitree_sim_isaaclab/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_sim_isaaclab",
-          "title": "README.md"
-        },
-        {
-          "score": 19.2,
-          "id": "doc:pipelines/sim2sim-sim2real.md:chunk-0000",
-          "type": "curated_doc",
-          "path": "docs/pipelines/sim2sim-sim2real.md",
-          "url": null,
-          "title": "sim2sim-sim2real.md"
-        },
-        {
-          "score": 18.2,
-          "id": "repo:unitree_sim_isaaclab:tasks/h1-2_tasks/pick_place_cylinder_h12_27dof_inspire/pickplace_cylinder_h12_27dof_inspire_env_cfg.py:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/unitree_sim_isaaclab/tasks/h1-2_tasks/pick_place_cylinder_h12_27dof_inspire/pickplace_cylinder_h12_27dof_inspire_env_cfg.py",
-          "url": "https://github.com/unitreerobotics/unitree_sim_isaaclab",
-          "title": "pickplace_cylinder_h12_27dof_inspire_env_cfg.py"
-        },
-        {
-          "score": 18.2,
-          "id": "repo:unitree_sim_isaaclab:tasks/h1-2_tasks/stack_rgyblock_h12_27dof_inspire/stack_rgyblock_h12_27dof_inspire_joint_env_cfg.py:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/unitree_sim_isaaclab/tasks/h1-2_tasks/stack_rgyblock_h12_27dof_inspire/stack_rgyblock_h12_27dof_inspire_joint_env_cfg.py",
-          "url": "https://github.com/unitreerobotics/unitree_sim_isaaclab",
-          "title": "stack_rgyblock_h12_27dof_inspire_joint_env_cfg.py"
-        },
-        {
-          "score": 18.2,
-          "id": "repo:unitree_sim_isaaclab:tasks/h1-2_tasks/pick_place_redblock_h12_27dof_inspire/pickplace_redblock_h12_27dof_inspire_joint_env_cfg.py:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/unitree_sim_isaaclab/tasks/h1-2_tasks/pick_place_redblock_h12_27dof_inspire/pickplace_redblock_h12_27dof_inspire_joint_env_cfg.py",
-          "url": "https://github.com/unitreerobotics/unitree_sim_isaaclab",
-          "title": "pickplace_redblock_h12_27dof_inspire_joint_env_cfg.py"
-        },
-        {
-          "score": 18.2,
-          "id": "repo:unitree_sim_isaaclab:tasks/g1_tasks/stack_rgyblock_g1_29dof_dex1/stack_rgyblock_g1_29dof_dex1_joint_env_cfg.py:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/unitree_sim_isaaclab/tasks/g1_tasks/stack_rgyblock_g1_29dof_dex1/stack_rgyblock_g1_29dof_dex1_joint_env_cfg.py",
-          "url": "https://github.com/unitreerobotics/unitree_sim_isaaclab",
-          "title": "stack_rgyblock_g1_29dof_dex1_joint_env_cfg.py"
-        }
-      ]
-    },
-    {
-      "id": "ros2_to_real",
-      "query": "unitree ros2 to real deployment bridge",
-      "pass": true,
-      "reason": "matched pattern `docs/source-digests/unitree_ros2_to_real.md` at rank 1",
-      "expected_path_patterns": [
-        "docs/source-digests/unitree_ros2_to_real.md",
-        "data/repos/unitree_ros2_to_real"
-      ],
-      "top_results": [
-        {
-          "score": 24.0,
-          "id": "doc:source-digests/unitree_ros2_to_real.md:chunk-0000",
-          "type": "curated_doc",
-          "path": "docs/source-digests/unitree_ros2_to_real.md",
-          "url": null,
-          "title": "unitree_ros2_to_real.md"
-        },
-        {
-          "score": 19.0,
-          "id": "repo:unitree_ros2:README.md:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/unitree_ros2/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_ros2",
-          "title": "README.md"
-        },
-        {
-          "score": 19.0,
-          "id": "repo:unitree_ros2:README.md:chunk-0001",
-          "type": "repo_file",
-          "path": "data/repos/unitree_ros2/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_ros2",
-          "title": "README.md"
-        },
-        {
-          "score": 18.3333,
-          "id": "repo:unitree_rl_mjlab:README.md:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/unitree_rl_mjlab/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_rl_mjlab",
-          "title": "README.md"
-        },
-        {
-          "score": 18.2667,
-          "id": "repo:unitree_ros2_to_real:README.md:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/unitree_ros2_to_real/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_ros2_to_real",
-          "title": "README.md"
-        },
-        {
-          "score": 17.3333,
-          "id": "repo:unitree_mujoco:readme.md:chunk-0003",
-          "type": "repo_file",
-          "path": "data/repos/unitree_mujoco/readme.md",
-          "url": "https://github.com/unitreerobotics/unitree_mujoco",
-          "title": "readme.md"
-        },
-        {
-          "score": 16.3333,
-          "id": "repo:unitree_IL_lerobot:README.md:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/unitree_IL_lerobot/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_IL_lerobot",
-          "title": "README.md"
-        },
-        {
-          "score": 16.3333,
-          "id": "repo:unitree_rl_mjlab:README.md:chunk-0003",
-          "type": "repo_file",
-          "path": "data/repos/unitree_rl_mjlab/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_rl_mjlab",
-          "title": "README.md"
-        }
-      ]
-    },
-    {
       "id": "repo_coverage_report",
       "query": "how many unitree repos mirrored and archived",
       "pass": true,
-      "reason": "matched pattern `docs/verification/coverage_report.md` at rank 4",
+      "reason": "matched pattern `docs/verification/coverage_report.md` at rank 7",
       "expected_path_patterns": [
         "docs/verification/coverage_report.md",
         "docs/verification/repo_lock.md"
       ],
       "top_results": [
         {
-          "score": 16.2857,
-          "id": "doc:architecture.md:chunk-0000",
+          "score": 30.888,
+          "id": "doc:verification/ollama_question_bank.md:chunk-0001",
           "type": "curated_doc",
-          "path": "docs/architecture.md",
+          "path": "docs/verification/ollama_question_bank.md",
           "url": null,
-          "title": "architecture.md"
+          "title": "ollama_question_bank.md"
         },
         {
-          "score": 14.7714,
+          "score": 24.65,
           "id": "skill:unitree-g1-expert/SKILL.md:chunk-0000",
           "type": "skill_doc",
           "path": "skills/unitree-g1-expert/SKILL.md",
@@ -641,15 +641,39 @@
           "title": "SKILL.md"
         },
         {
-          "score": 14.0286,
-          "id": "repo:.github:profile/README.md:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/.github/profile/README.md",
-          "url": "https://github.com/unitreerobotics/.github",
-          "title": "README.md"
+          "score": 24.18,
+          "id": "project:AGENTS.md:chunk-0001",
+          "type": "project_doc",
+          "path": "AGENTS.md",
+          "url": null,
+          "title": "AGENTS.md"
         },
         {
-          "score": 13.5429,
+          "score": 22.464,
+          "id": "doc:verification/ollama_question_bank.md:chunk-0000",
+          "type": "curated_doc",
+          "path": "docs/verification/ollama_question_bank.md",
+          "url": null,
+          "title": "ollama_question_bank.md"
+        },
+        {
+          "score": 21.411,
+          "id": "project:scripts/max_collect.sh:chunk-0000",
+          "type": "project_script",
+          "path": "scripts/max_collect.sh",
+          "url": null,
+          "title": "max_collect.sh"
+        },
+        {
+          "score": 21.411,
+          "id": "project:scripts/discover_unitree_repos.py:chunk-0002",
+          "type": "project_script",
+          "path": "scripts/discover_unitree_repos.py",
+          "url": null,
+          "title": "discover_unitree_repos.py"
+        },
+        {
+          "score": 20.709,
           "id": "doc:verification/coverage_report.md:chunk-0000",
           "type": "curated_doc",
           "path": "docs/verification/coverage_report.md",
@@ -657,36 +681,12 @@
           "title": "coverage_report.md"
         },
         {
-          "score": 12.8857,
-          "id": "repo:Qmini:README.md:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/Qmini/README.md",
-          "url": "https://github.com/unitreerobotics/Qmini",
-          "title": "README.md"
-        },
-        {
-          "score": 12.2857,
-          "id": "repo:brainco_hand_service:README.md:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/brainco_hand_service/README.md",
-          "url": "https://github.com/unitreerobotics/brainco_hand_service",
-          "title": "README.md"
-        },
-        {
-          "score": 12.2857,
-          "id": "repo:kinect_teleoperate:src/extern/glfw/src/docs/build.md:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/build.md",
-          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
-          "title": "build.md"
-        },
-        {
-          "score": 12.2857,
-          "id": "repo:point_lio_unilidar:README.md:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/point_lio_unilidar/README.md",
-          "url": "https://github.com/unitreerobotics/point_lio_unilidar",
-          "title": "README.md"
+          "score": 19.525,
+          "id": "source:unitree_org_repo_catalog.json:chunk-0000",
+          "type": "source_manifest",
+          "path": "sources/unitree_org_repo_catalog.json",
+          "url": null,
+          "title": "unitree_org_repo_catalog.json"
         }
       ]
     },
@@ -694,54 +694,22 @@
       "id": "doc_blocking_status",
       "query": "are g1 support docs fully verified",
       "pass": true,
-      "reason": "matched pattern `docs/verification/g1_docs_verification.md` at rank 1",
+      "reason": "matched pattern `docs/verification/g1_docs_verification.md` at rank 6",
       "expected_path_patterns": [
         "docs/verification/g1_docs_verification.md",
         "docs/verification/coverage_report.md"
       ],
       "top_results": [
         {
-          "score": 20.8,
-          "id": "doc:verification/g1_docs_verification.md:chunk-0000",
-          "type": "curated_doc",
-          "path": "docs/verification/g1_docs_verification.md",
+          "score": 89.28,
+          "id": "project:AGENTS.md:chunk-0001",
+          "type": "project_doc",
+          "path": "AGENTS.md",
           "url": null,
-          "title": "g1_docs_verification.md"
+          "title": "AGENTS.md"
         },
         {
-          "score": 20.5333,
-          "id": "skill:unitree-g1-expert/SKILL.md:chunk-0000",
-          "type": "skill_doc",
-          "path": "skills/unitree-g1-expert/SKILL.md",
-          "url": null,
-          "title": "SKILL.md"
-        },
-        {
-          "score": 18.4,
-          "id": "doc:verification/coverage_report.md:chunk-0000",
-          "type": "curated_doc",
-          "path": "docs/verification/coverage_report.md",
-          "url": null,
-          "title": "coverage_report.md"
-        },
-        {
-          "score": 16.0,
-          "id": "doc:source-map.md:chunk-0000",
-          "type": "curated_doc",
-          "path": "docs/source-map.md",
-          "url": null,
-          "title": "source-map.md"
-        },
-        {
-          "score": 15.2,
-          "id": "doc:ai-agent-quickstart.md:chunk-0000",
-          "type": "curated_doc",
-          "path": "docs/ai-agent-quickstart.md",
-          "url": null,
-          "title": "ai-agent-quickstart.md"
-        },
-        {
-          "score": 14.6667,
+          "score": 79.6688,
           "id": "skill:unitree-g1-expert/SKILL.md:chunk-0001",
           "type": "skill_doc",
           "path": "skills/unitree-g1-expert/SKILL.md",
@@ -749,20 +717,52 @@
           "title": "SKILL.md"
         },
         {
-          "score": 13.9333,
-          "id": "repo:kinect_teleoperate:src/extern/glfw/src/docs/CONTRIBUTING.md:chunk-0008",
-          "type": "repo_file",
-          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/CONTRIBUTING.md",
-          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
-          "title": "CONTRIBUTING.md"
+          "score": 64.48,
+          "id": "project:AGENTS.md:chunk-0000",
+          "type": "project_doc",
+          "path": "AGENTS.md",
+          "url": null,
+          "title": "AGENTS.md"
         },
         {
-          "score": 13.2,
-          "id": "doc:architecture.md:chunk-0000",
-          "type": "curated_doc",
-          "path": "docs/architecture.md",
+          "score": 63.8928,
+          "id": "skill:unitree-g1-expert/SKILL.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/SKILL.md",
           "url": null,
-          "title": "architecture.md"
+          "title": "SKILL.md"
+        },
+        {
+          "score": 52.0608,
+          "id": "skill:unitree-g1-expert/references/source-priority.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/references/source-priority.md",
+          "url": null,
+          "title": "source-priority.md"
+        },
+        {
+          "score": 46.5075,
+          "id": "doc:verification/g1_docs_verification.md:chunk-0000",
+          "type": "curated_doc",
+          "path": "docs/verification/g1_docs_verification.md",
+          "url": null,
+          "title": "g1_docs_verification.md"
+        },
+        {
+          "score": 42.12,
+          "id": "doc:verification/coverage_report.md:chunk-0000",
+          "type": "curated_doc",
+          "path": "docs/verification/coverage_report.md",
+          "url": null,
+          "title": "coverage_report.md"
+        },
+        {
+          "score": 41.2425,
+          "id": "doc:verification/ollama_question_bank.md:chunk-0000",
+          "type": "curated_doc",
+          "path": "docs/verification/ollama_question_bank.md",
+          "url": null,
+          "title": "ollama_question_bank.md"
         }
       ]
     },
@@ -770,75 +770,75 @@
       "id": "max_collect_command",
       "query": "how to run full max collection mode",
       "pass": true,
-      "reason": "matched pattern `README.md` at rank 3",
+      "reason": "matched pattern `scripts/max_collect.sh` at rank 2",
       "expected_path_patterns": [
         "scripts/max_collect.sh",
         "README.md"
       ],
       "top_results": [
         {
-          "score": 20.5714,
-          "id": "repo:kinect_teleoperate:src/extern/glfw/src/docs/window.md:chunk-0025",
-          "type": "repo_file",
-          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/window.md",
-          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
-          "title": "window.md"
+          "score": 17.98,
+          "id": "project:AGENTS.md:chunk-0001",
+          "type": "project_doc",
+          "path": "AGENTS.md",
+          "url": null,
+          "title": "AGENTS.md"
         },
         {
-          "score": 19.5714,
-          "id": "repo:kinect_teleoperate:src/extern/glfw/src/include/GLFW/glfw3.h:chunk-0073",
-          "type": "repo_file",
-          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/include/GLFW/glfw3.h",
-          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
-          "title": "glfw3.h"
+          "score": 17.901,
+          "id": "project:scripts/max_collect.sh:chunk-0000",
+          "type": "project_script",
+          "path": "scripts/max_collect.sh",
+          "url": null,
+          "title": "max_collect.sh"
         },
         {
-          "score": 19.5714,
-          "id": "repo:unilidar_sdk2:README.md:chunk-0004",
-          "type": "repo_file",
-          "path": "data/repos/unilidar_sdk2/README.md",
-          "url": "https://github.com/unitreerobotics/unilidar_sdk2",
+          "score": 16.848,
+          "id": "doc:verification/ollama_question_bank.md:chunk-0001",
+          "type": "curated_doc",
+          "path": "docs/verification/ollama_question_bank.md",
+          "url": null,
+          "title": "ollama_question_bank.md"
+        },
+        {
+          "score": 14.297,
+          "id": "skill:unitree-g1-expert/SKILL.md:chunk-0001",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "url": null,
+          "title": "SKILL.md"
+        },
+        {
+          "score": 14.26,
+          "id": "project:README.md:chunk-0000",
+          "type": "project_doc",
+          "path": "README.md",
+          "url": null,
           "title": "README.md"
         },
         {
-          "score": 18.5714,
-          "id": "repo:unilidar_sdk2:README.md:chunk-0003",
-          "type": "repo_file",
-          "path": "data/repos/unilidar_sdk2/README.md",
-          "url": "https://github.com/unitreerobotics/unilidar_sdk2",
-          "title": "README.md"
+          "score": 13.689,
+          "id": "project:scripts/sync_repo_mirrors.py:chunk-0000",
+          "type": "project_script",
+          "path": "scripts/sync_repo_mirrors.py",
+          "url": null,
+          "title": "sync_repo_mirrors.py"
         },
         {
-          "score": 18.4286,
-          "id": "repo:kinect_teleoperate:src/extern/glfw/src/docs/window.md:chunk-0002",
-          "type": "repo_file",
-          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/window.md",
-          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
-          "title": "window.md"
+          "score": 13.689,
+          "id": "project:scripts/build_site.py:chunk-0009",
+          "type": "project_script",
+          "path": "scripts/build_site.py",
+          "url": null,
+          "title": "build_site.py"
         },
         {
-          "score": 17.5714,
-          "id": "repo:unitree_actuator_sdk:motor_tools/README.md:chunk-0000",
-          "type": "repo_file",
-          "path": "data/repos/unitree_actuator_sdk/motor_tools/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_actuator_sdk",
-          "title": "README.md"
-        },
-        {
-          "score": 17.4286,
-          "id": "repo:unifolm-world-model-action:src/unifolm_wma/data/normolize.py:chunk-0003",
-          "type": "repo_file",
-          "path": "data/repos/unifolm-world-model-action/src/unifolm_wma/data/normolize.py",
-          "url": "https://github.com/unitreerobotics/unifolm-world-model-action",
-          "title": "normolize.py"
-        },
-        {
-          "score": 17.4286,
-          "id": "repo:unitree_ros_to_real:README.md:chunk-0001",
-          "type": "repo_file",
-          "path": "data/repos/unitree_ros_to_real/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_ros_to_real",
-          "title": "README.md"
+          "score": 11.934,
+          "id": "project:scripts/sync_repo_mirrors.py:chunk-0001",
+          "type": "project_script",
+          "path": "scripts/sync_repo_mirrors.py",
+          "url": null,
+          "title": "sync_repo_mirrors.py"
         }
       ]
     },
@@ -853,7 +853,7 @@
       ],
       "top_results": [
         {
-          "score": 30.8,
+          "score": 154.3419,
           "id": "skill:unitree-g1-expert/SKILL.md:chunk-0000",
           "type": "skill_doc",
           "path": "skills/unitree-g1-expert/SKILL.md",
@@ -861,60 +861,60 @@
           "title": "SKILL.md"
         },
         {
-          "score": 26.4,
-          "id": "doc:automation/mcp-skill-blueprint.md:chunk-0000",
-          "type": "curated_doc",
-          "path": "docs/automation/mcp-skill-blueprint.md",
-          "url": null,
-          "title": "mcp-skill-blueprint.md"
-        },
-        {
-          "score": 21.84,
-          "id": "doc:ai-agent-quickstart.md:chunk-0000",
-          "type": "curated_doc",
-          "path": "docs/ai-agent-quickstart.md",
-          "url": null,
-          "title": "ai-agent-quickstart.md"
-        },
-        {
-          "score": 20.8,
-          "id": "repo:unifolm-vla:README.md:chunk-0002",
-          "type": "repo_file",
-          "path": "data/repos/unifolm-vla/README.md",
-          "url": "https://github.com/unitreerobotics/unifolm-vla",
-          "title": "README.md"
-        },
-        {
-          "score": 19.44,
-          "id": "doc:pipelines/sim2sim-sim2real.md:chunk-0000",
-          "type": "curated_doc",
-          "path": "docs/pipelines/sim2sim-sim2real.md",
-          "url": null,
-          "title": "sim2sim-sim2real.md"
-        },
-        {
-          "score": 18.2,
-          "id": "repo:unitree_rl_mjlab:README.md:chunk-0001",
-          "type": "repo_file",
-          "path": "data/repos/unitree_rl_mjlab/README.md",
-          "url": "https://github.com/unitreerobotics/unitree_rl_mjlab",
-          "title": "README.md"
-        },
-        {
-          "score": 17.0,
-          "id": "repo:unitree_mujoco:readme.md:chunk-0001",
-          "type": "repo_file",
-          "path": "data/repos/unitree_mujoco/readme.md",
-          "url": "https://github.com/unitreerobotics/unitree_mujoco",
-          "title": "readme.md"
-        },
-        {
-          "score": 16.94,
+          "score": 122.7899,
           "id": "skill:unitree-g1-expert/SKILL.md:chunk-0001",
           "type": "skill_doc",
           "path": "skills/unitree-g1-expert/SKILL.md",
           "url": null,
           "title": "SKILL.md"
+        },
+        {
+          "score": 102.4125,
+          "id": "skill:unitree-g1-expert/SKILL.md:chunk-0002",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "url": null,
+          "title": "SKILL.md"
+        },
+        {
+          "score": 80.5173,
+          "id": "project:AGENTS.md:chunk-0000",
+          "type": "project_doc",
+          "path": "AGENTS.md",
+          "url": null,
+          "title": "AGENTS.md"
+        },
+        {
+          "score": 79.6907,
+          "id": "project:AGENTS.md:chunk-0001",
+          "type": "project_doc",
+          "path": "AGENTS.md",
+          "url": null,
+          "title": "AGENTS.md"
+        },
+        {
+          "score": 72.5696,
+          "id": "skill:unitree-g1-expert/references/source-priority.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/references/source-priority.md",
+          "url": null,
+          "title": "source-priority.md"
+        },
+        {
+          "score": 64.6816,
+          "id": "skill:unitree-g1-expert/references/workflow.md:chunk-0000",
+          "type": "skill_doc",
+          "path": "skills/unitree-g1-expert/references/workflow.md",
+          "url": null,
+          "title": "workflow.md"
+        },
+        {
+          "score": 46.08,
+          "id": "project:site/data/benchmark_examples.json:chunk-0004",
+          "type": "site_data",
+          "path": "site/data/benchmark_examples.json",
+          "url": null,
+          "title": "benchmark_examples.json"
         }
       ]
     }

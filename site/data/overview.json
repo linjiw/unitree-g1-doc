@@ -1,12 +1,17 @@
 {
   "index_meta": {
-    "records": 19198,
+    "records": 11894,
     "by_source_type": {
-      "repo_file": 19148,
+      "repo_file": 11690,
       "support_doc": 5,
-      "curated_doc": 26,
-      "skill_doc": 4,
-      "source_manifest": 15
+      "curated_doc": 40,
+      "skill_doc": 5,
+      "source_manifest": 15,
+      "project_doc": 7,
+      "project_script": 88,
+      "benchmark_spec": 12,
+      "site_doc": 21,
+      "site_data": 11
     },
     "manifest": "sources/unitree_g1_sources.yaml",
     "repos_indexed": 43,
@@ -32,7 +37,7 @@
     "mirror_present": 43
   },
   "benchmarks": {
-    "latest_timestamp_unix": 1771958950,
+    "latest_timestamp_unix": 1771960324,
     "runs": [
       {
         "label": "Baseline Retrieval Regression",
@@ -40,22 +45,24 @@
         "command": "make eval-retrieval",
         "path": "docs/verification/retrieval_eval.json",
         "available": true,
-        "timestamp_unix": 1771955226,
+        "timestamp_unix": 1771960165,
         "benchmark": "benchmarks/retrieval_benchmark.yaml",
         "index": "data/index/knowledge_index.jsonl",
         "model": null,
         "api_base": null,
         "total": 12,
-        "passed": 11,
-        "pass_rate": 0.9166666666666666,
+        "passed": 9,
+        "pass_rate": 0.75,
         "top_k": 8,
         "fail_below": 0.75,
         "avg_precision": null,
         "avg_recall": null,
         "failed_cases": [
-          "sdk2_g1_examples"
+          "sdk2_g1_examples",
+          "isaaclab_repo",
+          "ros2_to_real"
         ],
-        "failed_count": 1
+        "failed_count": 3
       },
       {
         "label": "Baseline Llama Source-Selection",
@@ -136,39 +143,56 @@
         "command": "make eval-retrieval-codex-stretch",
         "path": "docs/verification/codex_stretch_retrieval_eval.json",
         "available": true,
-        "timestamp_unix": 1771958950,
+        "timestamp_unix": 1771960294,
         "benchmark": "benchmarks/codex_agent_stretch_benchmark.yaml",
         "index": "data/index/knowledge_index.jsonl",
         "model": null,
         "api_base": null,
         "total": 18,
-        "passed": 6,
-        "pass_rate": 0.3333333333333333,
+        "passed": 18,
+        "pass_rate": 1.0,
         "top_k": 8,
         "fail_below": 0.7,
         "avg_precision": null,
         "avg_recall": null,
-        "failed_cases": [
-          "codex_goal_statement",
-          "codex_answer_contract",
-          "codex_refresh_pipeline",
-          "codex_query_interface_json",
-          "codex_repo_lock_builder",
-          "codex_support_manifest_mapping",
-          "codex_eval_thresholds",
-          "codex_question_bank_pipeline",
-          "codex_stretch_experiment_doc",
-          "codex_site_method_pages",
-          "codex_site_example_payload",
-          "codex_repo_catalog_scope"
-        ],
-        "failed_count": 12
+        "failed_cases": [],
+        "failed_count": 0
       },
       {
         "label": "Codex Stretch Llama Source-Selection",
         "test_type": "agent",
         "command": "make eval-agent-ollama-codex-stretch",
         "path": "docs/verification/codex_stretch_agent_eval.json",
+        "available": false
+      },
+      {
+        "label": "Codex Hard-Negative Retrieval",
+        "test_type": "retrieval",
+        "command": "make eval-retrieval-codex-hardneg",
+        "path": "docs/verification/codex_hardneg_retrieval_eval.json",
+        "available": true,
+        "timestamp_unix": 1771960324,
+        "benchmark": "benchmarks/codex_agent_hardneg_benchmark.yaml",
+        "index": "data/index/knowledge_index.jsonl",
+        "model": null,
+        "api_base": null,
+        "total": 8,
+        "passed": 7,
+        "pass_rate": 0.875,
+        "top_k": 8,
+        "fail_below": 0.75,
+        "avg_precision": null,
+        "avg_recall": null,
+        "failed_cases": [
+          "codex_site_payload_hardneg"
+        ],
+        "failed_count": 1
+      },
+      {
+        "label": "Codex Hard-Negative Llama Source-Selection",
+        "test_type": "agent",
+        "command": "make eval-agent-ollama-codex-hardneg",
+        "path": "docs/verification/codex_hardneg_agent_eval.json",
         "available": false
       }
     ],
@@ -200,6 +224,14 @@
       {
         "command": "make eval-agent-ollama-codex-stretch",
         "description": "Llama source-selection on Codex-first stretch benchmark."
+      },
+      {
+        "command": "make eval-retrieval-codex-hardneg",
+        "description": "Retriever benchmark with forbidden-pattern hard negatives."
+      },
+      {
+        "command": "make eval-agent-ollama-codex-hardneg",
+        "description": "Llama source-selection benchmark with hard negatives."
       }
     ],
     "quality_gates": {
@@ -208,7 +240,9 @@
       "qbank_retrieval_min": 0.7,
       "qbank_agent_min": 0.6,
       "codex_stretch_retrieval_min": 0.7,
-      "codex_stretch_agent_min": 0.6
+      "codex_stretch_agent_min": 0.6,
+      "codex_hardneg_retrieval_min": 0.75,
+      "codex_hardneg_agent_min": 0.65
     }
   }
 }

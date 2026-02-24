@@ -39,6 +39,8 @@ When Codex receives a Unitree G1 question, it should:
    - `make eval-agent-ollama-qbank`
    - `make eval-retrieval-codex-stretch`
    - `make eval-agent-ollama-codex-stretch`
+   - `make eval-retrieval-codex-hardneg`
+   - `make eval-agent-ollama-codex-hardneg`
 
 ## Retrieval and Grounding Rules
 
