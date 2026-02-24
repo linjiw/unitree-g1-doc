@@ -1,0 +1,1630 @@
+{
+  "timestamp_unix": 1771955917,
+  "benchmark": "benchmarks/ollama_question_benchmark.yaml",
+  "index": "data/index/knowledge_index.jsonl",
+  "api_base": "http://127.0.0.1:11434/v1",
+  "model": "llama3.1",
+  "total": 16,
+  "passed": 13,
+  "pass_rate": 0.8125,
+  "avg_precision": 0.3541666666666667,
+  "avg_recall": 0.46875,
+  "top_k": 20,
+  "candidates": 10,
+  "select_k": 3,
+  "fail_below": 0.6,
+  "results": [
+    {
+      "id": "g1_sdk2_examples_folder",
+      "query": "Where are the official Unitree G1 SDK2 example programs located?",
+      "expected_path_patterns": [
+        "data/repos/unitree_sdk2/example/g1",
+        "docs/source-digests/unitree_sdk2.md"
+      ],
+      "candidates": [
+        {
+          "path": "data/repos/unitree_mujoco/readme.md",
+          "title": "readme.md",
+          "type": "repo_file",
+          "score": 22.8,
+          "url": "https://github.com/unitreerobotics/unitree_mujoco",
+          "snippet": "Introduction Unitree mujoco unitree_mujoco is a simulator developed based on Unitree sdk2 and mujoco. Users can easily integrate the control programs developed with Unitree_sdk2, unitree_ros2, and unitree_sdk2_python int"
+        },
+        {
+          "path": "data/repos/unitree_ros2/CHANGELOG.md",
+          "title": "CHANGELOG.md",
+          "type": "repo_file",
+          "score": 22.6,
+          "url": "https://github.com/unitreerobotics/unitree_ros2",
+          "snippet": "<a name=\"unreleased\"></a> [Unreleased] <a name=\"v0.3.0\"></a> [v0.3.0] - 2025-08-15 Bug Fixes **ros2:** fix the bug in Ros2 Foxy where topic_datistics_collector did not determine the header type and directly used headers."
+        },
+        {
+          "path": "data/repos/unitree_rl_gym/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 22.0,
+          "url": "https://github.com/unitreerobotics/unitree_rl_gym",
+          "snippet": "n. You can specify other models using load_run and checkpoint. \ud83d\udcbe Export Network Play exports the Actor network, saving it in logs/{experiment_name}/exported/policies: Standard networks (MLP) are exported as policy_1.pt. "
+        },
+        {
+          "path": "data/repos/unitree_sdk2/example/g1/high_level/g1_arm_action_example.cpp",
+          "title": "g1_arm_action_example.cpp",
+          "type": "repo_file",
+          "score": 21.0,
+          "url": "https://github.com/unitreerobotics/unitree_sdk2",
+          "snippet": "/** * @file g1_arm_action_example.cpp * @brief This example demonstrates how to use the G1 Arm Action Client to execute predefined arm actions. */ #include \"unitree/robot/g1/arm/g1_arm_action_error.hpp\" #include \"unitree"
+        },
+        {
+          "path": "data/repos/unifolm-vla/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 20.8,
+          "url": "https://github.com/unitreerobotics/unifolm-vla",
+          "snippet": "ee G1|Huggingface| |G1_Pack_PencilBox|Unitree G1|Huggingface| |G1_Pour_Medicine|Unitree G1|Huggingface| |G1_Pack_PingPong|Unitree G1|Huggingface| |G1_Prepare_Fruit|Unitree G1|Huggingface| |G1_Organize_Tools|Unitree G1|Hu"
+        },
+        {
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "title": "SKILL.md",
+          "type": "skill_doc",
+          "score": 20.68,
+          "url": "None",
+          "snippet": "--- name: unitree-g1-expert description: Ground Unitree G1 answers in local evidence from official Unitree docs and repositories. Use this skill for SDK2 usage, DDS/service interfaces, motion development, ROS/ROS2 integr"
+        },
+        {
+          "path": "data/repos/unitree_sdk2_python/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 20.6,
+          "url": "https://github.com/unitreerobotics/unitree_sdk2_python",
+          "snippet": "unitree_sdk2_python Python interface for unitree sdk2 Installation Dependencies Python >= 3.8 cyclonedds == 0.10.2 numpy opencv-python Installing from source Execute the following commands in the terminal: FAQ Error when"
+        },
+        {
+          "path": "data/repos/unitree_ros2/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 20.0,
+          "url": "https://github.com/unitreerobotics/unitree_ros2",
+          "snippet": "ou can see the data of the topic as shown in the following figure\uff1a Examples The source code of examples locates at /example/src/src. common: Common functions for all robots. g1/lowlevel/g1_low_level_example: Low level co"
+        },
+        {
+          "path": "data/repos/xr_teleoperate/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 20.0,
+          "url": "https://github.com/unitreerobotics/xr_teleoperate",
+          "snippet": "td> </tr> </table> </p> \ud83d\udd16Release Note \ud83c\udff7\ufe0f v1.5 (2025.12.29) support simulation add CycloneDDS interface name parameter add caching to speed-up urdf loading ... \ud83d\udcd6 Introduction This repository implements **teleoperation** c"
+        },
+        {
+          "path": "docs/pipelines/sim2sim-sim2real.md",
+          "title": "sim2sim-sim2real.md",
+          "type": "curated_doc",
+          "score": 19.2,
+          "url": "None",
+          "snippet": "G1 Sim2Sim and Sim2Real Workflow This workflow is the default for Unitree G1 policy development using official Unitree RL repositories. Stage 1: Build in Simulation Use unitree_rl_lab as the primary training/deployment f"
+        }
+      ],
+      "pass": true,
+      "selected_paths": [
+        "path=data/repos/unitree_sdk2/example/g1/high_level/g1_arm_action_example.cpp",
+        "path=data/repos/unitree_ros2/README.md",
+        "path=data/repos/unitree_sdk2_python/README.md"
+      ],
+      "rationale": "The most relevant source paths for the Unitree G1 SDK2 example programs are located in the unitree_sdk2 repository, specifically in the example/g1/high_level directory. Additionally, the README.md files in the unitree_ros2 and unitree_sdk2_python repositories provide information on how to access the example programs.",
+      "precision": 0.3333,
+      "recall": 0.5,
+      "matched_expected": 1,
+      "expected_total": 2,
+      "raw_response": "{\n    \"selected_paths\": [\n        \"path=data/repos/unitree_sdk2/example/g1/high_level/g1_arm_action_example.cpp\",\n        \"path=data/repos/unitree_ros2/README.md\",\n        \"path=data/repos/unitree_sdk2_python/README.md\"\n    ],\n    \"rationale\": \"The most relevant source paths for the Unitree G1 SDK2 example programs are located in the unitree_sdk2 repository, specifically in the example/g1/high_level directory. Additionally, the README.md files in the unitree_ros2 and unitree_sdk2_python repositories provide information on how to access the example programs.\"\n}"
+    },
+    {
+      "id": "g1_sdk2_python_install",
+      "query": "How do I install and run Unitree SDK2 Python for G1 with CycloneDDS?",
+      "expected_path_patterns": [
+        "data/repos/unitree_sdk2_python/README.md",
+        "docs/source-digests/unitree_sdk2_python.md"
+      ],
+      "candidates": [
+        {
+          "path": "data/repos/unitree_sdk2_python/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 32.9231,
+          "url": "https://github.com/unitreerobotics/unitree_sdk2_python",
+          "snippet": "unitree_sdk2_python Python interface for unitree sdk2 Installation Dependencies Python >= 3.8 cyclonedds == 0.10.2 numpy opencv-python Installing from source Execute the following commands in the terminal: FAQ Error when"
+        },
+        {
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "title": "SKILL.md",
+          "type": "skill_doc",
+          "score": 32.2385,
+          "url": "None",
+          "snippet": "--- name: unitree-g1-expert description: Ground Unitree G1 answers in local evidence from official Unitree docs and repositories. Use this skill for SDK2 usage, DDS/service interfaces, motion development, ROS/ROS2 integr"
+        },
+        {
+          "path": "data/repos/unifolm-world-model-action/unitree_deploy/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 28.6923,
+          "url": "https://github.com/unitreerobotics/unifolm-world-model-action",
+          "snippet": "Unitree Deploy <div align=\"center\"> <p align=\"right\"> <span> \ud83c\udf0eEnglish </span> | <a href=\"./docs/README_cn.md\"> \ud83c\udde8\ud83c\uddf3\u4e2d\u6587 </a> </p> </div> This document provides instructions for setting up the deployment environment for Unitr"
+        },
+        {
+          "path": "docs/pipelines/sim2sim-sim2real.md",
+          "title": "sim2sim-sim2real.md",
+          "type": "curated_doc",
+          "score": 28.4308,
+          "url": "None",
+          "snippet": "G1 Sim2Sim and Sim2Real Workflow This workflow is the default for Unitree G1 policy development using official Unitree RL repositories. Stage 1: Build in Simulation Use unitree_rl_lab as the primary training/deployment f"
+        },
+        {
+          "path": "data/repos/unitree_actuator_sdk/thirdparty/pybind11/.github/CONTRIBUTING.md",
+          "title": "CONTRIBUTING.md",
+          "type": "repo_file",
+          "score": 27.9231,
+          "url": "https://github.com/unitreerobotics/unitree_actuator_sdk",
+          "snippet": "file, i.e. the commands above can be run in any subdirectory of the pybind11 repo. Clang-Tidy [clang-tidy][clang-tidy] performs deeper static code analyses and is more complex to run, compared to clang-format, but suppor"
+        },
+        {
+          "path": "data/repos/unitree_legged_sdk/python_wrapper/third-party/pybind11/.github/CONTRIBUTING.md",
+          "title": "CONTRIBUTING.md",
+          "type": "repo_file",
+          "score": 27.3077,
+          "url": "https://github.com/unitreerobotics/unitree_legged_sdk",
+          "snippet": "est_pickling.cpp\". If this is empty, all tests will be built. Formatting All formatting is handled by pre-commit. Install with brew (macOS) or pip (any OS): Then, you can run it on the items you've added to your staging "
+        },
+        {
+          "path": "data/repos/unitree_actuator_sdk/thirdparty/pybind11/.github/workflows/ci.yml",
+          "title": "ci.yml",
+          "type": "repo_file",
+          "score": 26.9231,
+          "url": "https://github.com/unitreerobotics/unitree_actuator_sdk",
+          "snippet": "ions/setup-python@v5 with: python-version: ${{ matrix.python }} - name: Setup Boost (Linux) # Can't use boost + define _ if: runner.os == 'Linux' && matrix.python != '3.6' run: sudo apt-get install libboost-dev - name: S"
+        },
+        {
+          "path": "data/repos/unitree_mujoco/readme.md",
+          "title": "readme.md",
+          "type": "repo_file",
+          "score": 26.9231,
+          "url": "https://github.com/unitreerobotics/unitree_mujoco",
+          "snippet": "the simulator retains this message to allow users to utilize the position and velocity information for analyzing the developed control programs. Related links unitree_sdk2 unitree_sdk2_python unitree_ros2 Unitree Doc Muj"
+        },
+        {
+          "path": "docs/source-digests/unitree_sdk2_python.md",
+          "title": "unitree_sdk2_python.md",
+          "type": "curated_doc",
+          "score": 26.7692,
+          "url": "None",
+          "snippet": "unitree_sdk2_python Digest Source: https://github.com/unitreerobotics/unitree_sdk2_python Captured Facts Official Python SDK2 package. README lists support for H1_2, G1, Go2, B2, and Dex3. Requirements include Python >= "
+        },
+        {
+          "path": "data/repos/unitree_legged_sdk/python_wrapper/third-party/pybind11/docs/advanced/functions.rst",
+          "title": "functions.rst",
+          "type": "repo_file",
+          "score": 25.6923,
+          "url": "https://github.com/unitreerobotics/unitree_legged_sdk",
+          "snippet": "o'}) key=foo, value=123 key=bar, value=hello For more information on using Python objects in C++, see :doc:`/advanced/pycpp/index`. Accepting \\*args and \\*\\*kwargs =============================== Python provides a useful"
+        }
+      ],
+      "pass": true,
+      "selected_paths": [
+        "path=data/repos/unitree_sdk2_python/README.md",
+        "path=docs/source-digests/unitree_sdk2_python.md",
+        "path=skills/unitree-g1-expert/SKILL.md"
+      ],
+      "rationale": "The first path is the most relevant because it directly addresses the installation and usage of Unitree SDK2 Python for G1. The second path provides a digest of the official Python SDK2 package, which includes support for G1. The third path is a skill that can be used to answer questions about Unitree G1 using local evidence from official Unitree docs and repositories.",
+      "precision": 0.6667,
+      "recall": 1.0,
+      "matched_expected": 2,
+      "expected_total": 2,
+      "raw_response": "{\n  \"selected_paths\": [\n    \"path=data/repos/unitree_sdk2_python/README.md\",\n    \"path=docs/source-digests/unitree_sdk2_python.md\",\n    \"path=skills/unitree-g1-expert/SKILL.md\"\n  ],\n  \"rationale\": \"The first path is the most relevant because it directly addresses the installation and usage of Unitree SDK2 Python for G1. The second path provides a digest of the official Python SDK2 package, which includes support for G1. The third path is a skill that can be used to answer questions about Unitree G1 using local evidence from official Unitree docs and repositories.\"\n}"
+    },
+    {
+      "id": "g1_ros2_lowlevel_example",
+      "query": "Which ROS2 example controls G1 low-level joints and where is it?",
+      "expected_path_patterns": [
+        "data/repos/unitree_ros2/example/src/src/g1/lowlevel/g1_low_level_example.cpp",
+        "data/repos/unitree_ros2/README.md"
+      ],
+      "candidates": [
+        {
+          "path": "data/repos/unitree_ros2/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 30.6667,
+          "url": "https://github.com/unitreerobotics/unitree_ros2",
+          "snippet": "ou can see the data of the topic as shown in the following figure\uff1a Examples The source code of examples locates at /example/src/src. common: Common functions for all robots. g1/lowlevel/g1_low_level_example: Low level co"
+        },
+        {
+          "path": "data/repos/unitree_ros2_to_real/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 29.6667,
+          "url": "https://github.com/unitreerobotics/unitree_ros2_to_real",
+          "snippet": "Introduction This package can send control command to real robot from ROS2. You can do low-level control(namely control all joints on robot) and high-level control(namely control the walking direction and speed of robot)"
+        },
+        {
+          "path": "data/repos/unitree_sdk2_python/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 27.0,
+          "url": "https://github.com/unitreerobotics/unitree_sdk2_python",
+          "snippet": "terms of data structure and control methods. For detailed information, refer to https://support.unitree.com/home/en/developer/sports_services. High-Level Status Execute the following command in the terminal: Replace enp2"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/cmake/FetchContent.cmake",
+          "title": "FetchContent.cmake",
+          "type": "repo_file",
+          "score": 24.6,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "nd ``projC`` will not be used. The override details defined by ``projA`` are not required to match either of those from ``projB`` or ``projC``, but it is up to the higher level project to ensure that the details it does "
+        },
+        {
+          "path": "data/repos/unitree_ros/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 24.3333,
+          "url": "https://github.com/unitreerobotics/unitree_ros",
+          "snippet": "Introduction Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the r"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/include/GLFW/glfw3.h",
+          "title": "glfw3.h",
+          "type": "repo_file",
+          "score": 24.2667,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "t the cursor from leaving. * - `GLFW_CURSOR_DISABLED` hides and grabs the cursor, providing virtual * and unlimited cursor movement. This is useful for implementing for * example 3D camera controls. * - `GLFW_CURSOR_CAPT"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/window.md",
+          "title": "window.md",
+          "type": "repo_file",
+          "score": 24.2667,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "example if the window is dragged between a regular monitor and a high-DPI one. Window content scale {#window_scale} The content scale for a window can be retrieved with @ref glfwGetWindowContentScale. The content scale c"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/input.md",
+          "title": "input.md",
+          "type": "repo_file",
+          "score": 23.6,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "ystick axes are specified as aN, for example a7 for the eighth button. Joystick hat bit masks are specified as hN.N, for example h0.8 for left on the first hat. More than one bit may be set in the mask. Before an axis th"
+        },
+        {
+          "path": "data/repos/unilidar_sdk/unitree_lidar_ros2/src/unitree_lidar_ros2/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 23.0,
+          "url": "https://github.com/unitreerobotics/unilidar_sdk",
+          "snippet": "Unitree Lidar ROS2 Introduction This package is a ROS2 package, which is specially used for running Unitree LiDAR products. The functions that this package can provide includes: Parse the raw data transmitted from the li"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/deps/wayland/wayland.xml",
+          "title": "wayland.xml",
+          "type": "repo_file",
+          "score": 22.6,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "he damage that fall outside of the surface. Damage is double-buffered state, see wl_surface.commit. The damage rectangle is specified in surface-local coordinates, where x and y specify the upper left corner of the damag"
+        }
+      ],
+      "pass": true,
+      "selected_paths": [
+        "path=data/repos/unitree_ros2/README.md",
+        "path=data/repos/unitree_ros/README.md",
+        "path=data/repos/unitree_ros2_to_real/README.md"
+      ],
+      "rationale": "The first path directly mentions 'low-level joints' and provides an example of low-level control. The second path also mentions low-level control, specifically for Gazebo. The third path allows for low-level control of all joints on the robot.",
+      "precision": 0.3333,
+      "recall": 0.5,
+      "matched_expected": 1,
+      "expected_total": 2,
+      "raw_response": "{\n  \"selected_paths\": [\n    \"path=data/repos/unitree_ros2/README.md\",\n    \"path=data/repos/unitree_ros/README.md\",\n    \"path=data/repos/unitree_ros2_to_real/README.md\"\n  ],\n  \"rationale\": \"The first path directly mentions 'low-level joints' and provides an example of low-level control. The second path also mentions low-level control, specifically for Gazebo. The third path allows for low-level control of all joints on the robot.\"\n}"
+    },
+    {
+      "id": "g1_dds_interface_docs",
+      "query": "Which local files map support.unitree.com G1_developer dds_services_interface URLs and verification status?",
+      "expected_path_patterns": [
+        "docs/verification/g1_docs_verification.md",
+        "sources/unitree_g1_sources.yaml"
+      ],
+      "candidates": [
+        {
+          "path": "docs/source-map.md",
+          "title": "source-map.md",
+          "type": "curated_doc",
+          "score": 37.3477,
+          "url": "None",
+          "snippet": "Source Map Official G1 Developer Pages https://support.unitree.com/home/en/G1_developer/ https://support.unitree.com/home/en/G1_developer/quick_start https://support.unitree.com/home/en/G1_developer/sdk_overview https://"
+        },
+        {
+          "path": "docs/verification/g1_docs_verification.md",
+          "title": "g1_docs_verification.md",
+          "type": "curated_doc",
+          "score": 34.7077,
+          "url": "None",
+          "snippet": "G1 Docs Verification Report Root URL: https://support.unitree.com/home/en/G1_developer/ Total discovered URLs: 5 Verified pages: 0 Needs review: 0 Blocked by website security: 5 Errors: 0 Manifest support_docs entries: 5"
+        },
+        {
+          "path": "docs/verification/coverage_report.md",
+          "title": "coverage_report.md",
+          "type": "curated_doc",
+          "score": 33.9692,
+          "url": "None",
+          "snippet": "Coverage Report Latest sync summary: data/snapshots/sync_summary_1771889845.json Latest repo discovery: data/snapshots/repo_discovery_1771889839.json Latest mirror summary: data/snapshots/repo_mirror_summary_1771889961.j"
+        },
+        {
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "title": "SKILL.md",
+          "type": "skill_doc",
+          "score": 26.0615,
+          "url": "None",
+          "snippet": "--- name: unitree-g1-expert description: Ground Unitree G1 answers in local evidence from official Unitree docs and repositories. Use this skill for SDK2 usage, DDS/service interfaces, motion development, ROS/ROS2 integr"
+        },
+        {
+          "path": "data/repos/unitree_sdk2_python/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 23.6923,
+          "url": "https://github.com/unitreerobotics/unitree_sdk2_python",
+          "snippet": "et kp=10, kd=1), and the left hind leg calf joint will continuously output 1Nm of torque. Wireless Controller Status Execute the following command in the terminal: Replace enp2s0 with the name of the network interface to"
+        },
+        {
+          "path": "docs/ai-agent-quickstart.md",
+          "title": "ai-agent-quickstart.md",
+          "type": "curated_doc",
+          "score": 22.7077,
+          "url": "None",
+          "snippet": "AI Agent Quickstart Goal Give any AI agent a deterministic path to answer Unitree G1 questions with local evidence. Minimal Steps Read AGENTS.md. Refresh and verify data: python3 scripts/discover_unitree_repos.py --inclu"
+        },
+        {
+          "path": "data/repos/brainco_hand_service/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 19.4615,
+          "url": "https://github.com/unitreerobotics/brainco_hand_service",
+          "snippet": "<div align=\"center\"> <h1 align=\"center\"> <a href=\"https://www.unitree.com\" target=\"_blank\">Brainco Hand Service</a> </h1> <a href=\"https://www.unitree.com/\" target=\"_blank\"> <img src=\"https://www.unitree.com/images/0079f"
+        },
+        {
+          "path": "data/repos/xr_teleoperate/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 18.0769,
+          "url": "https://github.com/unitreerobotics/xr_teleoperate",
+          "snippet": "r> <tr> <td align=\"center\"><a href=\"https://www.unitree.com/cn/h1\" target=\"_blank\">H1 (4\u2011DoF arm)</a></td> <td align=\"center\">\u2705 Complete</td> </tr> <tr> <td align=\"center\"><a href=\"https://www.unitree.com/cn/h1\" target=\""
+        },
+        {
+          "path": "docs/automation/mcp-skill-blueprint.md",
+          "title": "mcp-skill-blueprint.md",
+          "type": "curated_doc",
+          "score": 17.6308,
+          "url": "None",
+          "snippet": "MCP + Skill Blueprint Goal: make this repository answer Unitree questions automatically with grounded local evidence. Automation Loop Run scripts/discover_unitree_repos.py --update-manifest daily/weekly. Run scripts/sync"
+        },
+        {
+          "path": "data/repos/unitree_legged_sdk/python_wrapper/third-party/pybind11/docs/changelog.rst",
+          "title": "changelog.rst",
+          "type": "repo_file",
+          "score": 17.4615,
+          "url": "https://github.com/unitreerobotics/unitree_legged_sdk",
+          "snippet": "s://github.com/pybind/pybind11/pull/505>`_. 5. Fast access operators. `#497 <https://github.com/pybind/pybind11/pull/497>`_. 6. Constructors for arrays whose storage is owned by another object. `#440 <https://github.com/"
+        }
+      ],
+      "pass": true,
+      "selected_paths": [
+        "path=docs/source-map.md",
+        "path=docs/verification/g1_docs_verification.md",
+        "path=skills/unitree-g1-expert/SKILL.md"
+      ],
+      "rationale": "The first path is relevant because it contains information about the official G1 Developer Pages, which likely includes documentation on DDS/service interfaces. The second path is relevant because it provides a verification report for G1 documents, including URLs and status. The third path is relevant because it describes a skill that can be used to answer Unitree G1 questions with local evidence from official Unitree docs and repositories.",
+      "precision": 0.3333,
+      "recall": 0.5,
+      "matched_expected": 1,
+      "expected_total": 2,
+      "raw_response": "{\n  \"selected_paths\": [\n    \"path=docs/source-map.md\",\n    \"path=docs/verification/g1_docs_verification.md\",\n    \"path=skills/unitree-g1-expert/SKILL.md\"\n  ],\n  \"rationale\": \"The first path is relevant because it contains information about the official G1 Developer Pages, which likely includes documentation on DDS/service interfaces. The second path is relevant because it provides a verification report for G1 documents, including URLs and status. The third path is relevant because it describes a skill that can be used to answer Unitree G1 questions with local evidence from official Unitree docs and repositories.\"\n}"
+    },
+    {
+      "id": "g1_sim2sim_pipeline",
+      "query": "What is the recommended sim2sim workflow for Unitree G1 policy development?",
+      "expected_path_patterns": [
+        "docs/pipelines/sim2sim-sim2real.md",
+        "data/repos/unitree_rl_lab/README.md"
+      ],
+      "candidates": [
+        {
+          "path": "docs/pipelines/sim2sim-sim2real.md",
+          "title": "sim2sim-sim2real.md",
+          "type": "curated_doc",
+          "score": 38.0945,
+          "url": "None",
+          "snippet": "G1 Sim2Sim and Sim2Real Workflow This workflow is the default for Unitree G1 policy development using official Unitree RL repositories. Stage 1: Build in Simulation Use unitree_rl_lab as the primary training/deployment f"
+        },
+        {
+          "path": "data/repos/unitree_rl_gym/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 31.5455,
+          "url": "https://github.com/unitreerobotics/unitree_rl_gym",
+          "snippet": "<div align=\"center\"> <h1 align=\"center\">Unitree RL GYM</h1> <p align=\"center\"> <span> \ud83c\udf0eEnglish </span> | <a href=\"README_zh.md\"> \ud83c\udde8\ud83c\uddf3\u4e2d\u6587 </a> </p> </div> <p align=\"center\"> <strong>This is a repository for reinforcement lea"
+        },
+        {
+          "path": "data/repos/unitree_IL_lerobot/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 30.6909,
+          "url": "https://github.com/unitreerobotics/unitree_IL_lerobot",
+          "snippet": "ter. visualization 2.2 \ud83d\udd28 Data Collection If you want to record your own dataset. The open-source teleoperation project avp_teleoperate can be used to collect data using the Unitree G1 humanoid robot. For more details, pl"
+        },
+        {
+          "path": "data/repos/unifolm-vla/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 28.2364,
+          "url": "https://github.com/unitreerobotics/unifolm-vla",
+          "snippet": "ee G1|Huggingface| |G1_Pack_PencilBox|Unitree G1|Huggingface| |G1_Pour_Medicine|Unitree G1|Huggingface| |G1_Pack_PingPong|Unitree G1|Huggingface| |G1_Prepare_Fruit|Unitree G1|Huggingface| |G1_Organize_Tools|Unitree G1|Hu"
+        },
+        {
+          "path": "data/repos/unitree_rl_mjlab/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 26.3636,
+          "url": "https://github.com/unitreerobotics/unitree_rl_mjlab",
+          "snippet": "to achieve motion control is: Train \u2192 Play \u2192 Sim2Real **Train**: The agent interacts with the MuJoCo simulation and optimizes policies through reward maximization. **Play**: Replay trained policies to verify expected beh"
+        },
+        {
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "title": "SKILL.md",
+          "type": "skill_doc",
+          "score": 26.2,
+          "url": "None",
+          "snippet": "--- name: unitree-g1-expert description: Ground Unitree G1 answers in local evidence from official Unitree docs and repositories. Use this skill for SDK2 usage, DDS/service interfaces, motion development, ROS/ROS2 integr"
+        },
+        {
+          "path": "data/repos/unitree_mujoco/readme.md",
+          "title": "readme.md",
+          "type": "repo_file",
+          "score": 26.0909,
+          "url": "https://github.com/unitreerobotics/unitree_mujoco",
+          "snippet": "Introduction Unitree mujoco unitree_mujoco is a simulator developed based on Unitree sdk2 and mujoco. Users can easily integrate the control programs developed with Unitree_sdk2, unitree_ros2, and unitree_sdk2_python int"
+        },
+        {
+          "path": "data/repos/unifolm-world-model-action/unitree_deploy/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 23.3636,
+          "url": "https://github.com/unitreerobotics/unifolm-world-model-action",
+          "snippet": "Unitree Deploy <div align=\"center\"> <p align=\"right\"> <span> \ud83c\udf0eEnglish </span> | <a href=\"./docs/README_cn.md\"> \ud83c\udde8\ud83c\uddf3\u4e2d\u6587 </a> </p> </div> This document provides instructions for setting up the deployment environment for Unitr"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/compile.md",
+          "title": "compile.md",
+          "type": "repo_file",
+          "score": 22.9636,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "FreeBSD you will need the wayland, libxkbcommon and evdev-proto packages to compile for Wayland. The X11 headers are installed along the end-user X11 packages, so if you have an X server running you should have the heade"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/main.md",
+          "title": "main.md",
+          "type": "repo_file",
+          "score": 22.9636,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "Introduction {#mainpage} GLFW is a free, Open Source, multi-platform library for OpenGL, OpenGL ES and Vulkan application development. It provides a simple, platform-independent API for creating windows, contexts and sur"
+        }
+      ],
+      "pass": true,
+      "selected_paths": [
+        "path=docs/pipelines/sim2sim-sim2real.md",
+        "path=data/repos/unitree_rl_mjlab/README.md",
+        "path=data/repos/unitree_mujoco/readme.md"
+      ],
+      "rationale": "These three sources provide the most relevant information for sim2sim workflow development for Unitree G1 policy development. The first source is a curated document that outlines the default sim2sim and sim2real workflow for Unitree G1, which includes building in simulation using unitree_rl_lab. The second source provides an overview of the reinforcement learning gym repository, which includes information on training policies through reward maximization. The third source describes a simulator developed based on Unitree sdk2 and mujoco, which can be used to integrate control programs developed with Unitree_sdk2.",
+      "precision": 0.3333,
+      "recall": 0.5,
+      "matched_expected": 1,
+      "expected_total": 2,
+      "raw_response": "{\n  \"selected_paths\": [\n    \"path=docs/pipelines/sim2sim-sim2real.md\",\n    \"path=data/repos/unitree_rl_mjlab/README.md\",\n    \"path=data/repos/unitree_mujoco/readme.md\"\n  ],\n  \"rationale\": \"These three sources provide the most relevant information for sim2sim workflow development for Unitree G1 policy development. The first source is a curated document that outlines the default sim2sim and sim2real workflow for Unitree G1, which includes building in simulation using unitree_rl_lab. The second source provides an overview of the reinforcement learning gym repository, which includes information on training policies through reward maximization. The third source describes a simulator developed based on Unitree sdk2 and mujoco, which can be used to integrate control programs developed with Unitree_sdk2.\"\n}"
+    },
+    {
+      "id": "g1_sim2real_pipeline",
+      "query": "How do I move from simulation to real robot deployment for Unitree G1?",
+      "expected_path_patterns": [
+        "docs/pipelines/sim2sim-sim2real.md",
+        "data/repos/unitree_rl_gym/deploy/deploy_real/README.md"
+      ],
+      "candidates": [
+        {
+          "path": "data/repos/unitree_ros/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 31.5385,
+          "url": "https://github.com/unitreerobotics/unitree_ros",
+          "snippet": "Introduction Here are the ROS simulation packages for Unitree robots, You can load robots and joint controllers in Gazebo, so you can perform low-level control (control the torque, position and angular velocity) of the r"
+        },
+        {
+          "path": "docs/pipelines/sim2sim-sim2real.md",
+          "title": "sim2sim-sim2real.md",
+          "type": "curated_doc",
+          "score": 29.9077,
+          "url": "None",
+          "snippet": "G1 Sim2Sim and Sim2Real Workflow This workflow is the default for Unitree G1 policy development using official Unitree RL repositories. Stage 1: Build in Simulation Use unitree_rl_lab as the primary training/deployment f"
+        },
+        {
+          "path": "data/repos/unitree_mujoco/readme.md",
+          "title": "readme.md",
+          "type": "repo_file",
+          "score": 26.9231,
+          "url": "https://github.com/unitreerobotics/unitree_mujoco",
+          "snippet": "Introduction Unitree mujoco unitree_mujoco is a simulator developed based on Unitree sdk2 and mujoco. Users can easily integrate the control programs developed with Unitree_sdk2, unitree_ros2, and unitree_sdk2_python int"
+        },
+        {
+          "path": "data/repos/unitree_IL_lerobot/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 26.5231,
+          "url": "https://github.com/unitreerobotics/unitree_IL_lerobot",
+          "snippet": "s or suggestions that you want to realize, please feel free to raise them at any time. We will do our best to solve and implement them. | Directory | Description | | ---------- | -----------------------------------------"
+        },
+        {
+          "path": "data/repos/unitree_sim_isaaclab/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 26.5231,
+          "url": "https://github.com/unitreerobotics/unitree_sim_isaaclab",
+          "snippet": "<div align=\"center\"> <h1 align=\"center\"> unitree_sim_isaaclab </h1> <h3 align=\"center\"> Unitree Robotics </h3> <p align=\"center\"> <a> English </a> | <a href=\"README_zh-CN.md\">\u4e2d\u6587</a> </p> <a href=\"https://discord.gg/ZwcVw"
+        },
+        {
+          "path": "data/repos/xr_teleoperate/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 26.3077,
+          "url": "https://github.com/unitreerobotics/xr_teleoperate",
+          "snippet": "efault, with usage instructions at this repo: unitree_IL_lerobot. > > **Note 2**: Please pay attention to your disk space size during data recording. > > **Note 3**: In v1.4 and above, the \u201crecord image\u201d window has been "
+        },
+        {
+          "path": "data/repos/unitree_rl_mjlab/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 25.9231,
+          "url": "https://github.com/unitreerobotics/unitree_rl_mjlab",
+          "snippet": "ile in zero-torque mode, press L2 + R2 on the controller. The robot will enter debug mode with joint damping enabled. 4.3 Connect to the Robot Connect your PC to the robot via Ethernet. Configure the network as: Address\uff1a"
+        },
+        {
+          "path": "data/repos/dfx_inspire_service/example/hand_example.cpp",
+          "title": "hand_example.cpp",
+          "type": "repo_file",
+          "score": 25.9077,
+          "url": "https://github.com/unitreerobotics/dfx_inspire_service",
+          "snippet": "/** * @file inspire_hand.cpp * @brief This is an example of how to control the Unitree H1 (Inspire) Hand using unitree_sdk2. */ // Inspire Hand Topic IDL Types #include <unitree/idl/go2/MotorCmds_.hpp> #include <unitree/"
+        },
+        {
+          "path": "data/repos/unifolm-vla/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 25.6769,
+          "url": "https://github.com/unitreerobotics/unifolm-vla",
+          "snippet": "ee G1|Huggingface| |G1_Pack_PencilBox|Unitree G1|Huggingface| |G1_Pour_Medicine|Unitree G1|Huggingface| |G1_Pack_PingPong|Unitree G1|Huggingface| |G1_Prepare_Fruit|Unitree G1|Huggingface| |G1_Organize_Tools|Unitree G1|Hu"
+        },
+        {
+          "path": "data/repos/unitree_sdk2/example/g1/high_level/g1_arm_action_example.cpp",
+          "title": "g1_arm_action_example.cpp",
+          "type": "repo_file",
+          "score": 24.6923,
+          "url": "https://github.com/unitreerobotics/unitree_sdk2",
+          "snippet": "/** * @file g1_arm_action_example.cpp * @brief This example demonstrates how to use the G1 Arm Action Client to execute predefined arm actions. */ #include \"unitree/robot/g1/arm/g1_arm_action_error.hpp\" #include \"unitree"
+        }
+      ],
+      "pass": true,
+      "selected_paths": [
+        "path=data/repos/unitree_ros/README.md",
+        "path=docs/pipelines/sim2sim-sim2real.md",
+        "path=data/repos/unitree_rl_mjlab/README.md"
+      ],
+      "rationale": "The first path provides information on ROS simulation packages for Unitree robots, which is relevant to moving from simulation to real robot deployment. The second path outlines the sim2sim and sim2real workflow for Unitree G1 policy development, including building in simulation. The third path provides instructions on connecting to the robot via Ethernet, which is necessary for real-world deployment.",
+      "precision": 0.3333,
+      "recall": 0.5,
+      "matched_expected": 1,
+      "expected_total": 2,
+      "raw_response": "{\n  \"selected_paths\": [\n    \"path=data/repos/unitree_ros/README.md\",\n    \"path=docs/pipelines/sim2sim-sim2real.md\",\n    \"path=data/repos/unitree_rl_mjlab/README.md\"\n  ],\n  \"rationale\": \"The first path provides information on ROS simulation packages for Unitree robots, which is relevant to moving from simulation to real robot deployment. The second path outlines the sim2sim and sim2real workflow for Unitree G1 policy development, including building in simulation. The third path provides instructions on connecting to the robot via Ethernet, which is necessary for real-world deployment.\"\n}"
+    },
+    {
+      "id": "g1_remote_vs_onboard",
+      "query": "Should I deploy G1 policy onboard or on a remote PC first?",
+      "expected_path_patterns": [
+        "docs/pipelines/deployment-onboard-vs-remote-pc.md",
+        "data/repos/unitree_rl_gym/deploy/deploy_real/README.md"
+      ],
+      "candidates": [
+        {
+          "path": "docs/pipelines/deployment-onboard-vs-remote-pc.md",
+          "title": "deployment-onboard-vs-remote-pc.md",
+          "type": "curated_doc",
+          "score": 38.32,
+          "url": "None",
+          "snippet": "Policy Deployment: Onboard vs Remote PC Decision Summary Default to **remote PC inference** for early G1 policy deployment. Move to **onboard inference** only after proving timing and thermal headroom. Comparison | Dimen"
+        },
+        {
+          "path": "data/repos/unitree_sdk2/thirdparty/include/dds/ddsi/ddsi_cfgelems.h",
+          "title": "ddsi_cfgelems.h",
+          "type": "repo_file",
+          "score": 21.6667,
+          "url": "https://github.com/unitreerobotics/unitree_sdk2",
+          "snippet": "\"order this will ensure they are the same between runs. If you run multiple \" \"nodes set this via environment variable to ensure every node generates \" \"unique names. When left empty (the default) a random starting seed "
+        },
+        {
+          "path": "docs/pipelines/sim2sim-sim2real.md",
+          "title": "sim2sim-sim2real.md",
+          "type": "curated_doc",
+          "score": 21.6,
+          "url": "None",
+          "snippet": "G1 Sim2Sim and Sim2Real Workflow This workflow is the default for Unitree G1 policy development using official Unitree RL repositories. Stage 1: Build in Simulation Use unitree_rl_lab as the primary training/deployment f"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/input.md",
+          "title": "input.md",
+          "type": "repo_file",
+          "score": 20.9333,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "ions while a key is held down. Note that many keyboards have a limit on how many keys being simultaneous held down that they can detect. This limit is called key rollover. Key events with GLFW_REPEAT actions are intended"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/build.md",
+          "title": "build.md",
+          "type": "repo_file",
+          "score": 20.6,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "les generated when GLFW is installed. Once GLFW has been added to the project, link against it with the glfw target. This adds the GLFW library and its link-time dependencies, the include directory for the GLFW header an"
+        },
+        {
+          "path": "data/repos/unitree_sdk2/thirdparty/include/ddscxx/dds/topic/discovery.hpp",
+          "title": "discovery.hpp",
+          "type": "repo_file",
+          "score": 20.3333,
+          "url": "https://github.com/unitreerobotics/unitree_sdk2",
+          "snippet": "* Because Topics of various different kinds can be retrieved, the list contains * AnyTopics. * * This operation usually results in network look-ups. * * @param dp the DomainParticipant * @param begin a back inserting ite"
+        },
+        {
+          "path": "data/repos/unitree_sdk2/thirdparty/include/ddscxx/dds/pub/DataWriter.hpp",
+          "title": "DataWriter.hpp",
+          "type": "repo_file",
+          "score": 20.3333,
+          "url": "https://github.com/unitreerobotics/unitree_sdk2",
+          "snippet": "& i, const dds::core::Time& timestamp); /** * This operation writes a series of typed Samples or TopicInstances. * * <b>Detailed Description</b><br> * This operation takes a sequence of typed Samples or TopicInstances, w"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/compile.md",
+          "title": "compile.md",
+          "type": "repo_file",
+          "score": 19.9333,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "Compiling GLFW {#compile_guide} [TOC] This is about compiling the GLFW library itself. For information on how to build applications that use GLFW, see @ref build_guide. GLFW uses some C99 features and does not support Vi"
+        },
+        {
+          "path": "data/repos/unitree_ros2/example/src/include/nlohmann/detail/input/binary_reader.hpp",
+          "title": "binary_reader.hpp",
+          "type": "repo_file",
+          "score": 19.6667,
+          "url": "https://github.com/unitreerobotics/unitree_ros2",
+          "snippet": "r (std::size_t i = 0; i < len; ++i) { if (JSON_HEDLEY_UNLIKELY(!parse_msgpack_internal())) { return false; } } return sax->end_array(); } /*! @param[in] len the length of the object @return whether object creation comple"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/window.md",
+          "title": "window.md",
+          "type": "repo_file",
+          "score": 19.6,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "on window placement. If you wish to be notified when a window is moved, whether by the user, the system or your own code, set a position callback. The callback function receives the new position, in screen coordinates, o"
+        }
+      ],
+      "pass": true,
+      "selected_paths": [
+        "path=data/repos/unitree_sdk2/thirdparty/include/dds/ddsi/ddsi_cfgelems.h",
+        "path=docs/pipelines/deployment-onboard-vs-remote-pc.md",
+        "path=docs/pipelines/sim2sim-sim2real.md"
+      ],
+      "rationale": "The first path is relevant because it discusses environment variables and node generation, which could be related to the deployment of G1 policy. The second path is directly relevant as it compares onboard vs remote PC inference for early G1 policy deployment. The third path is also relevant as it describes the default workflow for Unitree G1 policy development.",
+      "precision": 0.3333,
+      "recall": 0.5,
+      "matched_expected": 1,
+      "expected_total": 2,
+      "raw_response": "{\n  \"selected_paths\": [\n    \"path=data/repos/unitree_sdk2/thirdparty/include/dds/ddsi/ddsi_cfgelems.h\",\n    \"path=docs/pipelines/deployment-onboard-vs-remote-pc.md\",\n    \"path=docs/pipelines/sim2sim-sim2real.md\"\n  ],\n  \"rationale\": \"The first path is relevant because it discusses environment variables and node generation, which could be related to the deployment of G1 policy. The second path is directly relevant as it compares onboard vs remote PC inference for early G1 policy deployment. The third path is also relevant as it describes the default workflow for Unitree G1 policy development.\"\n}"
+    },
+    {
+      "id": "g1_isaaclab_resources",
+      "query": "Where are the Unitree G1 Isaac Lab simulation resources?",
+      "expected_path_patterns": [
+        "data/repos/unitree_sim_isaaclab/README.md",
+        "docs/source-digests/unitree_sim_isaaclab.md"
+      ],
+      "candidates": [
+        {
+          "path": "data/repos/unitree_sim_isaaclab/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 27.8222,
+          "url": "https://github.com/unitreerobotics/unitree_sim_isaaclab",
+          "snippet": "inview.png\" width=\"300\" alt=\"G1-gripper-cylinder\"/> <br/> <code>Main View Finding Steps</code> </td> </tr> </table> 1\u3001 \ud83d\udcd6 Introduction This project is built on **Isaac Lab** to simulate **Unitree robots** in various tasks"
+        },
+        {
+          "path": "data/repos/unitree_rl_lab/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 26.3333,
+          "url": "https://github.com/unitreerobotics/unitree_rl_lab",
+          "snippet": "Unitree RL Lab Overview This project provides a set of reinforcement learning environments for Unitree robots, built on top of IsaacLab. Currently supports Unitree **Go2**, **H1** and **G1-29dof** robots. <div align=\"cen"
+        },
+        {
+          "path": "data/repos/unitree_sim_isaaclab/dds/g1_robot_dds.py",
+          "title": "g1_robot_dds.py",
+          "type": "repo_file",
+          "score": 23.9333,
+          "url": "https://github.com/unitreerobotics/unitree_sim_isaaclab",
+          "snippet": "# Copyright (c) 2025, Unitree Robotics Co., Ltd. All Rights Reserved. # License: Apache License, Version 2.0 \"\"\" G1 robot DDS communication class Handle the state publishing and command receiving of the G1 robot \"\"\" impo"
+        },
+        {
+          "path": "data/repos/unitree_rl_mjlab/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 21.3333,
+          "url": "https://github.com/unitreerobotics/unitree_rl_mjlab",
+          "snippet": "Unitree RL Mjlab \u2733\ufe0f Overview Unitree RL Mjlab is a reinforcement learning project built upon the mjlab, using MuJoCo as its physics simulation backend, currently supporting Unitree Go2, Unitree G1 and Unitree H1_2. Mjlab"
+        },
+        {
+          "path": "data/repos/unifolm-vla/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 21.1556,
+          "url": "https://github.com/unitreerobotics/unifolm-vla",
+          "snippet": "ee G1|Huggingface| |G1_Pack_PencilBox|Unitree G1|Huggingface| |G1_Pour_Medicine|Unitree G1|Huggingface| |G1_Pack_PingPong|Unitree G1|Huggingface| |G1_Prepare_Fruit|Unitree G1|Huggingface| |G1_Organize_Tools|Unitree G1|Hu"
+        },
+        {
+          "path": "data/repos/unitree_rl_lab/.vscode/tools/setup_vscode.py",
+          "title": "setup_vscode.py",
+          "type": "repo_file",
+          "score": 20.5556,
+          "url": "https://github.com/unitreerobotics/unitree_rl_lab",
+          "snippet": "lename}.\" \"\\n\\tThis will result in missing 'python.analysis.extraPaths' in the VSCode\" \"\\n\\tsettings, which limits the functionality of the Python language server.\" \"\\n\\tHowever, it does not affect the functionality of t"
+        },
+        {
+          "path": "data/repos/xr_teleoperate/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 20.4444,
+          "url": "https://github.com/unitreerobotics/xr_teleoperate",
+          "snippet": "td> </tr> </table> </p> \ud83d\udd16Release Note \ud83c\udff7\ufe0f v1.5 (2025.12.29) support simulation add CycloneDDS interface name parameter add caching to speed-up urdf loading ... \ud83d\udcd6 Introduction This repository implements **teleoperation** c"
+        },
+        {
+          "path": "data/repos/unitree_sim_isaaclab/dds/inspire_dds.py",
+          "title": "inspire_dds.py",
+          "type": "repo_file",
+          "score": 20.1556,
+          "url": "https://github.com/unitreerobotics/unitree_sim_isaaclab",
+          "snippet": "m_name=\"isaac_inspire_state\", # read the state of the gripper from Isaac Lab input_size=1024, output_shm_name=\"isaac_inspire_cmd\", # output the command to Isaac Lab output_size=1024, # output the command to Isaac Lab ) p"
+        },
+        {
+          "path": "docs/pipelines/sim2sim-sim2real.md",
+          "title": "sim2sim-sim2real.md",
+          "type": "curated_doc",
+          "score": 19.7333,
+          "url": "None",
+          "snippet": "G1 Sim2Sim and Sim2Real Workflow This workflow is the default for Unitree G1 policy development using official Unitree RL repositories. Stage 1: Build in Simulation Use unitree_rl_lab as the primary training/deployment f"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/compat.md",
+          "title": "compat.md",
+          "type": "repo_file",
+          "score": 19.1556,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "xt is flushed when it is released (made non-current). Where this extension is unavailable, the GLFW_CONTEXT_RELEASE_BEHAVIOR hint will have no effect and the context will always be flushed when released. GLFW uses the GL"
+        }
+      ],
+      "pass": true,
+      "selected_paths": [
+        "path=data/repos/unitree_sim_isaaclab/README.md",
+        "path=data/repos/unitree_rl_lab/README.md",
+        "path=data/repos/unitree_sim_isaaclab/dds/g1_robot_dds.py"
+      ],
+      "rationale": "These three paths are the most relevant to finding Unitree G1 Isaac Lab simulation resources. The first path is a README file for unitree_sim_isaaclab, which mentions Isaac Lab and Unitree robots. The second path is also a README file, this time for unitree_rl_lab, which provides reinforcement learning environments for Unitree robots built on top of IsaacLab. The third path is a Python script that handles the state publishing and command receiving of the G1 robot in Isaac Lab.",
+      "precision": 0.3333,
+      "recall": 0.5,
+      "matched_expected": 1,
+      "expected_total": 2,
+      "raw_response": "{\n  \"selected_paths\": [\n    \"path=data/repos/unitree_sim_isaaclab/README.md\",\n    \"path=data/repos/unitree_rl_lab/README.md\",\n    \"path=data/repos/unitree_sim_isaaclab/dds/g1_robot_dds.py\"\n  ],\n  \"rationale\": \"These three paths are the most relevant to finding Unitree G1 Isaac Lab simulation resources. The first path is a README file for unitree_sim_isaaclab, which mentions Isaac Lab and Unitree robots. The second path is also a README file, this time for unitree_rl_lab, which provides reinforcement learning environments for Unitree robots built on top of IsaacLab. The third path is a Python script that handles the state publishing and command receiving of the G1 robot in Isaac Lab.\"\n}"
+    },
+    {
+      "id": "g1_mujoco_bridge",
+      "query": "Which repo shows Unitree Mujoco simulation integrated with SDK2 APIs?",
+      "expected_path_patterns": [
+        "data/repos/unitree_mujoco/readme.md",
+        "data/repos/unitree_mujoco/README.md"
+      ],
+      "candidates": [
+        {
+          "path": "data/repos/unitree_mujoco/readme.md",
+          "title": "readme.md",
+          "type": "repo_file",
+          "score": 20.6,
+          "url": "https://github.com/unitreerobotics/unitree_mujoco",
+          "snippet": "Introduction Unitree mujoco unitree_mujoco is a simulator developed based on Unitree sdk2 and mujoco. Users can easily integrate the control programs developed with Unitree_sdk2, unitree_ros2, and unitree_sdk2_python int"
+        },
+        {
+          "path": "data/repos/unitree_rl_mjlab/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 17.8,
+          "url": "https://github.com/unitreerobotics/unitree_rl_mjlab",
+          "snippet": "Unitree RL Mjlab \u2733\ufe0f Overview Unitree RL Mjlab is a reinforcement learning project built upon the mjlab, using MuJoCo as its physics simulation backend, currently supporting Unitree Go2, Unitree G1 and Unitree H1_2. Mjlab"
+        },
+        {
+          "path": "data/repos/xr_teleoperate/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 16.2,
+          "url": "https://github.com/unitreerobotics/xr_teleoperate",
+          "snippet": ") and Dex3 hand configuration: \ud83d\udca5\ud83d\udca5\ud83d\udca5 NOTICE\u2757 > **After simulation starts, click once in the window to activate it.** > > The terminal will show: controller started, start main loop... Here is the simulation GUI: <p align=\""
+        },
+        {
+          "path": "data/repos/unitree_mujoco/readme_zh.md",
+          "title": "readme_zh.md",
+          "type": "repo_file",
+          "score": 16.0,
+          "url": "https://github.com/unitreerobotics/unitree_mujoco",
+          "snippet": "\u4ecb\u7ecd Unitree mujoco unitree_mujoco \u662f\u57fa\u4e8e Unitree sdk2 \u548c mujoco \u5f00\u53d1\u7684\u4eff\u771f\u5668\u3002\u7528\u6237\u4f7f\u7528 Unitree_sdk2\u3001 unitree_ros2 \u548c unitree_sdk2_python \u5f00\u53d1\u7684\u63a7\u5236\u7a0b\u5e8f\u53ef\u4ee5\u65b9\u4fbf\u5730\u63a5\u5165\u8be5\u4eff\u771f\u5668\uff0c\u5b9e\u73b0\u4eff\u771f\u5230\u5b9e\u7269\u7684\u5f00\u53d1\u6d41\u7a0b\u3002\u4ed3\u5e93\u522b\u57fa\u4e8e c++ \u548c python \u5b9e\u73b0\u4e86\u4e24\u4e2a\u7248\u672c\u7684\u4eff\u771f\u5668\uff0c \u5176\u7ed3\u6784\u5927\u81f4\u5982\u4e0b\u56fe\u6240\u793a: \u76ee\u5f55\u7ed3\u6784 simulate: \u57fa\u4e8e unitre"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 15.2,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "sitory is modified from the Azure Kinect DK Code Samples. This repository uses the Mujoco physics engine for simulation testing, with version 3.1.5. For convenience, the Mujoco repository files have already been placed i"
+        },
+        {
+          "path": "data/repos/unitree_rl_mjlab/mjlab/sim/sim.py",
+          "title": "sim.py",
+          "type": "repo_file",
+          "score": 15.0,
+          "url": "https://github.com/unitreerobotics/unitree_rl_mjlab",
+          "snippet": "o world may have more than njmax constraints. If None, a heuristic value is used.\"\"\" ls_parallel: bool = True # Boosts perf quite noticeably. contact_sensor_maxmatch: int = 64 mujoco: MujocoCfg = field(default_factory=Mu"
+        },
+        {
+          "path": "data/repos/unitree_sdk2_python/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 14.4,
+          "url": "https://github.com/unitreerobotics/unitree_sdk2_python",
+          "snippet": "et kp=10, kd=1), and the left hind leg calf joint will continuously output 1Nm of torque. Wireless Controller Status Execute the following command in the terminal: Replace enp2s0 with the name of the network interface to"
+        },
+        {
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "title": "SKILL.md",
+          "type": "skill_doc",
+          "score": 13.42,
+          "url": "None",
+          "snippet": "--- name: unitree-g1-expert description: Ground Unitree G1 answers in local evidence from official Unitree docs and repositories. Use this skill for SDK2 usage, DDS/service interfaces, motion development, ROS/ROS2 integr"
+        },
+        {
+          "path": "data/repos/unitree_ros/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 13.4,
+          "url": "https://github.com/unitreerobotics/unitree_ros",
+          "snippet": "nitree_legged_control: It contains the joints controllers for Gazebo simulation, which allows users to control joints with position, velocity and torque. Refer to \"unitree_ros/unitree_controller/src/servo.cpp\" for joint "
+        },
+        {
+          "path": "data/repos/unitree_rl_mjlab/mjlab/utils/nan_guard.py",
+          "title": "nan_guard.py",
+          "type": "repo_file",
+          "score": 13.0,
+          "url": "https://github.com/unitreerobotics/unitree_rl_mjlab",
+          "snippet": "\"\"\"Lightweight NaN guard for capturing simulation states when NaN/Inf detected.\"\"\" from collections import deque from contextlib import contextmanager from dataclasses import dataclass from datetime import datetime from "
+        }
+      ],
+      "pass": true,
+      "selected_paths": [
+        "path=data/repos/unitree_mujoco/readme.md",
+        "path=data/repos/unitree_rl_mjlab/mjlab/sim/sim.py",
+        "path=data/repos/unitree_mujoco/readme_zh.md"
+      ],
+      "rationale": "The first path is the most relevant because it directly mentions Unitree Mujoco simulation integrated with SDK2 APIs. The second path is also relevant as it shows a Python script for simulating Unitree robots using MuJoCo, which implies integration with SDK2. The third path is in Chinese but still mentions Unitree mujoco and SDK2.",
+      "precision": 0.3333,
+      "recall": 1.0,
+      "matched_expected": 2,
+      "expected_total": 2,
+      "raw_response": "{\n  \"selected_paths\": [\n    \"path=data/repos/unitree_mujoco/readme.md\",\n    \"path=data/repos/unitree_rl_mjlab/mjlab/sim/sim.py\",\n    \"path=data/repos/unitree_mujoco/readme_zh.md\"\n  ],\n  \"rationale\": \"The first path is the most relevant because it directly mentions Unitree Mujoco simulation integrated with SDK2 APIs. The second path is also relevant as it shows a Python script for simulating Unitree robots using MuJoCo, which implies integration with SDK2. The third path is in Chinese but still mentions Unitree mujoco and SDK2.\"\n}"
+    },
+    {
+      "id": "g1_ros2_to_real_bridge",
+      "query": "Where is the unitree_ros2_to_real bridge documented in this repository?",
+      "expected_path_patterns": [
+        "data/repos/unitree_ros2_to_real",
+        "docs/source-digests/unitree_ros2_to_real.md"
+      ],
+      "candidates": [
+        {
+          "path": "data/repos/kinect_teleoperate/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 26.4444,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "width=85%> </center> body tracking SDK This example is tested on the Ubuntu 20.04 operating system. Developers can manually download the latest version 1.1.2 installation package from the Microsoft packages website : lib"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/include/GLFW/glfw3.h",
+          "title": "glfw3.h",
+          "type": "repo_file",
+          "score": 26.4444,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "set to zero. * * @param[in] window The window whose frame size to query. * @param[out] left Where to store the size, in screen coordinates, of the left * edge of the window frame, or `NULL`. * @param[out] top Where to st"
+        },
+        {
+          "path": "data/repos/unitree_ros2_to_real/LICENSE",
+          "title": "LICENSE",
+          "type": "repo_file",
+          "score": 25.9333,
+          "url": "https://github.com/unitreerobotics/unitree_ros2_to_real",
+          "snippet": "s License. Each version will be given a distinguishing version number. 10.2. Effect of New Versions You may distribute the Covered Software under the terms of the version of the License under which You originally receive"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/cmake/FetchContent.cmake",
+          "title": "FetchContent.cmake",
+          "type": "repo_file",
+          "score": 25.4444,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "o point inside its own build area. Developers are strongly encouraged to use this mechanism rather than editing the sources populated in the default location, as changes to sources in the default location can be lost whe"
+        },
+        {
+          "path": "data/repos/Qmini/LICENSE",
+          "title": "LICENSE",
+          "type": "repo_file",
+          "score": 25.4444,
+          "url": "https://github.com/unitreerobotics/Qmini",
+          "snippet": "derations_for_licensees ======================================================================= Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License By exercising the Licensed Rights (de"
+        },
+        {
+          "path": "data/repos/unifolm-world-model-action/LICENSE",
+          "title": "LICENSE",
+          "type": "repo_file",
+          "score": 25.4444,
+          "url": "https://github.com/unitreerobotics/unifolm-world-model-action",
+          "snippet": "e reasonable. More considerations for the public: wiki.creativecommons.org/Considerations_for_licensees ======================================================================= Creative Commons Attribution-NonCommercial-S"
+        },
+        {
+          "path": "data/repos/unitree_ros2_to_real/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 24.8222,
+          "url": "https://github.com/unitreerobotics/unitree_ros2_to_real",
+          "snippet": "Introduction This package can send control command to real robot from ROS2. You can do low-level control(namely control all joints on robot) and high-level control(namely control the walking direction and speed of robot)"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/window.md",
+          "title": "window.md",
+          "type": "repo_file",
+          "score": 24.4444,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "MPAT_hint __GLFW_OPENGL_FORWARD_COMPAT__ specifies whether the OpenGL context should be forward-compatible, i.e. one where all functionality deprecated in the requested version of OpenGL is removed. This must only be use"
+        }
+      ],
+      "pass": true,
+      "selected_paths": [
+        "path=data/repos/unitree_ros2_to_real/README.md",
+        "path=data/repos/unitree_ros2_to_real/LICENSE"
+      ],
+      "rationale": "The README.md file in the unitree_ros2_to_real repository is likely to contain information about the bridge, and the LICENSE file may provide additional context or documentation.",
+      "precision": 1.0,
+      "recall": 0.5,
+      "matched_expected": 1,
+      "expected_total": 2,
+      "raw_response": "{\n  \"selected_paths\": [\n    \"path=data/repos/unitree_ros2_to_real/README.md\",\n    \"path=data/repos/unitree_ros2_to_real/LICENSE\"\n  ],\n  \"rationale\": \"The README.md file in the unitree_ros2_to_real repository is likely to contain information about the bridge, and the LICENSE file may provide additional context or documentation.\"\n}"
+    },
+    {
+      "id": "g1_repo_coverage_counts",
+      "query": "What do coverage_report.md and repo_lock.md say about cloned mirrored archived repo counts?",
+      "expected_path_patterns": [
+        "docs/verification/coverage_report.md",
+        "docs/verification/repo_lock.md"
+      ],
+      "candidates": [
+        {
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "title": "SKILL.md",
+          "type": "skill_doc",
+          "score": 16.1277,
+          "url": "None",
+          "snippet": "vs inference split exact file paths and upstream URLs used Retrieval and Grounding Rules Prioritize evidence in this order: official support URLs from sources/unitree_g1_sources.yaml official GitHub repositories from the"
+        },
+        {
+          "path": "data/repos/unitree_actuator_sdk/thirdparty/pybind11/.github/CONTRIBUTING.md",
+          "title": "CONTRIBUTING.md",
+          "type": "repo_file",
+          "score": 15.2769,
+          "url": "https://github.com/unitreerobotics/unitree_actuator_sdk",
+          "snippet": "file, i.e. the commands above can be run in any subdirectory of the pybind11 repo. Clang-Tidy [clang-tidy][clang-tidy] performs deeper static code analyses and is more complex to run, compared to clang-format, but suppor"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/main.md",
+          "title": "main.md",
+          "type": "repo_file",
+          "score": 13.6615,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "Introduction {#mainpage} GLFW is a free, Open Source, multi-platform library for OpenGL, OpenGL ES and Vulkan application development. It provides a simple, platform-independent API for creating windows, contexts and sur"
+        },
+        {
+          "path": "data/repos/unitree_legged_sdk/python_wrapper/third-party/pybind11/.github/CONTRIBUTING.md",
+          "title": "CONTRIBUTING.md",
+          "type": "repo_file",
+          "score": 13.6615,
+          "url": "https://github.com/unitreerobotics/unitree_legged_sdk",
+          "snippet": "est_pickling.cpp\". If this is empty, all tests will be built. Formatting All formatting is handled by pre-commit. Install with brew (macOS) or pip (any OS): Then, you can run it on the items you've added to your staging "
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/CONTRIBUTING.md",
+          "title": "CONTRIBUTING.md",
+          "type": "repo_file",
+          "score": 13.0462,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "to any code you contribute. If you did not write the code yourself, you must explain where it came from and under what license you received it. Even code using the same license as GLFW may not be copied without attributi"
+        },
+        {
+          "path": "docs/INDEX.md",
+          "title": "INDEX.md",
+          "type": "curated_doc",
+          "score": 12.7938,
+          "url": "None",
+          "snippet": "Knowledge Index Guide Key Outputs Main JSONL index: /data/index/knowledge_index.jsonl Index metadata: /data/index/knowledge_index.meta.json Markdown index summary: /data/index/knowledge_index.md Repo lock report: /docs/v"
+        },
+        {
+          "path": "docs/source-digests/unitree_IL_lerobot.md",
+          "title": "unitree_IL_lerobot.md",
+          "type": "curated_doc",
+          "score": 12.7938,
+          "url": "None",
+          "snippet": "unitree_IL_lerobot Digest Source: https://github.com/unitreerobotics/unitree_IL_lerobot Captured Facts Unitree imitation-learning workflow repository with data collection and training components. README references Unitre"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/build.md",
+          "title": "build.md",
+          "type": "repo_file",
+          "score": 12.6615,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "Building applications {#build_guide} [TOC] This is about compiling and linking applications that use GLFW. For information on how to write such applications, start with the introductory tutorial. For information on how t"
+        },
+        {
+          "path": "data/repos/unitree_legged_sdk/python_wrapper/third-party/pybind11/.github/ISSUE_TEMPLATE/bug-report.md",
+          "title": "bug-report.md",
+          "type": "repo_file",
+          "score": 12.6615,
+          "url": "https://github.com/unitreerobotics/unitree_legged_sdk",
+          "snippet": "--- name: Bug Report about: File an issue about a bug title: \"[BUG] \" --- Make sure you've completed the following steps before submitting your issue -- thank you! Make sure you've read the [documentation][]. Your issue "
+        },
+        {
+          "path": "data/repos/unitree_rl_lab/deploy/thirdparty/onnxruntime-linux-x64-1.22.0/Privacy.md",
+          "title": "Privacy.md",
+          "type": "repo_file",
+          "score": 12.6615,
+          "url": "https://github.com/unitreerobotics/unitree_rl_lab",
+          "snippet": "Privacy Data Collection The software may collect information about you and your use of the software and send it to Microsoft. Microsoft may use this information to provide services and improve our products and services. "
+        }
+      ],
+      "pass": false,
+      "selected_paths": [
+        "path=data/repos/unitree_legged_sdk/python_wrapper/third-party/pybind11/.github/CONTRIBUTING.md",
+        "path=docs/source-digests/unitree_IL_lerobot.md",
+        "path=data/repos/unitree_rl_lab/deploy/thirdparty/onnxruntime-linux-x64-1.22.0/Privacy.md"
+      ],
+      "rationale": "These sources are most relevant to the question about cloned mirrored archived repo counts because they mention repository-related information, such as contributing guidelines and privacy policies.",
+      "precision": 0.0,
+      "recall": 0.0,
+      "matched_expected": 0,
+      "expected_total": 2,
+      "raw_response": "{\n    \"selected_paths\": [\n        \"path=data/repos/unitree_legged_sdk/python_wrapper/third-party/pybind11/.github/CONTRIBUTING.md\",\n        \"path=docs/source-digests/unitree_IL_lerobot.md\",\n        \"path=data/repos/unitree_rl_lab/deploy/thirdparty/onnxruntime-linux-x64-1.22.0/Privacy.md\"\n    ],\n    \"rationale\": \"These sources are most relevant to the question about cloned mirrored archived repo counts because they mention repository-related information, such as contributing guidelines and privacy policies.\"\n}"
+    },
+    {
+      "id": "g1_support_doc_status",
+      "query": "Does g1_docs_verification.md report blocked_access for support.unitree.com G1 pages in this environment?",
+      "expected_path_patterns": [
+        "docs/verification/g1_docs_verification.md",
+        "docs/verification/coverage_report.md"
+      ],
+      "candidates": [
+        {
+          "path": "docs/verification/g1_docs_verification.md",
+          "title": "g1_docs_verification.md",
+          "type": "curated_doc",
+          "score": 43.8514,
+          "url": "None",
+          "snippet": "G1 Docs Verification Report Root URL: https://support.unitree.com/home/en/G1_developer/ Total discovered URLs: 5 Verified pages: 0 Needs review: 0 Blocked by website security: 5 Errors: 0 Manifest support_docs entries: 5"
+        },
+        {
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "title": "SKILL.md",
+          "type": "skill_doc",
+          "score": 34.9486,
+          "url": "None",
+          "snippet": "--- name: unitree-g1-expert description: Ground Unitree G1 answers in local evidence from official Unitree docs and repositories. Use this skill for SDK2 usage, DDS/service interfaces, motion development, ROS/ROS2 integr"
+        },
+        {
+          "path": "docs/source-map.md",
+          "title": "source-map.md",
+          "type": "curated_doc",
+          "score": 32.1257,
+          "url": "None",
+          "snippet": "Source Map Official G1 Developer Pages https://support.unitree.com/home/en/G1_developer/ https://support.unitree.com/home/en/G1_developer/quick_start https://support.unitree.com/home/en/G1_developer/sdk_overview https://"
+        },
+        {
+          "path": "docs/verification/coverage_report.md",
+          "title": "coverage_report.md",
+          "type": "curated_doc",
+          "score": 31.44,
+          "url": "None",
+          "snippet": "Coverage Report Latest sync summary: data/snapshots/sync_summary_1771889845.json Latest repo discovery: data/snapshots/repo_discovery_1771889839.json Latest mirror summary: data/snapshots/repo_mirror_summary_1771889961.j"
+        },
+        {
+          "path": "docs/pipelines/sim2sim-sim2real.md",
+          "title": "sim2sim-sim2real.md",
+          "type": "curated_doc",
+          "score": 29.5543,
+          "url": "None",
+          "snippet": "G1 Sim2Sim and Sim2Real Workflow This workflow is the default for Unitree G1 policy development using official Unitree RL repositories. Stage 1: Build in Simulation Use unitree_rl_lab as the primary training/deployment f"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/compat.md",
+          "title": "compat.md",
+          "type": "repo_file",
+          "score": 27.3714,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "Standards conformance {#compat_guide} [TOC] This guide describes the various API extensions used by this version of GLFW. It lists what are essentially implementation details, but which are nonetheless vital knowledge fo"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 26.3714,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "sitory is modified from the Azure Kinect DK Code Samples. This repository uses the Mujoco physics engine for simulation testing, with version 3.1.5. For convenience, the Mujoco repository files have already been placed i"
+        },
+        {
+          "path": "data/repos/xr_teleoperate/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 26.2,
+          "url": "https://github.com/unitreerobotics/xr_teleoperate",
+          "snippet": "td> </tr> </table> </p> \ud83d\udd16Release Note \ud83c\udff7\ufe0f v1.5 (2025.12.29) support simulation add CycloneDDS interface name parameter add caching to speed-up urdf loading ... \ud83d\udcd6 Introduction This repository implements **teleoperation** c"
+        },
+        {
+          "path": "data/repos/unitreerobotics.github.io/index.md",
+          "title": "index.md",
+          "type": "repo_file",
+          "score": 25.8,
+          "url": "https://github.com/unitreerobotics/unitreerobotics.github.io",
+          "snippet": "Welcome to GitHub Pages You can use the editor on GitHub to maintain and preview the content for your website in Markdown files. Whenever you commit to this repository, GitHub Pages will run Jekyll to rebuild the pages i"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/build.md",
+          "title": "build.md",
+          "type": "repo_file",
+          "score": 24.8,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "Building applications {#build_guide} [TOC] This is about compiling and linking applications that use GLFW. For information on how to write such applications, start with the introductory tutorial. For information on how t"
+        }
+      ],
+      "pass": true,
+      "selected_paths": [
+        "path=docs/verification/g1_docs_verification.md | type=curated_doc | title=g1_docs_verification.md",
+        "path=data/repos/unitreerobotics.github.io/index.md | type=repo_file | title=index.md"
+      ],
+      "rationale": "The first path is the most relevant because it directly addresses the question about blocked_access for support.unitree.com G1 pages in the environment. The second path is also relevant because it provides information about the GitHub Pages repository, which may contain documentation or configuration related to the Unitree G1.",
+      "precision": 0.5,
+      "recall": 0.5,
+      "matched_expected": 1,
+      "expected_total": 2,
+      "raw_response": "{\n  \"selected_paths\": [\n    \"path=docs/verification/g1_docs_verification.md | type=curated_doc | title=g1_docs_verification.md\",\n    \"path=data/repos/unitreerobotics.github.io/index.md | type=repo_file | title=index.md\"\n  ],\n  \"rationale\": \"The first path is the most relevant because it directly addresses the question about blocked_access for support.unitree.com G1 pages in the environment. The second path is also relevant because it provides information about the GitHub Pages repository, which may contain documentation or configuration related to the Unitree G1.\"\n}"
+    },
+    {
+      "id": "g1_max_collect_usage",
+      "query": "What command runs full max-collection mode for Unitree sources and artifacts?",
+      "expected_path_patterns": [
+        "scripts/max_collect.sh",
+        "README.md"
+      ],
+      "candidates": [
+        {
+          "path": "docs/pipelines/sim2sim-sim2real.md",
+          "title": "sim2sim-sim2real.md",
+          "type": "curated_doc",
+          "score": 23.2,
+          "url": "None",
+          "snippet": "G1 Sim2Sim and Sim2Real Workflow This workflow is the default for Unitree G1 policy development using official Unitree RL repositories. Stage 1: Build in Simulation Use unitree_rl_lab as the primary training/deployment f"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/window.md",
+          "title": "window.md",
+          "type": "repo_file",
+          "score": 22.6667,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "border, a close widget, etc. An undecorated window will not be resizable by the user but will still allow the user to generate close events on some platforms. Possible values are GLFW_TRUE and GLFW_FALSE. This hint is ig"
+        },
+        {
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "title": "SKILL.md",
+          "type": "skill_doc",
+          "score": 20.5333,
+          "url": "None",
+          "snippet": "--- name: unitree-g1-expert description: Ground Unitree G1 answers in local evidence from official Unitree docs and repositories. Use this skill for SDK2 usage, DDS/service interfaces, motion development, ROS/ROS2 integr"
+        },
+        {
+          "path": "data/repos/xr_teleoperate/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 20.0,
+          "url": "https://github.com/unitreerobotics/xr_teleoperate",
+          "snippet": "URL: DFX_inspire_service to clone the dexterous hand control interface program. And Copy it to **PC2** of Unitree robots. On Unitree robot's **PC2**, execute command: If two hands open and close continuously, it indicate"
+        },
+        {
+          "path": "docs/architecture.md",
+          "title": "architecture.md",
+          "type": "curated_doc",
+          "score": 20.0,
+          "url": "None",
+          "snippet": "Architecture This repo uses a repeatable max-coverage pipeline: discover: find additional Unitree G1-related repos and docs URLs. sync: clone/pull Unitree repos and snapshot support URLs. mirror: maintain bare git mirror"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/include/GLFW/glfw3.h",
+          "title": "glfw3.h",
+          "type": "repo_file",
+          "score": 19.6667,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "dow will be windowed mode. * Unless you have a way for the user to choose a specific monitor, it is * recommended that you pick the primary monitor. For more information on how * to query connected monitors, see @ref mon"
+        },
+        {
+          "path": "data/repos/unifolm-world-model-action/src/unifolm_wma/data/normolize.py",
+          "title": "normolize.py",
+          "type": "repo_file",
+          "score": 18.6667,
+          "url": "https://github.com/unitreerobotics/unifolm-world-model-action",
+          "snippet": "modalities (e.g. \"observation.image\") and values are Dictionaries of statistic types and their values (e.g. `{\"mean\": torch.randn(3,1,1)}, \"std\": torch.randn(3,1,1)}`). If provided, as expected for training the model for"
+        },
+        {
+          "path": "docs/pipelines/deployment-onboard-vs-remote-pc.md",
+          "title": "deployment-onboard-vs-remote-pc.md",
+          "type": "curated_doc",
+          "score": 18.4,
+          "url": "None",
+          "snippet": "Policy Deployment: Onboard vs Remote PC Decision Summary Default to **remote PC inference** for early G1 policy deployment. Move to **onboard inference** only after proving timing and thermal headroom. Comparison | Dimen"
+        },
+        {
+          "path": "data/repos/unifolm-vla/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 18.2667,
+          "url": "https://github.com/unitreerobotics/unifolm-vla",
+          "snippet": "ee G1|Huggingface| |G1_Pack_PencilBox|Unitree G1|Huggingface| |G1_Pour_Medicine|Unitree G1|Huggingface| |G1_Pack_PingPong|Unitree G1|Huggingface| |G1_Prepare_Fruit|Unitree G1|Huggingface| |G1_Organize_Tools|Unitree G1|Hu"
+        },
+        {
+          "path": "data/repos/z1_joystick/include/unitree_arm_sdk/control/unitreeArm.h",
+          "title": "unitreeArm.h",
+          "type": "repo_file",
+          "score": 18.2667,
+          "url": "https://github.com/unitreerobotics/z1_joystick",
+          "snippet": "reeArm to lowcmd automatically * If you want to control robot under JOINTCTRL, CARTESIAN or LOWCMD, * instead of MovecJ, MoveL, MoveC, and so on * it is recommended to create your own thread to process command parameters"
+        }
+      ],
+      "pass": false,
+      "selected_paths": [
+        "path=docs/pipelines/sim2sim-sim2real.md | type=curated_doc | title=sim2sim-sim2real.md",
+        "path=data/repos/kinect_teleoperate/src/extern/glfw/src/docs/window.md | type=repo_file | title=window.md",
+        "path=docs/pipelines/deployment-onboard-vs-remote-pc.md | type=curated_doc | title=deployment-onboard-vs-remote-pc.md"
+      ],
+      "rationale": "The first path is relevant because it describes the sim2sim-sim2real workflow for Unitree G1 policy development, which may involve running a command in full max-collection mode. The second path is relevant because it mentions glfw, which is related to window management and may be used in conjunction with other commands. The third path is relevant because it discusses deployment options for Unitree G1 policies, including the use of remote PC inference.",
+      "precision": 0.0,
+      "recall": 0.0,
+      "matched_expected": 0,
+      "expected_total": 2,
+      "raw_response": "{\n  \"selected_paths\": [\n    \"path=docs/pipelines/sim2sim-sim2real.md | type=curated_doc | title=sim2sim-sim2real.md\",\n    \"path=data/repos/kinect_teleoperate/src/extern/glfw/src/docs/window.md | type=repo_file | title=window.md\",\n    \"path=docs/pipelines/deployment-onboard-vs-remote-pc.md | type=curated_doc | title=deployment-onboard-vs-remote-pc.md\"\n  ],\n  \"rationale\": \"The first path is relevant because it describes the sim2sim-sim2real workflow for Unitree G1 policy development, which may involve running a command in full max-collection mode. The second path is relevant because it mentions glfw, which is related to window management and may be used in conjunction with other commands. The third path is relevant because it discusses deployment options for Unitree G1 policies, including the use of remote PC inference.\"\n}"
+    },
+    {
+      "id": "g1_skill_usage",
+      "query": "How should an AI agent use this repo skill to answer Unitree G1 questions with citations?",
+      "expected_path_patterns": [
+        "skills/unitree-g1-expert/SKILL.md",
+        "AGENTS.md"
+      ],
+      "candidates": [
+        {
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "title": "SKILL.md",
+          "type": "skill_doc",
+          "score": 36.19,
+          "url": "None",
+          "snippet": "--- name: unitree-g1-expert description: Ground Unitree G1 answers in local evidence from official Unitree docs and repositories. Use this skill for SDK2 usage, DDS/service interfaces, motion development, ROS/ROS2 integr"
+        },
+        {
+          "path": "docs/ai-agent-quickstart.md",
+          "title": "ai-agent-quickstart.md",
+          "type": "curated_doc",
+          "score": 32.88,
+          "url": "None",
+          "snippet": "AI Agent Quickstart Goal Give any AI agent a deterministic path to answer Unitree G1 questions with local evidence. Minimal Steps Read AGENTS.md. Refresh and verify data: python3 scripts/discover_unitree_repos.py --inclu"
+        },
+        {
+          "path": "docs/automation/mcp-skill-blueprint.md",
+          "title": "mcp-skill-blueprint.md",
+          "type": "curated_doc",
+          "score": 29.64,
+          "url": "None",
+          "snippet": "MCP + Skill Blueprint Goal: make this repository answer Unitree questions automatically with grounded local evidence. Automation Loop Run scripts/discover_unitree_repos.py --update-manifest daily/weekly. Run scripts/sync"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/build.md",
+          "title": "build.md",
+          "type": "repo_file",
+          "score": 27.1,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "Building applications {#build_guide} [TOC] This is about compiling and linking applications that use GLFW. For information on how to write such applications, start with the introductory tutorial. For information on how t"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/deps/wayland/wayland.xml",
+          "title": "wayland.xml",
+          "type": "repo_file",
+          "score": 25.1,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "flags describe properties of an output mode. They are used in the flags bitfield of the mode event. </description> <entry name=\"current\" value=\"0x1\" summary=\"indicates this is the current mode\"/> <entry name=\"preferred\" "
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/docs/monitor.md",
+          "title": "monitor.md",
+          "type": "repo_file",
+          "score": 24.1,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "Video modes are represented as @ref GLFWvidmode structures. You can get an array of the video modes supported by a monitor with @ref glfwGetVideoModes. See the reference documentation for the lifetime of the returned arr"
+        },
+        {
+          "path": "data/repos/unitree_ros2/example/src/src/g1/high_level/g1_arm_action_example.cpp",
+          "title": "g1_arm_action_example.cpp",
+          "type": "repo_file",
+          "score": 24.0,
+          "url": "https://github.com/unitreerobotics/unitree_ros2",
+          "snippet": "/** * @file g1_arm_action_example.cpp * @brief This example demonstrates how to use the G1 Arm Action Client to * execute predefined arm actions in ROS2. */ #include <iostream> #include <memory> #include <string> #includ"
+        },
+        {
+          "path": "data/repos/kinect_teleoperate/src/extern/glfw/src/deps/wayland/xdg-shell.xml",
+          "title": "xdg-shell.xml",
+          "type": "repo_file",
+          "score": 23.6,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "suggest a surface change\"> This configure event asks the client to resize its toplevel surface or to change its state. The configured state should not be applied immediately. See xdg_surface.configure for details. The wi"
+        },
+        {
+          "path": "data/repos/unitree_rl_lab/deploy/thirdparty/onnxruntime-linux-x64-1.22.0/include/onnxruntime_session_options_config_keys.h",
+          "title": "onnxruntime_session_options_config_keys.h",
+          "type": "repo_file",
+          "score": 23.5,
+          "url": "https://github.com/unitreerobotics/unitree_rl_lab",
+          "snippet": "sionOptionsConfigUseORTModelBytesDirectly = \"session.use_ort_model_bytes_directly\"; /// <summary> /// Key for using the ORT format model flatbuffer bytes directly for initializers. /// This avoids copying the bytes and r"
+        },
+        {
+          "path": "data/repos/unitree_rl_mjlab/deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/include/onnxruntime_session_options_config_keys.h",
+          "title": "onnxruntime_session_options_config_keys.h",
+          "type": "repo_file",
+          "score": 23.5,
+          "url": "https://github.com/unitreerobotics/unitree_rl_mjlab",
+          "snippet": "sionOptionsConfigUseORTModelBytesDirectly = \"session.use_ort_model_bytes_directly\"; /// <summary> /// Key for using the ORT format model flatbuffer bytes directly for initializers. /// This avoids copying the bytes and r"
+        }
+      ],
+      "pass": true,
+      "selected_paths": [
+        "path=skills/unitree-g1-expert/SKILL.md | type=skill_doc | title=SKILL.md",
+        "path=data/repos/unitree_ros2/example/src/src/g1/high_level/g1_arm_action_example.cpp | type=repo_file | title=g1_arm_action_example.cpp",
+        "path=docs/ai-agent-quickstart.md | type=curated_doc | title=ai-agent-quickstart.md"
+      ],
+      "rationale": "The first path is the most relevant because it directly addresses how to ground Unitree G1 answers in local evidence from official Unitree docs and repositories. The second path provides an example of using the G1 Arm Action Client, which is related to answering Unitree G1 questions. The third path provides a quickstart guide for AI agents to answer Unitree G1 questions with local evidence.",
+      "precision": 0.3333,
+      "recall": 0.5,
+      "matched_expected": 1,
+      "expected_total": 2,
+      "raw_response": "{\n  \"selected_paths\": [\n    \"path=skills/unitree-g1-expert/SKILL.md | type=skill_doc | title=SKILL.md\",\n    \"path=data/repos/unitree_ros2/example/src/src/g1/high_level/g1_arm_action_example.cpp | type=repo_file | title=g1_arm_action_example.cpp\",\n    \"path=docs/ai-agent-quickstart.md | type=curated_doc | title=ai-agent-quickstart.md\"\n  ],\n  \"rationale\": \"The first path is the most relevant because it directly addresses how to ground Unitree G1 answers in local evidence from official Unitree docs and repositories. The second path provides an example of using the G1 Arm Action Client, which is related to answering Unitree G1 questions. The third path provides a quickstart guide for AI agents to answer Unitree G1 questions with local evidence.\"\n}"
+    },
+    {
+      "id": "g1_repo_lock_intent",
+      "query": "Which file explains repo_lock and which script builds repo_lock artifacts?",
+      "expected_path_patterns": [
+        "docs/verification/repo_lock.md",
+        "scripts/build_repo_lock.py"
+      ],
+      "candidates": [
+        {
+          "path": "data/repos/kinect_teleoperate/src/cmake/FetchContent.cmake",
+          "title": "FetchContent.cmake",
+          "type": "repo_file",
+          "score": 15.0,
+          "url": "https://github.com/unitreerobotics/kinect_teleoperate",
+          "snippet": "RE_COMMAND`` - ``BUILD_COMMAND`` - ``INSTALL_COMMAND`` - ``TEST_COMMAND`` If using ``FetchContent_Populate()`` within CMake's script mode, be aware that the implementation sets up a sub-build which therefore requires a C"
+        },
+        {
+          "path": "data/repos/unitree_legged_sdk/python_wrapper/third-party/pybind11/docs/compiling.rst",
+          "title": "compiling.rst",
+          "type": "repo_file",
+          "score": 15.0,
+          "url": "https://github.com/unitreerobotics/unitree_legged_sdk",
+          "snippet": "required) --------------------------------------- If you use `PEP 518's <https://www.python.org/dev/peps/pep-0518/>`_ ``pyproject.toml`` file, you can ensure that ``pybind11`` is available during the compilation of your "
+        },
+        {
+          "path": "data/repos/unitree_actuator_sdk/thirdparty/pybind11/docs/advanced/cast/stl.rst",
+          "title": "stl.rst",
+          "type": "repo_file",
+          "score": 14.0,
+          "url": "https://github.com/unitreerobotics/unitree_actuator_sdk",
+          "snippet": "STL containers ############## Automatic conversion ==================== When including the additional header file :file:`pybind11/stl.h`, conversions between ``std::vector<>``/``std::deque<>``/``std::list<>``/``std::arra"
+        },
+        {
+          "path": "data/repos/unitree_guide/unitree_actuator_sdk/ReadMe.md",
+          "title": "ReadMe.md",
+          "type": "repo_file",
+          "score": 14.0,
+          "url": "https://github.com/unitreerobotics/unitree_guide",
+          "snippet": "Introduction This library is used for the communication between PC and the motor control board, so that the user can control the motors by PC. This library includes Linux and Windows version, where the Linux version also"
+        },
+        {
+          "path": "data/repos/unitree_legged_sdk/python_wrapper/third-party/pybind11/docs/basics.rst",
+          "title": "basics.rst",
+          "type": "repo_file",
+          "score": 14.0,
+          "url": "https://github.com/unitreerobotics/unitree_legged_sdk",
+          "snippet": "tudio project, compile and run the target, all from the command line. .. Note:: If all tests fail, make sure that the Python binary and the testcases are compiled for the same processor type and bitness (i.e. either **i3"
+        },
+        {
+          "path": "data/repos/unitree_legged_sdk/python_wrapper/third-party/pybind11/docs/advanced/pycpp/utilities.rst",
+          "title": "utilities.rst",
+          "type": "repo_file",
+          "score": 14.0,
+          "url": "https://github.com/unitreerobotics/unitree_legged_sdk",
+          "snippet": "defaults to redirecting both streams, though you can use the keyword arguments to disable one of the streams if needed. .. note:: The above methods will not redirect C-level output to file descriptors, such as ``fprintf`"
+        },
+        {
+          "path": "data/repos/unitree_legged_sdk/python_wrapper/third-party/pybind11/docs/advanced/cast/stl.rst",
+          "title": "stl.rst",
+          "type": "repo_file",
+          "score": 14.0,
+          "url": "https://github.com/unitreerobotics/unitree_legged_sdk",
+          "snippet": "STL containers ############## Automatic conversion ==================== When including the additional header file :file:`pybind11/stl.h`, conversions between ``std::vector<>``/``std::deque<>``/``std::list<>``/``std::arra"
+        },
+        {
+          "path": "data/repos/unitree_rl_lab/deploy/thirdparty/onnxruntime-linux-x64-1.22.0/include/onnxruntime_cxx_api.h",
+          "title": "onnxruntime_cxx_api.h",
+          "type": "repo_file",
+          "score": 14.0,
+          "url": "https://github.com/unitreerobotics/unitree_rl_lab",
+          "snippet": "he source code location and to use the cached severity level to potentially bypass * calls to the underlying C API. * * \\param log_severity_level The message's logging severity level. * \\param file_path The filepath of t"
+        },
+        {
+          "path": "data/repos/unitree_rl_lab/deploy/thirdparty/onnxruntime-linux-x64-1.22.0/lib/cmake/onnxruntime/onnxruntimeConfigVersion.cmake",
+          "title": "onnxruntimeConfigVersion.cmake",
+          "type": "repo_file",
+          "score": 14.0,
+          "url": "https://github.com/unitreerobotics/unitree_rl_lab",
+          "snippet": "# This is a basic version file for the Config-mode of find_package(). # It is used by write_basic_package_version_file() as input file for configure_file() # to create a version-file which can be installed along a config"
+        },
+        {
+          "path": "data/repos/unitree_rl_mjlab/deploy/thirdparty/cnpy/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 14.0,
+          "url": "https://github.com/unitreerobotics/unitree_rl_mjlab",
+          "snippet": "Purpose: NumPy offers the save method for easy saving of arrays into .npy and savez for zipping multiple .npy arrays together into a .npz file. cnpy lets you read and write to these formats in C++. The motivation comes f"
+        }
+      ],
+      "pass": false,
+      "selected_paths": [
+        "path=data/repos/unitree_legged_sdk/python_wrapper/third-party/pybind11/docs/compiling.rst",
+        "path=data/repos/unitree_actuator_sdk/thirdparty/pybind11/docs/advanced/cast/stl.rst"
+      ],
+      "rationale": "The first path explains how to use PEP 518's pyproject.toml file to ensure that pybind11 is available during compilation, which is relevant to repo_lock. The second path provides information on STL containers and automatic conversion, which is related to building repo_lock artifacts.",
+      "precision": 0.0,
+      "recall": 0.0,
+      "matched_expected": 0,
+      "expected_total": 2,
+      "raw_response": "{\n  \"selected_paths\": [\n    \"path=data/repos/unitree_legged_sdk/python_wrapper/third-party/pybind11/docs/compiling.rst\",\n    \"path=data/repos/unitree_actuator_sdk/thirdparty/pybind11/docs/advanced/cast/stl.rst\"\n  ],\n  \"rationale\": \"The first path explains how to use PEP 518's pyproject.toml file to ensure that pybind11 is available during compilation, which is relevant to repo_lock. The second path provides information on STL containers and automatic conversion, which is related to building repo_lock artifacts.\"\n}"
+    },
+    {
+      "id": "g1_query_interface",
+      "query": "Which command in scripts/query_index.py queries data/index/knowledge_index.jsonl?",
+      "expected_path_patterns": [
+        "scripts/query_index.py",
+        "docs/INDEX.md"
+      ],
+      "candidates": [
+        {
+          "path": "docs/INDEX.md",
+          "title": "INDEX.md",
+          "type": "curated_doc",
+          "score": 37.5491,
+          "url": "None",
+          "snippet": "Knowledge Index Guide Key Outputs Main JSONL index: /data/index/knowledge_index.jsonl Index metadata: /data/index/knowledge_index.meta.json Markdown index summary: /data/index/knowledge_index.md Repo lock report: /docs/v"
+        },
+        {
+          "path": "docs/automation/mcp-skill-blueprint.md",
+          "title": "mcp-skill-blueprint.md",
+          "type": "curated_doc",
+          "score": 30.9818,
+          "url": "None",
+          "snippet": "MCP + Skill Blueprint Goal: make this repository answer Unitree questions automatically with grounded local evidence. Automation Loop Run scripts/discover_unitree_repos.py --update-manifest daily/weekly. Run scripts/sync"
+        },
+        {
+          "path": "skills/unitree-g1-expert/SKILL.md",
+          "title": "SKILL.md",
+          "type": "skill_doc",
+          "score": 22.7,
+          "url": "None",
+          "snippet": "--- name: unitree-g1-expert description: Ground Unitree G1 answers in local evidence from official Unitree docs and repositories. Use this skill for SDK2 usage, DDS/service interfaces, motion development, ROS/ROS2 integr"
+        },
+        {
+          "path": "data/repos/unitree_sdk2_python/README.md",
+          "title": "README.md",
+          "type": "repo_file",
+          "score": 18.9091,
+          "url": "https://github.com/unitreerobotics/unitree_sdk2_python",
+          "snippet": "terms of data structure and control methods. For detailed information, refer to https://support.unitree.com/home/en/developer/sports_services. High-Level Status Execute the following command in the terminal: Replace enp2"
+        },
+        {
+          "path": "data/repos/unitree_IL_lerobot/unitree_lerobot/utils/convert_unitree_json_to_h5.py",
+          "title": "convert_unitree_json_to_h5.py",
+          "type": "repo_file",
+          "score": 18.1091,
+          "url": "https://github.com/unitreerobotics/unitree_IL_lerobot",
+          "snippet": "\"\"\" result = [] for sample_data in episode_data[\"data\"]: data_array = np.array([], dtype=np.float32) for part in parts: if part in sample_data[key] and sample_data[key][part] is not None: qpos = np.array(sample_data[key]"
+        },
+        {
+          "path": "data/repos/unitree_sim_isaaclab/action_provider/action_provider_wh_dds.py",
+          "title": "action_provider_wh_dds.py",
+          "type": "repo_file",
+          "score": 18.1091,
+          "url": "https://github.com/unitreerobotics/unitree_sim_isaaclab",
+          "snippet": "self.all_joint_names: self.waist_to_all_indices.append(self.all_joint_names.index(waist_joint)) else: raise ValueError(f\"waist joint '{waist_joint}' not in all joint list\") self.arm_to_all_indices=[] for arm_joint in sel"
+        },
+        {
+          "path": "data/repos/unitree_sim_isaaclab/dds/dex3_dds.py",
+          "title": "dex3_dds.py",
+          "type": "repo_file",
+          "score": 18.1091,
+          "url": "https://github.com/unitreerobotics/unitree_sim_isaaclab",
+          "snippet": "msg, \"right\"), 32 ) print(f\"[{self.node_name}] Hand command subscriber initialized\") return True except Exception as e: print(f\"dex3_dds [{self.node_name}] Hand command subscriber initialization failed: {e}\") return Fals"
+        },
+        {
+          "path": "docs/ai-agent-quickstart.md",
+          "title": "ai-agent-quickstart.md",
+          "type": "curated_doc",
+          "score": 17.8909,
+          "url": "None",
+          "snippet": "AI Agent Quickstart Goal Give any AI agent a deterministic path to answer Unitree G1 questions with local evidence. Minimal Steps Read AGENTS.md. Refresh and verify data: python3 scripts/discover_unitree_repos.py --inclu"
+        },
+        {
+          "path": "data/repos/unitree_actuator_sdk/thirdparty/pybind11/docs/advanced/pycpp/numpy.rst",
+          "title": "numpy.rst",
+          "type": "repo_file",
+          "score": 17.6364,
+          "url": "https://github.com/unitreerobotics/unitree_actuator_sdk",
+          "snippet": ".. _numpy: NumPy ##### Buffer protocol =============== Python supports an extremely general and convenient approach for exchanging data between plugin libraries. Types can expose a buffer view [#f2]_, which provides fast"
+        },
+        {
+          "path": "data/repos/unitree_legged_sdk/python_wrapper/third-party/pybind11/docs/advanced/pycpp/numpy.rst",
+          "title": "numpy.rst",
+          "type": "repo_file",
+          "score": 17.6364,
+          "url": "https://github.com/unitreerobotics/unitree_legged_sdk",
+          "snippet": ".. _numpy: NumPy ##### Buffer protocol =============== Python supports an extremely general and convenient approach for exchanging data between plugin libraries. Types can expose a buffer view [#f2]_, which provides fast"
+        }
+      ],
+      "pass": true,
+      "selected_paths": [
+        "path=data/repos/unitree_sdk2_python/README.md",
+        "path=docs/INDEX.md"
+      ],
+      "rationale": "The first path is relevant because it mentions querying data/index/knowledge_index.jsonl in the snippet. The second path is also relevant because it provides a general guide to knowledge index and metadata, which might be related to the query.",
+      "precision": 0.5,
+      "recall": 0.5,
+      "matched_expected": 1,
+      "expected_total": 2,
+      "raw_response": "{\n  \"selected_paths\": [\n    \"path=data/repos/unitree_sdk2_python/README.md\",\n    \"path=docs/INDEX.md\"\n  ],\n  \"rationale\": \"The first path is relevant because it mentions querying data/index/knowledge_index.jsonl in the snippet. The second path is also relevant because it provides a general guide to knowledge index and metadata, which might be related to the query.\"\n}"
+    }
+  ]
+}

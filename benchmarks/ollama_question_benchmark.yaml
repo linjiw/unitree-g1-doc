@@ -1,0 +1,87 @@
+version: 1
+name: ollama_codex_question_bank
+cases:
+- id: g1_sdk2_examples_folder
+  query: Where are the official Unitree G1 SDK2 example programs located?
+  expected_path_patterns:
+  - data/repos/unitree_sdk2/example/g1
+  - docs/source-digests/unitree_sdk2.md
+- id: g1_sdk2_python_install
+  query: How do I install and run Unitree SDK2 Python for G1 with CycloneDDS?
+  expected_path_patterns:
+  - data/repos/unitree_sdk2_python/README.md
+  - docs/source-digests/unitree_sdk2_python.md
+- id: g1_ros2_lowlevel_example
+  query: Which ROS2 example controls G1 low-level joints and where is it?
+  expected_path_patterns:
+  - data/repos/unitree_ros2/example/src/src/g1/lowlevel/g1_low_level_example.cpp
+  - data/repos/unitree_ros2/README.md
+- id: g1_dds_interface_docs
+  query: Which local files map support.unitree.com G1_developer dds_services_interface
+    URLs and verification status?
+  expected_path_patterns:
+  - docs/verification/g1_docs_verification.md
+  - sources/unitree_g1_sources.yaml
+- id: g1_sim2sim_pipeline
+  query: What is the recommended sim2sim workflow for Unitree G1 policy development?
+  expected_path_patterns:
+  - docs/pipelines/sim2sim-sim2real.md
+  - data/repos/unitree_rl_lab/README.md
+- id: g1_sim2real_pipeline
+  query: How do I move from simulation to real robot deployment for Unitree G1?
+  expected_path_patterns:
+  - docs/pipelines/sim2sim-sim2real.md
+  - data/repos/unitree_rl_gym/deploy/deploy_real/README.md
+- id: g1_remote_vs_onboard
+  query: Should I deploy G1 policy onboard or on a remote PC first?
+  expected_path_patterns:
+  - docs/pipelines/deployment-onboard-vs-remote-pc.md
+  - data/repos/unitree_rl_gym/deploy/deploy_real/README.md
+- id: g1_isaaclab_resources
+  query: Where are the Unitree G1 Isaac Lab simulation resources?
+  expected_path_patterns:
+  - data/repos/unitree_sim_isaaclab/README.md
+  - docs/source-digests/unitree_sim_isaaclab.md
+- id: g1_mujoco_bridge
+  query: Which repo shows Unitree Mujoco simulation integrated with SDK2 APIs?
+  expected_path_patterns:
+  - data/repos/unitree_mujoco/readme.md
+  - data/repos/unitree_mujoco/README.md
+- id: g1_ros2_to_real_bridge
+  query: Where is the unitree_ros2_to_real bridge documented in this repository?
+  expected_path_patterns:
+  - data/repos/unitree_ros2_to_real
+  - docs/source-digests/unitree_ros2_to_real.md
+- id: g1_repo_coverage_counts
+  query: What do coverage_report.md and repo_lock.md say about cloned mirrored archived
+    repo counts?
+  expected_path_patterns:
+  - docs/verification/coverage_report.md
+  - docs/verification/repo_lock.md
+- id: g1_support_doc_status
+  query: Does g1_docs_verification.md report blocked_access for support.unitree.com
+    G1 pages in this environment?
+  expected_path_patterns:
+  - docs/verification/g1_docs_verification.md
+  - docs/verification/coverage_report.md
+- id: g1_max_collect_usage
+  query: What command runs full max-collection mode for Unitree sources and artifacts?
+  expected_path_patterns:
+  - scripts/max_collect.sh
+  - README.md
+- id: g1_skill_usage
+  query: How should an AI agent use this repo skill to answer Unitree G1 questions
+    with citations?
+  expected_path_patterns:
+  - skills/unitree-g1-expert/SKILL.md
+  - AGENTS.md
+- id: g1_repo_lock_intent
+  query: Which file explains repo_lock and which script builds repo_lock artifacts?
+  expected_path_patterns:
+  - docs/verification/repo_lock.md
+  - scripts/build_repo_lock.py
+- id: g1_query_interface
+  query: Which command in scripts/query_index.py queries data/index/knowledge_index.jsonl?
+  expected_path_patterns:
+  - scripts/query_index.py
+  - docs/INDEX.md

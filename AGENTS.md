@@ -23,6 +23,8 @@ Answer Unitree G1 questions with verifiable local evidence and source citations.
 4. Validate retrieval quality (periodic/CI):
    - `python3 scripts/eval_retrieval.py --strict --fail-below 0.75`
    - `python3 scripts/eval_openai_compatible.py --strict --fail-below 0.70` (when model endpoint is available)
+   - For local Ollama: `make eval-agent-ollama`
+   - For curated Ollama+Codex question bank: `make eval-retrieval-ollama-qbank` and `make eval-agent-ollama-qbank`
 5. Respond with:
    - direct answer
    - cited file paths/URLs

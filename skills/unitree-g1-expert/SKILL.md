@@ -21,6 +21,7 @@ Use local indexed sources first, then provide a concise answer with explicit fil
 2. Retrieve top local evidence:
    - Run `python3 scripts/query_index.py "<question>"`.
    - Optional model-eval gate: run `python3 scripts/eval_openai_compatible.py --strict --fail-below 0.70` when an OpenAI-compatible endpoint is configured.
+   - For local Ollama benchmark set: run `make eval-retrieval-ollama-qbank` and `make eval-agent-ollama-qbank`.
 3. Open and verify exact files for final grounding:
    - Prefer `docs/source-digests/*.md`, synced support pages, and README files in `data/repos/`.
 4. Answer with:

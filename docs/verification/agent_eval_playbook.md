@@ -21,14 +21,56 @@ OPENAI_MODEL=your-model-name \
 
 This checks whether the model can select relevant source paths from retrieved candidates.
 
-## 3) Outputs
+### Ollama Shortcut
+
+```bash
+ollama serve
+ollama pull llama3.1
+make eval-agent-ollama
+```
+
+Uses:
+- `OPENAI_API_BASE=http://127.0.0.1:11434/v1`
+- `OPENAI_API_KEY=ollama`
+- `OPENAI_MODEL=llama3.1`
+
+## 3) Build More Questions (Ollama + Codex)
+
+```bash
+make gen-questions-ollama
+```
+
+Outputs:
+- `benchmarks/ollama_question_bank.yaml`
+- `docs/verification/ollama_question_bank.md`
+
+## 4) Evaluate the Curated Ollama+Codex Question Set
+
+Retriever-only:
+
+```bash
+make eval-retrieval-ollama-qbank
+```
+
+Model source-selection:
+
+```bash
+make eval-agent-ollama-qbank
+```
+
+## 5) Outputs
 
 - `docs/verification/retrieval_eval.json`
 - `docs/verification/retrieval_eval.md`
 - `docs/verification/agent_eval.json`
 - `docs/verification/agent_eval.md`
+- `benchmarks/ollama_question_bank.yaml`
+- `benchmarks/ollama_question_benchmark.yaml`
+- `docs/verification/ollama_question_bank.md`
+- `docs/verification/ollama_question_retrieval_eval.md`
+- `docs/verification/ollama_agent_eval.md`
 
-## 4) Suggested Quality Gates
+## 6) Suggested Quality Gates
 
 - Retriever pass rate: `>= 0.75`
 - Agent source-selection pass rate: `>= 0.70`

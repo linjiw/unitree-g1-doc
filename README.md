@@ -103,6 +103,10 @@ make max-collect
 make index
 make eval-retrieval
 make eval-agent
+make eval-agent-ollama
+make gen-questions-ollama
+make eval-retrieval-ollama-qbank
+make eval-agent-ollama-qbank
 make query q="g1 dds interface"
 make site
 ```
@@ -124,10 +128,45 @@ OPENAI_MODEL=your-model-name \
 .venv/bin/python scripts/eval_openai_compatible.py --strict --fail-below 0.70
 ```
 
+Ollama quick path:
+
+```bash
+ollama serve
+ollama pull llama3.1
+make eval-agent-ollama
+make gen-questions-ollama
+```
+
+Run retrieval eval on the curated Ollama+Codex question set:
+
+```bash
+.venv/bin/python scripts/eval_retrieval.py \
+  --benchmark benchmarks/ollama_question_benchmark.yaml \
+  --json-out docs/verification/ollama_question_retrieval_eval.json \
+  --md-out docs/verification/ollama_question_retrieval_eval.md \
+  --strict --fail-below 0.70
+```
+
+Run model eval on the same question set:
+
+```bash
+OPENAI_API_BASE=http://127.0.0.1:11434/v1 \
+OPENAI_API_KEY=ollama \
+OPENAI_MODEL=llama3.1 \
+.venv/bin/python scripts/eval_openai_compatible.py \
+  --benchmark benchmarks/ollama_question_benchmark.yaml \
+  --json-out docs/verification/ollama_agent_eval.json \
+  --md-out docs/verification/ollama_agent_eval.md \
+  --strict --fail-below 0.60
+```
+
 Outputs:
 
 - `docs/verification/retrieval_eval.md`
 - `docs/verification/agent_eval.md`
+- `docs/verification/ollama_question_bank.md`
+- `docs/verification/ollama_question_retrieval_eval.md`
+- `docs/verification/ollama_agent_eval.md`
 
 ## Important Documents
 
@@ -135,6 +174,7 @@ Outputs:
 - Human quickstart: [docs/human-quickstart.md](/Users/linji/projects/unitree-g1-doc/docs/human-quickstart.md)
 - AI quickstart: [docs/ai-agent-quickstart.md](/Users/linji/projects/unitree-g1-doc/docs/ai-agent-quickstart.md)
 - GitHub Pages guide: [docs/github-pages.md](/Users/linji/projects/unitree-g1-doc/docs/github-pages.md)
+- Ollama local setup: [docs/ollama-local-setup.md](/Users/linji/projects/unitree-g1-doc/docs/ollama-local-setup.md)
 - Source map: [docs/source-map.md](/Users/linji/projects/unitree-g1-doc/docs/source-map.md)
 - Verification report: [docs/verification/g1_docs_verification.md](/Users/linji/projects/unitree-g1-doc/docs/verification/g1_docs_verification.md)
 - Repo lock report: [docs/verification/repo_lock.md](/Users/linji/projects/unitree-g1-doc/docs/verification/repo_lock.md)

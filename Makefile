@@ -1,4 +1,4 @@
-.PHONY: sync sync-strict sync-full discover-repos discover-repos-all verify-g1-docs verify-g1-docs-strict render-support index query site coverage mirrors archives repo-lock max-collect pipeline validate-skill eval-retrieval eval-agent
+.PHONY: sync sync-strict sync-full discover-repos discover-repos-all verify-g1-docs verify-g1-docs-strict render-support index query site coverage mirrors archives repo-lock max-collect pipeline validate-skill eval-retrieval eval-agent eval-agent-ollama gen-questions-ollama eval-retrieval-ollama-qbank eval-agent-ollama-qbank
 
 PYTHON ?= python3
 ifneq ("$(wildcard .venv/bin/python)","")
@@ -64,3 +64,33 @@ eval-retrieval:
 
 eval-agent:
 	$(PYTHON) scripts/eval_openai_compatible.py --strict --fail-below 0.70
+
+eval-agent-ollama:
+	OPENAI_API_BASE=$${OPENAI_API_BASE:-http://127.0.0.1:11434/v1} \
+	OPENAI_API_KEY=$${OPENAI_API_KEY:-ollama} \
+	OPENAI_MODEL=$${OPENAI_MODEL:-llama3.1} \
+	$(PYTHON) scripts/eval_openai_compatible.py --strict --fail-below 0.70
+
+gen-questions-ollama:
+	OPENAI_API_BASE=$${OPENAI_API_BASE:-http://127.0.0.1:11434/v1} \
+	OPENAI_API_KEY=$${OPENAI_API_KEY:-ollama} \
+	OPENAI_MODEL=$${OPENAI_MODEL:-llama3.1} \
+	$(PYTHON) scripts/generate_question_bank.py --count 24
+	$(PYTHON) scripts/build_question_benchmark.py --input benchmarks/ollama_question_bank.yaml --output benchmarks/ollama_question_benchmark.yaml
+
+eval-retrieval-ollama-qbank:
+	$(PYTHON) scripts/eval_retrieval.py \
+		--benchmark benchmarks/ollama_question_benchmark.yaml \
+		--json-out docs/verification/ollama_question_retrieval_eval.json \
+		--md-out docs/verification/ollama_question_retrieval_eval.md \
+		--strict --fail-below 0.70
+
+eval-agent-ollama-qbank:
+	OPENAI_API_BASE=$${OPENAI_API_BASE:-http://127.0.0.1:11434/v1} \
+	OPENAI_API_KEY=$${OPENAI_API_KEY:-ollama} \
+	OPENAI_MODEL=$${OPENAI_MODEL:-llama3.1} \
+	$(PYTHON) scripts/eval_openai_compatible.py \
+		--benchmark benchmarks/ollama_question_benchmark.yaml \
+		--json-out docs/verification/ollama_agent_eval.json \
+		--md-out docs/verification/ollama_agent_eval.md \
+		--strict --fail-below 0.60
