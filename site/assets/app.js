@@ -8,6 +8,9 @@ const searchBtn = document.getElementById("searchBtn");
 const resultsEl = document.getElementById("results");
 const statsEl = document.getElementById("stats");
 const searchMetaEl = document.getElementById("searchMeta");
+const benchmarkSummaryEl = document.getElementById("benchmarkSummary");
+const testsRunEl = document.getElementById("testsRun");
+const resourceVerdictEl = document.getElementById("resourceVerdict");
 
 function tokenize(text) {
   return (text.toLowerCase().match(/[a-z0-9_]+/g) || []);
@@ -63,6 +66,118 @@ function renderStats() {
   statsEl.innerHTML = stats.join("");
 }
 
+function formatPercent(value) {
+  if (typeof value !== "number" || Number.isNaN(value)) return "n/a";
+  return `${(value * 100).toFixed(2)}%`;
+}
+
+function formatNumber(value, digits = 2) {
+  if (typeof value !== "number" || Number.isNaN(value)) return "n/a";
+  return value.toFixed(digits);
+}
+
+function toDateString(unixTs) {
+  if (typeof unixTs !== "number" || Number.isNaN(unixTs)) return "";
+  return new Date(unixTs * 1000).toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+}
+
+function runStatusClass(run) {
+  if (typeof run.pass_rate !== "number" || typeof run.fail_below !== "number") return "unknown";
+  return run.pass_rate >= run.fail_below ? "pass" : "fail";
+}
+
+function renderBenchmarks() {
+  if (!benchmarkSummaryEl || !state.overview?.benchmarks) return;
+  const runs = state.overview.benchmarks.runs || [];
+  if (!runs.length) {
+    benchmarkSummaryEl.innerHTML = `<p class="hint">No benchmark reports found.</p>`;
+    return;
+  }
+
+  benchmarkSummaryEl.innerHTML = runs
+    .map((run) => {
+      if (!run.available) {
+        return `
+          <article class="bench-card unknown">
+            <h4>${run.label}</h4>
+            <div class="bench-main">Report missing</div>
+            <p class="hint mono">${run.path}</p>
+          </article>
+        `;
+      }
+
+      const statusClass = runStatusClass(run);
+      const failedCases = run.failed_cases?.length ? run.failed_cases.join(", ") : "none";
+      const modelLine = run.model ? `<div class="bench-meta">Model: <code>${run.model}</code></div>` : "";
+      const precisionRecall =
+        run.test_type === "agent"
+          ? `<div class="bench-meta">Precision ${formatNumber(run.avg_precision)} | Recall ${formatNumber(run.avg_recall)}</div>`
+          : "";
+      const runDate = toDateString(run.timestamp_unix);
+
+      return `
+        <article class="bench-card ${statusClass}">
+          <h4>${run.label}</h4>
+          <div class="bench-main">${run.passed}/${run.total} (${formatPercent(run.pass_rate)})</div>
+          <div class="bench-meta">Gate: ${formatPercent(run.fail_below)}</div>
+          ${modelLine}
+          ${precisionRecall}
+          <div class="bench-meta">Failed cases: ${failedCases}</div>
+          <div class="bench-meta mono">${run.command}</div>
+          ${runDate ? `<div class="bench-date">Run date: ${runDate}</div>` : ""}
+        </article>
+      `;
+    })
+    .join("");
+}
+
+function renderTestsRun() {
+  if (!testsRunEl || !state.overview?.benchmarks) return;
+  const tests = state.overview.benchmarks.tests_run || [];
+  if (!tests.length) {
+    testsRunEl.innerHTML = `<p class="hint">No test workflow metadata found.</p>`;
+    return;
+  }
+
+  testsRunEl.innerHTML = tests
+    .map(
+      (test) => `
+      <article class="test-row">
+        <code>${test.command}</code>
+        <span>${test.description || ""}</span>
+      </article>
+    `
+    )
+    .join("");
+}
+
+function renderResourceVerdict() {
+  if (!resourceVerdictEl || !state.overview?.benchmarks?.runs) return;
+  const runs = state.overview.benchmarks.runs.filter((run) => run.available);
+  if (!runs.length) {
+    resourceVerdictEl.textContent = "Benchmark verdict unavailable: missing reports.";
+    return;
+  }
+
+  const gatePassCount = runs.filter((run) => {
+    if (typeof run.pass_rate !== "number" || typeof run.fail_below !== "number") return false;
+    return run.pass_rate >= run.fail_below;
+  }).length;
+  const blocked = state.overview.verification?.blocked_access || 0;
+
+  let verdict = "Resource quality: moderate";
+  if (gatePassCount >= 4) verdict = "Resource quality: strong";
+  else if (gatePassCount >= 3) verdict = "Resource quality: good";
+
+  const blockedNote =
+    blocked > 0 ? ` | caution: ${blocked} support pages currently blocked by upstream access controls.` : "";
+  resourceVerdictEl.textContent = `${verdict} (${gatePassCount}/${runs.length} benchmark gates passed)${blockedNote}`;
+}
+
 function renderResults(items, queryTokens) {
   if (!items.length) {
     resultsEl.innerHTML = `<p class="hint">No matches. Try more specific keywords like <code>dds</code>, <code>sdk2</code>, <code>sim2real</code>.</p>`;
@@ -114,6 +229,9 @@ async function loadData() {
     if (overviewResp.ok) {
       state.overview = await overviewResp.json();
       renderStats();
+      renderBenchmarks();
+      renderTestsRun();
+      renderResourceVerdict();
     }
 
     searchMetaEl.textContent = `Loaded ${state.records.length} records. Enter a question to search.`;

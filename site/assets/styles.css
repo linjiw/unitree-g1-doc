@@ -176,6 +176,86 @@ code {
   font-size: 0.9rem;
 }
 
+.section-subhead {
+  margin: 1rem 0 0.6rem;
+  font-size: 1rem;
+}
+
+.bench-grid {
+  margin-top: 0.8rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.bench-card {
+  border: 1px solid #d8d0be;
+  border-radius: 14px;
+  background: #fffefa;
+  padding: 0.75rem;
+}
+
+.bench-card.pass {
+  border-color: #9dd3ca;
+  background: #f4fbf8;
+}
+
+.bench-card.fail {
+  border-color: #e8c0b4;
+  background: #fff7f3;
+}
+
+.bench-card.unknown {
+  border-color: #cfc7b4;
+  background: #faf8f1;
+}
+
+.bench-card h4 {
+  margin: 0 0 0.45rem;
+  font-size: 0.95rem;
+}
+
+.bench-main {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.bench-meta {
+  font-size: 0.83rem;
+  color: #4e493f;
+  margin-top: 0.15rem;
+}
+
+.bench-date {
+  margin-top: 0.3rem;
+  font-size: 0.77rem;
+  color: #6b665c;
+}
+
+.tests-list {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.test-row {
+  border: 1px solid #ddd6c6;
+  border-radius: 10px;
+  padding: 0.55rem 0.65rem;
+  display: grid;
+  gap: 0.2rem;
+  background: #ffffff;
+}
+
+.test-row code {
+  font-size: 0.82rem;
+}
+
+.test-row span {
+  font-size: 0.84rem;
+  color: #524d43;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -215,6 +295,10 @@ code {
   animation-delay: 220ms;
 }
 
+.delay-3 {
+  animation-delay: 320ms;
+}
+
 @keyframes rise {
   to {
     opacity: 1;
@@ -224,6 +308,10 @@ code {
 
 @media (max-width: 900px) {
   .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bench-grid {
     grid-template-columns: 1fr;
   }
 

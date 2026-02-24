@@ -168,6 +168,27 @@ Outputs:
 - `docs/verification/ollama_question_retrieval_eval.md`
 - `docs/verification/ollama_agent_eval.md`
 
+## Benchmark Snapshot (February 24, 2026)
+
+| Test | Command | Cases | Pass Rate | Gate | Status |
+| --- | --- | --- | --- | --- | --- |
+| Baseline retrieval regression | `make eval-retrieval` | 12 | 91.67% (11/12) | >= 75% | pass |
+| Baseline Llama source-selection | `make eval-agent-ollama` | 12 | 83.33% (10/12) | >= 70% | pass |
+| Curated Ollama+Codex retrieval | `make eval-retrieval-ollama-qbank` | 16 | 87.50% (14/16) | >= 70% | pass |
+| Curated Ollama+Codex Llama source-selection | `make eval-agent-ollama-qbank` | 16 | 81.25% (13/16) | >= 60% | pass |
+
+Recent misses to improve:
+- Baseline retrieval miss: `sdk2_g1_examples`
+- Baseline Llama misses: `sdk2_g1_examples`, `repo_coverage_report`
+- Curated retrieval misses: `g1_repo_coverage_counts`, `g1_repo_lock_intent`
+- Curated Llama misses: `g1_repo_coverage_counts`, `g1_max_collect_usage`, `g1_repo_lock_intent`
+
+How this helps AI agents answer better:
+- Forces path-level grounding (`selected_paths`) instead of free-form responses.
+- Measures both retrieval quality and model source-selection quality.
+- Benchmarks include skill/agent usage cases (e.g., `g1_skill_usage`) to validate `AGENTS.md` and `skills/unitree-g1-expert/SKILL.md`.
+- Keeps quality gates explicit so regressions are detectable in CI/local runs.
+
 ## Important Documents
 
 - Architecture: [docs/architecture.md](/Users/linji/projects/unitree-g1-doc/docs/architecture.md)

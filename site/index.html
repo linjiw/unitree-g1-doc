@@ -44,7 +44,22 @@
         <div id="results" class="results"></div>
       </section>
 
-      <section class="grid reveal delay-2">
+      <section class="panel reveal delay-2">
+        <div class="panel-head">
+          <h2>Benchmark and Agent Quality</h2>
+          <span class="hint">Llama + retrieval evaluations</span>
+        </div>
+        <p class="hint">
+          These runs measure whether retrieval and Llama source selection can find the right local
+          evidence for Unitree G1 questions.
+        </p>
+        <div id="benchmarkSummary" class="bench-grid"></div>
+        <h3 class="section-subhead">Tests We Run</h3>
+        <div id="testsRun" class="tests-list"></div>
+        <p class="hint mono" id="resourceVerdict">Loading benchmark verdict...</p>
+      </section>
+
+      <section class="grid reveal delay-3">
         <article class="panel compact">
           <h3>Human Quick Start</h3>
           <ol>

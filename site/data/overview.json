@@ -30,5 +30,134 @@
     "total": 43,
     "worktree_present": 43,
     "mirror_present": 43
+  },
+  "benchmarks": {
+    "latest_timestamp_unix": 1771955917,
+    "runs": [
+      {
+        "label": "Baseline Retrieval Regression",
+        "test_type": "retrieval",
+        "command": "make eval-retrieval",
+        "path": "docs/verification/retrieval_eval.json",
+        "available": true,
+        "timestamp_unix": 1771955226,
+        "benchmark": "benchmarks/retrieval_benchmark.yaml",
+        "index": "data/index/knowledge_index.jsonl",
+        "model": null,
+        "api_base": null,
+        "total": 12,
+        "passed": 11,
+        "pass_rate": 0.9166666666666666,
+        "top_k": 8,
+        "fail_below": 0.75,
+        "avg_precision": null,
+        "avg_recall": null,
+        "failed_cases": [
+          "sdk2_g1_examples"
+        ],
+        "failed_count": 1
+      },
+      {
+        "label": "Baseline Llama Source-Selection",
+        "test_type": "agent",
+        "command": "make eval-agent-ollama",
+        "path": "docs/verification/agent_eval.json",
+        "available": true,
+        "timestamp_unix": 1771954022,
+        "benchmark": "benchmarks/retrieval_benchmark.yaml",
+        "index": "data/index/knowledge_index.jsonl",
+        "model": "llama3.1",
+        "api_base": "http://127.0.0.1:11434/v1",
+        "total": 12,
+        "passed": 10,
+        "pass_rate": 0.8333333333333334,
+        "top_k": 20,
+        "fail_below": 0.7,
+        "avg_precision": 0.375,
+        "avg_recall": 0.625,
+        "failed_cases": [
+          "sdk2_g1_examples",
+          "repo_coverage_report"
+        ],
+        "failed_count": 2
+      },
+      {
+        "label": "Ollama+Codex Question Set Retrieval",
+        "test_type": "retrieval",
+        "command": "make eval-retrieval-ollama-qbank",
+        "path": "docs/verification/ollama_question_retrieval_eval.json",
+        "available": true,
+        "timestamp_unix": 1771955231,
+        "benchmark": "benchmarks/ollama_question_benchmark.yaml",
+        "index": "data/index/knowledge_index.jsonl",
+        "model": null,
+        "api_base": null,
+        "total": 16,
+        "passed": 14,
+        "pass_rate": 0.875,
+        "top_k": 8,
+        "fail_below": 0.7,
+        "avg_precision": null,
+        "avg_recall": null,
+        "failed_cases": [
+          "g1_repo_coverage_counts",
+          "g1_repo_lock_intent"
+        ],
+        "failed_count": 2
+      },
+      {
+        "label": "Ollama+Codex Question Set Llama Source-Selection",
+        "test_type": "agent",
+        "command": "make eval-agent-ollama-qbank",
+        "path": "docs/verification/ollama_agent_eval.json",
+        "available": true,
+        "timestamp_unix": 1771955917,
+        "benchmark": "benchmarks/ollama_question_benchmark.yaml",
+        "index": "data/index/knowledge_index.jsonl",
+        "model": "llama3.1",
+        "api_base": "http://127.0.0.1:11434/v1",
+        "total": 16,
+        "passed": 13,
+        "pass_rate": 0.8125,
+        "top_k": 20,
+        "fail_below": 0.6,
+        "avg_precision": 0.3541666666666667,
+        "avg_recall": 0.46875,
+        "failed_cases": [
+          "g1_repo_coverage_counts",
+          "g1_max_collect_usage",
+          "g1_repo_lock_intent"
+        ],
+        "failed_count": 3
+      }
+    ],
+    "tests_run": [
+      {
+        "command": "make eval-retrieval",
+        "description": "Lexical retrieval regression on baseline benchmark."
+      },
+      {
+        "command": "make eval-agent-ollama",
+        "description": "Llama source-selection on baseline benchmark."
+      },
+      {
+        "command": "make gen-questions-ollama",
+        "description": "Generate and curate an Ollama+Codex question bank."
+      },
+      {
+        "command": "make eval-retrieval-ollama-qbank",
+        "description": "Retrieval regression on the curated Ollama+Codex benchmark."
+      },
+      {
+        "command": "make eval-agent-ollama-qbank",
+        "description": "Llama source-selection on the curated Ollama+Codex benchmark."
+      }
+    ],
+    "quality_gates": {
+      "baseline_retrieval_min": 0.75,
+      "baseline_agent_min": 0.7,
+      "qbank_retrieval_min": 0.7,
+      "qbank_agent_min": 0.6
+    }
   }
 }

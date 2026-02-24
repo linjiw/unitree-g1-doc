@@ -49,6 +49,30 @@ def parse_args() -> argparse.Namespace:
         help="Repo lock report path",
     )
     parser.add_argument(
+        "--retrieval-eval-json",
+        type=Path,
+        default=Path("docs/verification/retrieval_eval.json"),
+        help="Baseline retrieval evaluation JSON path",
+    )
+    parser.add_argument(
+        "--agent-eval-json",
+        type=Path,
+        default=Path("docs/verification/agent_eval.json"),
+        help="Baseline agent source-selection evaluation JSON path",
+    )
+    parser.add_argument(
+        "--ollama-retrieval-eval-json",
+        type=Path,
+        default=Path("docs/verification/ollama_question_retrieval_eval.json"),
+        help="Ollama question benchmark retrieval evaluation JSON path",
+    )
+    parser.add_argument(
+        "--ollama-agent-eval-json",
+        type=Path,
+        default=Path("docs/verification/ollama_agent_eval.json"),
+        help="Ollama question benchmark agent source-selection evaluation JSON path",
+    )
+    parser.add_argument(
         "--out-dir",
         type=Path,
         default=Path("site/data"),
@@ -74,6 +98,52 @@ def read_yaml(path: Path) -> dict[str, Any]:
         return {}
     payload = yaml.safe_load(path.read_text(encoding="utf-8"))
     return payload if isinstance(payload, dict) else {}
+
+
+def summarize_eval(path: Path, label: str, test_type: str, command: str) -> dict[str, Any]:
+    payload = read_json(path)
+    if not payload:
+        return {
+            "label": label,
+            "test_type": test_type,
+            "command": command,
+            "path": str(path),
+            "available": False,
+        }
+
+    results = payload.get("results", [])
+    failed_cases: list[str] = []
+    if isinstance(results, list):
+        for item in results:
+            if not isinstance(item, dict):
+                continue
+            if bool(item.get("pass")):
+                continue
+            case_id = item.get("id")
+            if case_id:
+                failed_cases.append(str(case_id))
+
+    return {
+        "label": label,
+        "test_type": test_type,
+        "command": command,
+        "path": str(path),
+        "available": True,
+        "timestamp_unix": payload.get("timestamp_unix"),
+        "benchmark": payload.get("benchmark"),
+        "index": payload.get("index"),
+        "model": payload.get("model"),
+        "api_base": payload.get("api_base"),
+        "total": payload.get("total"),
+        "passed": payload.get("passed"),
+        "pass_rate": payload.get("pass_rate"),
+        "top_k": payload.get("top_k"),
+        "fail_below": payload.get("fail_below"),
+        "avg_precision": payload.get("avg_precision"),
+        "avg_recall": payload.get("avg_recall"),
+        "failed_cases": failed_cases,
+        "failed_count": len(failed_cases),
+    }
 
 
 def main() -> int:
@@ -115,6 +185,41 @@ def main() -> int:
     manifest = read_yaml(args.manifest)
     verification = read_json(args.verification_json)
     repo_lock = read_json(args.repo_lock_json)
+    benchmark_runs = [
+        summarize_eval(
+            args.retrieval_eval_json,
+            "Baseline Retrieval Regression",
+            "retrieval",
+            "make eval-retrieval",
+        ),
+        summarize_eval(
+            args.agent_eval_json,
+            "Baseline Llama Source-Selection",
+            "agent",
+            "make eval-agent-ollama",
+        ),
+        summarize_eval(
+            args.ollama_retrieval_eval_json,
+            "Ollama+Codex Question Set Retrieval",
+            "retrieval",
+            "make eval-retrieval-ollama-qbank",
+        ),
+        summarize_eval(
+            args.ollama_agent_eval_json,
+            "Ollama+Codex Question Set Llama Source-Selection",
+            "agent",
+            "make eval-agent-ollama-qbank",
+        ),
+    ]
+
+    latest_eval_ts = max(
+        (
+            int(run.get("timestamp_unix"))
+            for run in benchmark_runs
+            if run.get("available") and run.get("timestamp_unix") is not None
+        ),
+        default=None,
+    )
 
     overview = {
         "index_meta": meta,
@@ -133,6 +238,38 @@ def main() -> int:
             "total": repo_lock.get("summary", {}).get("total", 0),
             "worktree_present": repo_lock.get("summary", {}).get("worktree_present", 0),
             "mirror_present": repo_lock.get("summary", {}).get("mirror_present", 0),
+        },
+        "benchmarks": {
+            "latest_timestamp_unix": latest_eval_ts,
+            "runs": benchmark_runs,
+            "tests_run": [
+                {
+                    "command": "make eval-retrieval",
+                    "description": "Lexical retrieval regression on baseline benchmark.",
+                },
+                {
+                    "command": "make eval-agent-ollama",
+                    "description": "Llama source-selection on baseline benchmark.",
+                },
+                {
+                    "command": "make gen-questions-ollama",
+                    "description": "Generate and curate an Ollama+Codex question bank.",
+                },
+                {
+                    "command": "make eval-retrieval-ollama-qbank",
+                    "description": "Retrieval regression on the curated Ollama+Codex benchmark.",
+                },
+                {
+                    "command": "make eval-agent-ollama-qbank",
+                    "description": "Llama source-selection on the curated Ollama+Codex benchmark.",
+                },
+            ],
+            "quality_gates": {
+                "baseline_retrieval_min": 0.75,
+                "baseline_agent_min": 0.70,
+                "qbank_retrieval_min": 0.70,
+                "qbank_agent_min": 0.60,
+            },
         },
     }
     (args.out_dir / "overview.json").write_text(
