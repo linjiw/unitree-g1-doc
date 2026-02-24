@@ -1,0 +1,110 @@
+version: 1
+name: codex_agent_stretch
+cases:
+  - id: codex_goal_statement
+    query: what is the primary goal of this repository for codex
+    expected_path_patterns:
+      - AGENTS.md
+      - skills/unitree-g1-expert/SKILL.md
+
+  - id: codex_answer_contract
+    query: how should codex format verified versus inference answers
+    expected_path_patterns:
+      - AGENTS.md
+      - skills/unitree-g1-expert/SKILL.md
+
+  - id: codex_source_priority
+    query: what source priority should codex use for g1 answers
+    expected_path_patterns:
+      - skills/unitree-g1-expert/SKILL.md
+      - skills/unitree-g1-expert/references/source-priority.md
+
+  - id: codex_refresh_pipeline
+    query: which commands refresh and index all unitree g1 sources
+    expected_path_patterns:
+      - AGENTS.md
+      - scripts/sync_sources.py
+
+  - id: codex_query_interface_json
+    query: which command should codex use to query the local index in json mode
+    expected_path_patterns:
+      - scripts/query_index.py
+      - docs/INDEX.md
+
+  - id: codex_repo_lock_builder
+    query: which script builds repo lock and where is it documented
+    expected_path_patterns:
+      - scripts/build_repo_lock.py
+      - docs/verification/repo_lock.md
+
+  - id: codex_coverage_and_blocking
+    query: where can codex verify blocked access status for support unitree g1 pages
+    expected_path_patterns:
+      - docs/verification/g1_docs_verification.md
+      - docs/verification/coverage_report.md
+
+  - id: codex_support_manifest_mapping
+    query: which files map support unitree urls to local ids and verification status
+    expected_path_patterns:
+      - sources/unitree_g1_sources.yaml
+      - docs/verification/g1_docs_verification.md
+
+  - id: codex_deployment_remote_first
+    query: should codex recommend remote pc or onboard first for g1 policy deployment
+    expected_path_patterns:
+      - docs/pipelines/deployment-onboard-vs-remote-pc.md
+      - docs/pipelines/sim2sim-sim2real.md
+
+  - id: codex_sim2real_stages
+    query: what are the stages from simulation to real for g1
+    expected_path_patterns:
+      - docs/pipelines/sim2sim-sim2real.md
+      - data/repos/unitree_rl_gym/deploy/deploy_real/README.md
+
+  - id: codex_sdk2_python_install
+    query: where are g1 sdk2 python install requirements and instructions
+    expected_path_patterns:
+      - data/repos/unitree_sdk2_python/README.md
+      - docs/source-digests/unitree_sdk2_python.md
+
+  - id: codex_ros2_lowlevel_example
+    query: where is the g1 ros2 low level example source file
+    expected_path_patterns:
+      - data/repos/unitree_ros2/example/src/src/g1/lowlevel/g1_low_level_example.cpp
+      - data/repos/unitree_ros2/README.md
+
+  - id: codex_eval_thresholds
+    query: what are the recommended pass rate gates for retriever and agent evaluations
+    expected_path_patterns:
+      - docs/verification/agent_eval_playbook.md
+      - AGENTS.md
+
+  - id: codex_question_bank_pipeline
+    query: how do we generate and convert question banks for benchmark testing
+    expected_path_patterns:
+      - scripts/generate_question_bank.py
+      - scripts/build_question_benchmark.py
+
+  - id: codex_stretch_experiment_doc
+    query: where is the codex stretch experiment design documented
+    expected_path_patterns:
+      - docs/verification/codex_agent_experiments.md
+      - benchmarks/codex_agent_stretch_benchmark.yaml
+
+  - id: codex_site_method_pages
+    query: which pages explain methodology and example codex versus llama outputs
+    expected_path_patterns:
+      - site/how-we-design.html
+      - site/examples.html
+
+  - id: codex_site_example_payload
+    query: what file stores benchmark example payloads for the website
+    expected_path_patterns:
+      - site/data/benchmark_examples.json
+      - scripts/build_site.py
+
+  - id: codex_repo_catalog_scope
+    query: where is the full unitree org repo catalog snapshot and main source manifest
+    expected_path_patterns:
+      - sources/unitree_org_repo_catalog.json
+      - sources/unitree_g1_sources.yaml

@@ -12,6 +12,9 @@
 - Ollama question bank: `/docs/verification/ollama_question_bank.md`
 - Ollama question retrieval eval: `/docs/verification/ollama_question_retrieval_eval.md`
 - Ollama agent eval: `/docs/verification/ollama_agent_eval.md`
+- Codex experiment plan: `/docs/verification/codex_agent_experiments.md`
+- Codex stretch retrieval eval: `/docs/verification/codex_stretch_retrieval_eval.md`
+- Codex stretch agent eval: `/docs/verification/codex_stretch_agent_eval.md`
 - Full org catalog snapshot: `/sources/unitree_org_repo_catalog.json`
 - Raw mirrors: `/data/repo_mirrors/*.git` (generated, gitignored)
 - Raw tar archives: `/data/repo_archives/*.tar.gz` (generated, gitignored)

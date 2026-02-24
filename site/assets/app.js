@@ -101,10 +101,11 @@ function renderBenchmarks() {
   benchmarkSummaryEl.innerHTML = runs
     .map((run) => {
       if (!run.available) {
+        const reason = run.unavailable_reason ? ` (${run.unavailable_reason})` : "";
         return `
           <article class="bench-card unknown">
             <h4>${run.label}</h4>
-            <div class="bench-main">Report missing</div>
+            <div class="bench-main">Report unavailable${reason}</div>
             <p class="hint mono">${run.path}</p>
           </article>
         `;

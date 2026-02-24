@@ -158,6 +158,18 @@ def parse_args() -> argparse.Namespace:
         help="Ollama question benchmark agent source-selection evaluation JSON path",
     )
     parser.add_argument(
+        "--codex-stretch-retrieval-eval-json",
+        type=Path,
+        default=Path("docs/verification/codex_stretch_retrieval_eval.json"),
+        help="Codex stretch retrieval evaluation JSON path",
+    )
+    parser.add_argument(
+        "--codex-stretch-agent-eval-json",
+        type=Path,
+        default=Path("docs/verification/codex_stretch_agent_eval.json"),
+        help="Codex stretch agent source-selection evaluation JSON path",
+    )
+    parser.add_argument(
         "--ollama-question-bank-yaml",
         type=Path,
         default=Path("benchmarks/ollama_question_bank.yaml"),
@@ -203,6 +215,24 @@ def summarize_eval(path: Path, label: str, test_type: str, command: str) -> dict
         }
 
     results = payload.get("results", [])
+    if isinstance(results, list) and results:
+        endpoint_errors = 0
+        for item in results:
+            if not isinstance(item, dict):
+                continue
+            err = str(item.get("error", ""))
+            if "Failed to reach model endpoint" in err:
+                endpoint_errors += 1
+        if endpoint_errors == len(results):
+            return {
+                "label": label,
+                "test_type": test_type,
+                "command": command,
+                "path": str(path),
+                "available": False,
+                "unavailable_reason": "model_endpoint_unreachable",
+            }
+
     failed_cases: list[str] = []
     if isinstance(results, list):
         for item in results:
@@ -426,6 +456,18 @@ def main() -> int:
             "agent",
             "make eval-agent-ollama-qbank",
         ),
+        summarize_eval(
+            args.codex_stretch_retrieval_eval_json,
+            "Codex Stretch Retrieval",
+            "retrieval",
+            "make eval-retrieval-codex-stretch",
+        ),
+        summarize_eval(
+            args.codex_stretch_agent_eval_json,
+            "Codex Stretch Llama Source-Selection",
+            "agent",
+            "make eval-agent-ollama-codex-stretch",
+        ),
     ]
 
     latest_eval_ts = max(
@@ -479,12 +521,22 @@ def main() -> int:
                     "command": "make eval-agent-ollama-qbank",
                     "description": "Llama source-selection on the curated Ollama+Codex benchmark.",
                 },
+                {
+                    "command": "make eval-retrieval-codex-stretch",
+                    "description": "Retriever regression on Codex-first stretch benchmark.",
+                },
+                {
+                    "command": "make eval-agent-ollama-codex-stretch",
+                    "description": "Llama source-selection on Codex-first stretch benchmark.",
+                },
             ],
             "quality_gates": {
                 "baseline_retrieval_min": 0.75,
                 "baseline_agent_min": 0.70,
                 "qbank_retrieval_min": 0.70,
                 "qbank_agent_min": 0.60,
+                "codex_stretch_retrieval_min": 0.70,
+                "codex_stretch_agent_min": 0.60,
             },
         },
     }

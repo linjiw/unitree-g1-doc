@@ -31,11 +31,19 @@
         <p class="eyebrow">Methodology</p>
         <h1>How we design retrieval and Llama benchmark tests</h1>
         <p class="subtext">
-          We test both retrieval quality and model source-selection quality. The objective is not
-          free-form text fluency; it is grounded source selection with verifiable file-path
-          citations for Unitree G1 questions.
+          North-star goal: make this repository the best in-repo workspace for Codex-style coding
+          agents to handle Unitree G1 questions with grounded citations.
         </p>
       </header>
+
+      <section class="panel reveal delay-2 prose">
+        <h2>North Star</h2>
+        <ul>
+          <li>Codex can run inside this repo and answer most G1 questions without external guessing.</li>
+          <li>Answers always cite local files/URLs and separate Verified facts from Inference.</li>
+          <li>Benchmarks expose failures clearly so we can improve docs, indexing, and skill rules.</li>
+        </ul>
+      </section>
 
       <section class="panel reveal delay-2 prose">
         <h2>Evaluation Architecture</h2>
@@ -82,6 +90,22 @@
           <li>A case passes if at least one selected path matches expected patterns.</li>
           <li>Precision and recall are computed per case and aggregated.</li>
         </ul>
+      </section>
+
+      <section class="panel reveal delay-3 prose">
+        <h2>Codex Stretch Experiments</h2>
+        <p>
+          Beyond baseline and curated sets, we run a Codex-first stretch benchmark focused on
+          workflow understanding, answer-contract compliance, and repo-navigation tasks.
+        </p>
+        <ul>
+          <li><code>make eval-retrieval-codex-stretch</code></li>
+          <li><code>make eval-agent-ollama-codex-stretch</code></li>
+        </ul>
+        <p>
+          Design details are tracked in
+          <code>docs/verification/codex_agent_experiments.md</code>.
+        </p>
       </section>
 
       <section class="panel reveal delay-3 prose">

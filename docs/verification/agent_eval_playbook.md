@@ -69,9 +69,31 @@ make eval-agent-ollama-qbank
 - `docs/verification/ollama_question_bank.md`
 - `docs/verification/ollama_question_retrieval_eval.md`
 - `docs/verification/ollama_agent_eval.md`
+- `docs/verification/codex_stretch_retrieval_eval.md`
+- `docs/verification/codex_stretch_agent_eval.md`
 
-## 6) Suggested Quality Gates
+## 6) Codex Stretch Benchmark
+
+Retriever-only:
+
+```bash
+make eval-retrieval-codex-stretch
+```
+
+Model source-selection:
+
+```bash
+make eval-agent-ollama-codex-stretch
+```
+
+Benchmark file:
+- `benchmarks/codex_agent_stretch_benchmark.yaml`
+- experiment design doc: `docs/verification/codex_agent_experiments.md`
+
+## 7) Suggested Quality Gates
 
 - Retriever pass rate: `>= 0.75`
 - Agent source-selection pass rate: `>= 0.70`
+- Codex stretch retriever pass rate: `>= 0.70`
+- Codex stretch agent pass rate: `>= 0.60`
 - Raise thresholds after adding more benchmark cases.

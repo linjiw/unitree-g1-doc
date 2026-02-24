@@ -1,10 +1,30 @@
 # AGENTS
 
-This repository is a local-first Unitree G1 knowledge base for both humans and AI agents.
+This repository is designed to be a **Codex-first Unitree G1 workspace**.
 
 ## Prime Objective
 
-Answer Unitree G1 questions with verifiable local evidence and source citations.
+Enable Codex (and similar coding agents) to answer Unitree G1 questions with high accuracy, local evidence, and explicit citations.
+
+## Codex-First Success Criteria
+
+1. Codex can run entirely inside this repo and find relevant evidence quickly.
+2. Answers are grounded in local files first, then upstream URLs when needed.
+3. Output clearly separates:
+   - `Verified` facts (directly cited)
+   - `Inference` (reasoned conclusions)
+4. Benchmark pass rates remain above quality gates and improve over time.
+
+## Domain Coverage Targets
+
+The agent should be able to handle questions spanning:
+- SDK2 and SDK2 Python usage
+- DDS/service interfaces
+- ROS2 examples and control pathways
+- Sim2Sim/Sim2Real workflows
+- Onboard vs remote-PC deployment
+- Verification/coverage/repo-lock status
+- Skill and workflow usage for grounded answers
 
 ## Mandatory Workflow
 
@@ -13,22 +33,33 @@ Answer Unitree G1 questions with verifiable local evidence and source citations.
    - `python3 scripts/sync_sources.py`
    - `python3 scripts/sync_repo_mirrors.py`
    - `python3 scripts/download_repo_archives.py`
-2. For JS-heavy support pages:
+2. Verify/index curated + support docs:
    - `python3 scripts/verify_g1_docs.py --update-manifest`
    - `python3 scripts/build_knowledge_index.py`
    - `python3 scripts/build_repo_lock.py`
    - `python3 scripts/build_coverage_report.py`
 3. Retrieve evidence:
    - `python3 scripts/query_index.py "<question>" --format json`
-4. Validate retrieval quality (periodic/CI):
+4. Run quality checks (periodic/CI):
    - `python3 scripts/eval_retrieval.py --strict --fail-below 0.75`
    - `python3 scripts/eval_openai_compatible.py --strict --fail-below 0.70` (when model endpoint is available)
-   - For local Ollama: `make eval-agent-ollama`
-   - For curated Ollama+Codex question bank: `make eval-retrieval-ollama-qbank` and `make eval-agent-ollama-qbank`
+   - `make eval-agent-ollama`
+   - `make eval-retrieval-ollama-qbank`
+   - `make eval-agent-ollama-qbank`
+   - `make eval-retrieval-codex-stretch`
+   - `make eval-agent-ollama-codex-stretch`
 5. Respond with:
    - direct answer
-   - cited file paths/URLs
-   - explicit `Verified` vs `Inference` labels
+   - exact cited file paths/URLs
+   - explicit `Verified` and `Inference` sections
+
+## Required Answer Contract
+
+Every production answer should include:
+1. **Answer**: concise recommendation or result.
+2. **Verified**: bullet facts with citations.
+3. **Inference**: assumptions or reasoning not directly stated in sources.
+4. **Limitations**: missing evidence, blocked pages, stale artifacts, or uncertainty.
 
 ## Core Files for Agents
 
@@ -38,11 +69,14 @@ Answer Unitree G1 questions with verifiable local evidence and source citations.
 - Repo lock report: `docs/verification/repo_lock.md`
 - Coverage report: `docs/verification/coverage_report.md`
 - Skill instructions: `skills/unitree-g1-expert/SKILL.md`
+- Eval playbook: `docs/verification/agent_eval_playbook.md`
+- Codex experiment plan: `docs/verification/codex_agent_experiments.md`
 
 ## Reliability Rules
 
 - Prefer official Unitree support docs and official Unitree GitHub repos.
-- Never claim "fully complete forever" coverage. Upstream docs and repos can change.
-- Use latest verification report timestamp before high-confidence claims.
-- Use strict `--fail-on-error` for sync when you expect full direct access to all upstream sources.
-- Use strict `--fail-on-error` on verification only when the network can access support pages without security blocking.
+- Never claim permanent/full coverage; upstream docs and repos can change.
+- Use latest verification timestamps before high-confidence claims.
+- Use strict `--fail-on-error` only when full upstream network access is expected.
+- If support pages are blocked, explicitly state this and rely on local mirror/index evidence.
+- If retrieval misses expected evidence, refresh and rebuild index before answering from memory.

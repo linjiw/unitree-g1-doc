@@ -32,7 +32,7 @@
     "mirror_present": 43
   },
   "benchmarks": {
-    "latest_timestamp_unix": 1771955917,
+    "latest_timestamp_unix": 1771958950,
     "runs": [
       {
         "label": "Baseline Retrieval Regression",
@@ -129,6 +129,47 @@
           "g1_repo_lock_intent"
         ],
         "failed_count": 3
+      },
+      {
+        "label": "Codex Stretch Retrieval",
+        "test_type": "retrieval",
+        "command": "make eval-retrieval-codex-stretch",
+        "path": "docs/verification/codex_stretch_retrieval_eval.json",
+        "available": true,
+        "timestamp_unix": 1771958950,
+        "benchmark": "benchmarks/codex_agent_stretch_benchmark.yaml",
+        "index": "data/index/knowledge_index.jsonl",
+        "model": null,
+        "api_base": null,
+        "total": 18,
+        "passed": 6,
+        "pass_rate": 0.3333333333333333,
+        "top_k": 8,
+        "fail_below": 0.7,
+        "avg_precision": null,
+        "avg_recall": null,
+        "failed_cases": [
+          "codex_goal_statement",
+          "codex_answer_contract",
+          "codex_refresh_pipeline",
+          "codex_query_interface_json",
+          "codex_repo_lock_builder",
+          "codex_support_manifest_mapping",
+          "codex_eval_thresholds",
+          "codex_question_bank_pipeline",
+          "codex_stretch_experiment_doc",
+          "codex_site_method_pages",
+          "codex_site_example_payload",
+          "codex_repo_catalog_scope"
+        ],
+        "failed_count": 12
+      },
+      {
+        "label": "Codex Stretch Llama Source-Selection",
+        "test_type": "agent",
+        "command": "make eval-agent-ollama-codex-stretch",
+        "path": "docs/verification/codex_stretch_agent_eval.json",
+        "available": false
       }
     ],
     "tests_run": [
@@ -151,13 +192,23 @@
       {
         "command": "make eval-agent-ollama-qbank",
         "description": "Llama source-selection on the curated Ollama+Codex benchmark."
+      },
+      {
+        "command": "make eval-retrieval-codex-stretch",
+        "description": "Retriever regression on Codex-first stretch benchmark."
+      },
+      {
+        "command": "make eval-agent-ollama-codex-stretch",
+        "description": "Llama source-selection on Codex-first stretch benchmark."
       }
     ],
     "quality_gates": {
       "baseline_retrieval_min": 0.75,
       "baseline_agent_min": 0.7,
       "qbank_retrieval_min": 0.7,
-      "qbank_agent_min": 0.6
+      "qbank_agent_min": 0.6,
+      "codex_stretch_retrieval_min": 0.7,
+      "codex_stretch_agent_min": 0.6
     }
   }
 }

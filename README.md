@@ -6,6 +6,7 @@ A local-first repository to collect, verify, index, and search Unitree G1 docume
 
 - Keep official Unitree G1 docs and code references synchronized locally.
 - Build an AI-friendly knowledge index with file-level citations.
+- Provide a Codex-first workspace so coding agents can answer G1 questions with grounded evidence.
 - Provide a repeatable workflow for SDK, DDS, sim2sim/sim2real, and deployment questions.
 - Publish a searchable demo website via GitHub Pages.
 
@@ -110,6 +111,8 @@ make eval-agent-ollama
 make gen-questions-ollama
 make eval-retrieval-ollama-qbank
 make eval-agent-ollama-qbank
+make eval-retrieval-codex-stretch
+make eval-agent-ollama-codex-stretch
 make query q="g1 dds interface"
 make site
 ```
@@ -163,6 +166,27 @@ OPENAI_MODEL=llama3.1 \
   --strict --fail-below 0.60
 ```
 
+Run Codex-first stretch benchmark (workflow and grounding-heavy cases):
+
+```bash
+.venv/bin/python scripts/eval_retrieval.py \
+  --benchmark benchmarks/codex_agent_stretch_benchmark.yaml \
+  --json-out docs/verification/codex_stretch_retrieval_eval.json \
+  --md-out docs/verification/codex_stretch_retrieval_eval.md \
+  --strict --fail-below 0.70
+```
+
+```bash
+OPENAI_API_BASE=http://127.0.0.1:11434/v1 \
+OPENAI_API_KEY=ollama \
+OPENAI_MODEL=llama3.1 \
+.venv/bin/python scripts/eval_openai_compatible.py \
+  --benchmark benchmarks/codex_agent_stretch_benchmark.yaml \
+  --json-out docs/verification/codex_stretch_agent_eval.json \
+  --md-out docs/verification/codex_stretch_agent_eval.md \
+  --strict --fail-below 0.60
+```
+
 Outputs:
 
 - `docs/verification/retrieval_eval.md`
@@ -170,6 +194,8 @@ Outputs:
 - `docs/verification/ollama_question_bank.md`
 - `docs/verification/ollama_question_retrieval_eval.md`
 - `docs/verification/ollama_agent_eval.md`
+- `docs/verification/codex_stretch_retrieval_eval.md`
+- `docs/verification/codex_stretch_agent_eval.md`
 
 ## Benchmark Snapshot (February 24, 2026)
 
@@ -179,12 +205,15 @@ Outputs:
 | Baseline Llama source-selection | `make eval-agent-ollama` | 12 | 83.33% (10/12) | >= 70% | pass |
 | Curated Ollama+Codex retrieval | `make eval-retrieval-ollama-qbank` | 16 | 87.50% (14/16) | >= 70% | pass |
 | Curated Ollama+Codex Llama source-selection | `make eval-agent-ollama-qbank` | 16 | 81.25% (13/16) | >= 60% | pass |
+| Codex stretch retrieval | `make eval-retrieval-codex-stretch` | 18 | 33.33% (6/18) | >= 70% | fail |
+| Codex stretch Llama source-selection | `make eval-agent-ollama-codex-stretch` | 18 | n/a (endpoint unavailable in this run) | >= 60% | unavailable |
 
 Recent misses to improve:
 - Baseline retrieval miss: `sdk2_g1_examples`
 - Baseline Llama misses: `sdk2_g1_examples`, `repo_coverage_report`
 - Curated retrieval misses: `g1_repo_coverage_counts`, `g1_repo_lock_intent`
 - Curated Llama misses: `g1_repo_coverage_counts`, `g1_max_collect_usage`, `g1_repo_lock_intent`
+- Codex stretch retrieval misses include workflow-heavy cases (`codex_goal_statement`, `codex_answer_contract`, `codex_refresh_pipeline`, `codex_query_interface_json`, and others in `docs/verification/codex_stretch_retrieval_eval.md`)
 
 How this helps AI agents answer better:
 - Forces path-level grounding (`selected_paths`) instead of free-form responses.
@@ -204,6 +233,7 @@ How this helps AI agents answer better:
 - Repo lock report: [docs/verification/repo_lock.md](/Users/linji/projects/unitree-g1-doc/docs/verification/repo_lock.md)
 - Coverage report: [docs/verification/coverage_report.md](/Users/linji/projects/unitree-g1-doc/docs/verification/coverage_report.md)
 - Agent eval playbook: [docs/verification/agent_eval_playbook.md](/Users/linji/projects/unitree-g1-doc/docs/verification/agent_eval_playbook.md)
+- Codex experiment plan: [docs/verification/codex_agent_experiments.md](/Users/linji/projects/unitree-g1-doc/docs/verification/codex_agent_experiments.md)
 
 ## Scope and Completeness Notes
 

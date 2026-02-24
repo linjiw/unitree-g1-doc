@@ -5,29 +5,40 @@ description: Ground Unitree G1 answers in local evidence from official Unitree d
 
 # Unitree G1 Expert
 
-Use local indexed sources first, then provide a concise answer with explicit file/URL citations.
+Use this skill to make Codex effective inside this repository: retrieve local evidence first, then answer with explicit citations and `Verified` vs `Inference`.
 
-## Quick Workflow
+## Codex Runtime Intent
 
-1. Ensure local data is fresh:
-   - Run `python3 scripts/discover_unitree_repos.py --include-all --update-manifest` for maximum repo coverage.
-   - Run `python3 scripts/sync_sources.py` at repo root when sources may be stale.
-   - Run `python3 scripts/sync_repo_mirrors.py` and `python3 scripts/download_repo_archives.py` for raw retention.
-   - Run `python3 scripts/verify_g1_docs.py --update-manifest` to discover and verify G1 developer docs.
-   - Run `python3 scripts/render_support_docs.py` when support pages are JS-rendered and text is missing.
-   - Run `python3 scripts/build_knowledge_index.py` after sync.
-   - Run `python3 scripts/build_coverage_report.py` before final high-confidence answers.
-   - Run `python3 scripts/eval_retrieval.py --strict --fail-below 0.75` for regression checks.
-2. Retrieve top local evidence:
-   - Run `python3 scripts/query_index.py "<question>"`.
-   - Optional model-eval gate: run `python3 scripts/eval_openai_compatible.py --strict --fail-below 0.70` when an OpenAI-compatible endpoint is configured.
-   - For local Ollama benchmark set: run `make eval-retrieval-ollama-qbank` and `make eval-agent-ollama-qbank`.
-3. Open and verify exact files for final grounding:
-   - Prefer `docs/source-digests/*.md`, synced support pages, and README files in `data/repos/`.
-4. Answer with:
-   - clear recommendation
-   - verified facts vs inference split
-   - exact file paths and upstream URLs used
+When Codex receives a Unitree G1 question, it should:
+1. Determine intent type:
+   - usage/how-to
+   - architecture/workflow
+   - verification/status
+   - script/command ownership
+2. Retrieve local evidence from index.
+3. Open top candidate files and verify exact statements.
+4. Answer with explicit source paths and confidence boundaries.
+
+## Mandatory Workflow
+
+1. Ensure data freshness:
+   - `python3 scripts/discover_unitree_repos.py --include-all --update-manifest`
+   - `python3 scripts/sync_sources.py`
+   - `python3 scripts/sync_repo_mirrors.py`
+   - `python3 scripts/download_repo_archives.py`
+   - `python3 scripts/verify_g1_docs.py --update-manifest`
+   - `python3 scripts/build_knowledge_index.py`
+   - `python3 scripts/build_repo_lock.py`
+   - `python3 scripts/build_coverage_report.py`
+2. Retrieve evidence:
+   - `python3 scripts/query_index.py "<question>" --format json`
+3. Validate quality periodically:
+   - `make eval-retrieval`
+   - `make eval-agent-ollama`
+   - `make eval-retrieval-ollama-qbank`
+   - `make eval-agent-ollama-qbank`
+   - `make eval-retrieval-codex-stretch`
+   - `make eval-agent-ollama-codex-stretch`
 
 ## Retrieval and Grounding Rules
 
@@ -38,8 +49,23 @@ Use local indexed sources first, then provide a concise answer with explicit fil
 2. Mark statements as:
    - `Verified` when directly supported by a cited source
    - `Inference` when reasoned from architecture/constraints
-3. If local index misses the answer, request a sync before guessing.
-4. Always check `docs/verification/g1_docs_verification.md`, `docs/verification/repo_lock.md`, and `docs/verification/coverage_report.md` before claiming full docs coverage.
+3. Never answer from memory when retrieval misses expected evidence.
+4. If local index misses the answer, run refresh/index steps before guessing.
+5. Always check `docs/verification/g1_docs_verification.md`, `docs/verification/repo_lock.md`, and `docs/verification/coverage_report.md` before claiming full docs coverage.
+
+## Codex Answer Template
+
+Use this structure for user-facing answers:
+1. `Answer`: direct recommendation.
+2. `Verified`: concrete facts with exact local paths/URLs.
+3. `Inference`: reasoning not literally quoted from sources.
+4. `Limitations`: blocked sources, stale index, unresolved ambiguity.
+
+## Failure Handling
+
+- If support docs are `blocked_access`, say so explicitly and fall back to local mirrors/curated docs.
+- If benchmarks regress below gate, do not claim "best quality"; call out failed case IDs.
+- If question is outside G1 scope, say out-of-scope and provide nearest grounded pointers.
 
 ## Workflow Shortcuts
 
