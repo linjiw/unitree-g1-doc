@@ -17,8 +17,10 @@ Use local indexed sources first, then provide a concise answer with explicit fil
    - Run `python3 scripts/render_support_docs.py` when support pages are JS-rendered and text is missing.
    - Run `python3 scripts/build_knowledge_index.py` after sync.
    - Run `python3 scripts/build_coverage_report.py` before final high-confidence answers.
+   - Run `python3 scripts/eval_retrieval.py --strict --fail-below 0.75` for regression checks.
 2. Retrieve top local evidence:
    - Run `python3 scripts/query_index.py "<question>"`.
+   - Optional model-eval gate: run `python3 scripts/eval_openai_compatible.py --strict --fail-below 0.70` when an OpenAI-compatible endpoint is configured.
 3. Open and verify exact files for final grounding:
    - Prefer `docs/source-digests/*.md`, synced support pages, and README files in `data/repos/`.
 4. Answer with:

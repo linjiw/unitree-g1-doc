@@ -20,7 +20,10 @@ Answer Unitree G1 questions with verifiable local evidence and source citations.
    - `python3 scripts/build_coverage_report.py`
 3. Retrieve evidence:
    - `python3 scripts/query_index.py "<question>" --format json`
-4. Respond with:
+4. Validate retrieval quality (periodic/CI):
+   - `python3 scripts/eval_retrieval.py --strict --fail-below 0.75`
+   - `python3 scripts/eval_openai_compatible.py --strict --fail-below 0.70` (when model endpoint is available)
+5. Respond with:
    - direct answer
    - cited file paths/URLs
    - explicit `Verified` vs `Inference` labels

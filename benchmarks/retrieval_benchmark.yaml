@@ -1,0 +1,72 @@
+version: 1
+name: unitree_g1_retrieval_core
+cases:
+  - id: remote_pc_deployment
+    query: how to deploy g1 policy on remote pc
+    expected_path_patterns:
+      - docs/pipelines/deployment-onboard-vs-remote-pc.md
+      - data/repos/unitree_rl_gym/deploy/deploy_real/README.md
+
+  - id: sim2real_workflow
+    query: what is sim2sim and sim2real workflow for g1
+    expected_path_patterns:
+      - docs/pipelines/sim2sim-sim2real.md
+      - data/repos/unitree_rl_lab/README.md
+
+  - id: sdk2_python_requirements
+    query: unitree sdk2 python install requirements cyclonedds
+    expected_path_patterns:
+      - data/repos/unitree_sdk2_python/README.md
+      - docs/source-digests/unitree_sdk2_python.md
+
+  - id: ros2_g1_lowlevel
+    query: ros2 g1 low level example
+    expected_path_patterns:
+      - data/repos/unitree_ros2/README.md
+
+  - id: sdk2_g1_examples
+    query: g1 sdk2 low level high level examples
+    expected_path_patterns:
+      - data/repos/unitree_sdk2/example/g1
+
+  - id: mujoco_bridge
+    query: unitree mujoco simulator and sdk2 integration
+    expected_path_patterns:
+      - data/repos/unitree_mujoco/readme.md
+      - data/repos/unitree_mujoco/README.md
+
+  - id: isaaclab_repo
+    query: unitree isaaclab simulation g1
+    expected_path_patterns:
+      - data/repos/unitree_sim_isaaclab/README.md
+      - docs/source-digests/unitree_sim_isaaclab.md
+
+  - id: ros2_to_real
+    query: unitree ros2 to real deployment bridge
+    expected_path_patterns:
+      - docs/source-digests/unitree_ros2_to_real.md
+      - data/repos/unitree_ros2_to_real
+
+  - id: repo_coverage_report
+    query: how many unitree repos mirrored and archived
+    expected_path_patterns:
+      - docs/verification/coverage_report.md
+      - docs/verification/repo_lock.md
+
+  - id: doc_blocking_status
+    query: are g1 support docs fully verified
+    expected_path_patterns:
+      - docs/verification/g1_docs_verification.md
+      - docs/verification/coverage_report.md
+
+  - id: max_collect_command
+    query: how to run full max collection mode
+    expected_path_patterns:
+      - scripts/max_collect.sh
+      - README.md
+
+  - id: skill_guidance
+    query: which skill should ai agent use for unitree g1 answers
+    expected_path_patterns:
+      - skills/unitree-g1-expert/SKILL.md
+      - AGENTS.md

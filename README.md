@@ -101,9 +101,33 @@ make archives
 make repo-lock
 make max-collect
 make index
+make eval-retrieval
+make eval-agent
 make query q="g1 dds interface"
 make site
 ```
+
+## Retrieval/Agent Evaluation
+
+Baseline local retrieval regression:
+
+```bash
+.venv/bin/python scripts/eval_retrieval.py --strict --fail-below 0.75
+```
+
+OpenAI-compatible model evaluation (works with local llama/vLLM/ollama-compatible endpoints too):
+
+```bash
+OPENAI_API_BASE=http://localhost:8000/v1 \
+OPENAI_API_KEY=EMPTY \
+OPENAI_MODEL=your-model-name \
+.venv/bin/python scripts/eval_openai_compatible.py --strict --fail-below 0.70
+```
+
+Outputs:
+
+- `docs/verification/retrieval_eval.md`
+- `docs/verification/agent_eval.md`
 
 ## Important Documents
 
@@ -115,6 +139,7 @@ make site
 - Verification report: [docs/verification/g1_docs_verification.md](/Users/linji/projects/unitree-g1-doc/docs/verification/g1_docs_verification.md)
 - Repo lock report: [docs/verification/repo_lock.md](/Users/linji/projects/unitree-g1-doc/docs/verification/repo_lock.md)
 - Coverage report: [docs/verification/coverage_report.md](/Users/linji/projects/unitree-g1-doc/docs/verification/coverage_report.md)
+- Agent eval playbook: [docs/verification/agent_eval_playbook.md](/Users/linji/projects/unitree-g1-doc/docs/verification/agent_eval_playbook.md)
 
 ## Scope and Completeness Notes
 
