@@ -54,6 +54,29 @@ body {
   padding: 2.3rem 1.2rem 3rem;
 }
 
+.topnav {
+  display: inline-flex;
+  gap: 0.55rem;
+  margin-bottom: 0.95rem;
+  padding: 0.36rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.topnav a {
+  color: #15403b;
+  text-decoration: none;
+  font-size: 0.82rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+}
+
+.topnav a.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #ffffff;
+}
+
 .hero h1 {
   margin: 0;
   font-size: clamp(1.9rem, 4.3vw, 3.1rem);
@@ -181,6 +204,27 @@ code {
   font-size: 1rem;
 }
 
+.prose h2 {
+  margin: 0 0 0.55rem;
+}
+
+.prose h3 {
+  margin: 0.7rem 0 0.35rem;
+  font-size: 1rem;
+}
+
+.prose p {
+  margin: 0.45rem 0;
+  color: #2f2d28;
+}
+
+.prose ol,
+.prose ul {
+  margin: 0.45rem 0;
+  padding-left: 1.1rem;
+  color: #2f2d28;
+}
+
 .bench-grid {
   margin-top: 0.8rem;
   display: grid;
@@ -256,6 +300,78 @@ code {
   color: #524d43;
 }
 
+.examples-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.example-card {
+  border: 1px solid #d9d1be;
+  border-radius: 16px;
+  background: #fffefa;
+  padding: 0.85rem;
+}
+
+.example-card.pass {
+  border-color: #96cfc5;
+}
+
+.example-card.fail {
+  border-color: #e1b6a9;
+}
+
+.example-head h3 {
+  margin: 0;
+  font-size: 1.03rem;
+}
+
+.example-pills {
+  margin-top: 0.55rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.example-grid {
+  margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.example-block {
+  border: 1px solid #ddd7c9;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 0.62rem 0.7rem;
+}
+
+.example-block h4 {
+  margin: 0 0 0.42rem;
+  font-size: 0.9rem;
+}
+
+.example-block p {
+  margin: 0.38rem 0;
+  color: #2f2c26;
+  font-size: 0.86rem;
+}
+
+.example-block ul {
+  margin: 0.32rem 0 0;
+  padding-left: 1rem;
+  font-size: 0.83rem;
+  color: #2f2c26;
+}
+
+.label {
+  margin-top: 0.48rem;
+  font-size: 0.77rem;
+  color: #5a554b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -312,6 +428,10 @@ code {
   }
 
   .bench-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .example-grid {
     grid-template-columns: 1fr;
   }
 

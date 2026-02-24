@@ -82,10 +82,13 @@ python3 scripts/build_site.py
 ## Demo Website (GitHub Pages)
 
 - Local preview entry: [site/index.html](/Users/linji/projects/unitree-g1-doc/site/index.html)
+- Methodology page: [site/how-we-design.html](/Users/linji/projects/unitree-g1-doc/site/how-we-design.html)
+- Example answers page: [site/examples.html](/Users/linji/projects/unitree-g1-doc/site/examples.html)
 - Deploy workflow: [.github/workflows/pages.yml](/Users/linji/projects/unitree-g1-doc/.github/workflows/pages.yml)
 - Site data payloads:
   - `site/data/search-index.json`
   - `site/data/overview.json`
+  - `site/data/benchmark_examples.json`
 
 ## Core Commands
 

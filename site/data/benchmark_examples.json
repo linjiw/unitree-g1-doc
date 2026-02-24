@@ -1,0 +1,226 @@
+{
+  "generated_at_unix": 1771958205,
+  "benchmark": "benchmarks/ollama_question_benchmark.yaml",
+  "model": "llama3.1",
+  "examples": [
+    {
+      "id": "g1_remote_vs_onboard",
+      "query": "Should I deploy G1 policy onboard or on a remote PC first?",
+      "difficulty": "medium",
+      "expected_path_patterns": [
+        "docs/pipelines/deployment-onboard-vs-remote-pc.md",
+        "data/repos/unitree_rl_gym/deploy/deploy_real/README.md"
+      ],
+      "retrieval": {
+        "pass": true,
+        "reason": "matched pattern `docs/pipelines/deployment-onboard-vs-remote-pc.md` at rank 1",
+        "top_paths": [
+          "docs/pipelines/deployment-onboard-vs-remote-pc.md",
+          "data/repos/unitree_sdk2/thirdparty/include/dds/ddsi/ddsi_cfgelems.h",
+          "docs/pipelines/sim2sim-sim2real.md"
+        ]
+      },
+      "llama": {
+        "model": "llama3.1",
+        "pass": true,
+        "precision": 0.3333,
+        "recall": 0.5,
+        "selected_paths": [
+          "path=data/repos/unitree_sdk2/thirdparty/include/dds/ddsi/ddsi_cfgelems.h",
+          "path=docs/pipelines/deployment-onboard-vs-remote-pc.md",
+          "path=docs/pipelines/sim2sim-sim2real.md"
+        ],
+        "rationale": "The first path is relevant because it discusses environment variables and node generation, which could be related to the deployment of G1 policy. The second path is directly relevant as it compares onboard vs remote PC inference for early G1 policy deployment. The third path is also relevant as it describes the default workflow for Unitree G1 policy development."
+      },
+      "codex": {
+        "summary": "Start with remote PC inference, then move onboard only after timing and thermal headroom are proven.",
+        "verified": [
+          "The deployment guide recommends remote PC inference as the default first step.",
+          "Onboard inference is positioned as a later step after control-loop and thermal validation."
+        ],
+        "inference": [
+          "For heavier models, remote deployment usually reduces early bring-up risk while preserving faster iteration."
+        ],
+        "citations": [
+          "docs/pipelines/deployment-onboard-vs-remote-pc.md",
+          "docs/pipelines/sim2sim-sim2real.md"
+        ]
+      }
+    },
+    {
+      "id": "g1_sim2real_pipeline",
+      "query": "How do I move from simulation to real robot deployment for Unitree G1?",
+      "difficulty": "hard",
+      "expected_path_patterns": [
+        "docs/pipelines/sim2sim-sim2real.md",
+        "data/repos/unitree_rl_gym/deploy/deploy_real/README.md"
+      ],
+      "retrieval": {
+        "pass": true,
+        "reason": "matched pattern `docs/pipelines/sim2sim-sim2real.md` at rank 2",
+        "top_paths": [
+          "data/repos/unitree_ros/README.md",
+          "docs/pipelines/sim2sim-sim2real.md",
+          "data/repos/unitree_mujoco/readme.md"
+        ]
+      },
+      "llama": {
+        "model": "llama3.1",
+        "pass": true,
+        "precision": 0.3333,
+        "recall": 0.5,
+        "selected_paths": [
+          "path=data/repos/unitree_ros/README.md",
+          "path=docs/pipelines/sim2sim-sim2real.md",
+          "path=data/repos/unitree_rl_mjlab/README.md"
+        ],
+        "rationale": "The first path provides information on ROS simulation packages for Unitree robots, which is relevant to moving from simulation to real robot deployment. The second path outlines the sim2sim and sim2real workflow for Unitree G1 policy development, including building in simulation. The third path provides instructions on connecting to the robot via Ethernet, which is necessary for real-world deployment."
+      },
+      "codex": {
+        "summary": "Use a staged flow: simulation training, sim2sim validation, then conservative sim2real bring-up.",
+        "verified": [
+          "The workflow defines Stage 1 (simulation), Stage 2 (sim2sim checks), and Stage 3 (sim2real bring-up).",
+          "The same document recommends conservative command envelopes and verifying DDS/SDK communication before full policy loop deployment."
+        ],
+        "inference": [
+          "In practice, teams should keep remote-PC inference as a default path until onboard latency and thermal limits are validated for the model."
+        ],
+        "citations": [
+          "docs/pipelines/sim2sim-sim2real.md",
+          "data/repos/unitree_rl_gym/deploy/deploy_real/README.md"
+        ]
+      }
+    },
+    {
+      "id": "g1_support_doc_status",
+      "query": "Does g1_docs_verification.md report blocked_access for support.unitree.com G1 pages in this environment?",
+      "difficulty": "easy",
+      "expected_path_patterns": [
+        "docs/verification/g1_docs_verification.md",
+        "docs/verification/coverage_report.md"
+      ],
+      "retrieval": {
+        "pass": true,
+        "reason": "matched pattern `docs/verification/g1_docs_verification.md` at rank 1",
+        "top_paths": [
+          "docs/verification/g1_docs_verification.md",
+          "skills/unitree-g1-expert/SKILL.md",
+          "docs/source-map.md"
+        ]
+      },
+      "llama": {
+        "model": "llama3.1",
+        "pass": true,
+        "precision": 0.5,
+        "recall": 0.5,
+        "selected_paths": [
+          "path=docs/verification/g1_docs_verification.md | type=curated_doc | title=g1_docs_verification.md",
+          "path=data/repos/unitreerobotics.github.io/index.md | type=repo_file | title=index.md"
+        ],
+        "rationale": "The first path is the most relevant because it directly addresses the question about blocked_access for support.unitree.com G1 pages in the environment. The second path is also relevant because it provides information about the GitHub Pages repository, which may contain documentation or configuration related to the Unitree G1."
+      },
+      "codex": {
+        "summary": "Support-site verification currently reports blocked access for all discovered G1 developer URLs in this environment.",
+        "verified": [
+          "The verification report records 5 discovered URLs, 0 verified pages, and 5 blocked_access entries.",
+          "Coverage documents should be consulted alongside verification status before high-confidence claims."
+        ],
+        "inference": [
+          "When official support pages are blocked, confidence should shift toward mirrored repos plus curated docs while stating the verification limitation."
+        ],
+        "citations": [
+          "docs/verification/g1_docs_verification.md",
+          "docs/verification/coverage_report.md"
+        ]
+      }
+    },
+    {
+      "id": "g1_skill_usage",
+      "query": "How should an AI agent use this repo skill to answer Unitree G1 questions with citations?",
+      "difficulty": "hard",
+      "expected_path_patterns": [
+        "skills/unitree-g1-expert/SKILL.md",
+        "AGENTS.md"
+      ],
+      "retrieval": {
+        "pass": true,
+        "reason": "matched pattern `skills/unitree-g1-expert/SKILL.md` at rank 1",
+        "top_paths": [
+          "skills/unitree-g1-expert/SKILL.md",
+          "docs/ai-agent-quickstart.md",
+          "docs/automation/mcp-skill-blueprint.md"
+        ]
+      },
+      "llama": {
+        "model": "llama3.1",
+        "pass": true,
+        "precision": 0.3333,
+        "recall": 0.5,
+        "selected_paths": [
+          "path=skills/unitree-g1-expert/SKILL.md | type=skill_doc | title=SKILL.md",
+          "path=data/repos/unitree_ros2/example/src/src/g1/high_level/g1_arm_action_example.cpp | type=repo_file | title=g1_arm_action_example.cpp",
+          "path=docs/ai-agent-quickstart.md | type=curated_doc | title=ai-agent-quickstart.md"
+        ],
+        "rationale": "The first path is the most relevant because it directly addresses how to ground Unitree G1 answers in local evidence from official Unitree docs and repositories. The second path provides an example of using the G1 Arm Action Client, which is related to answering Unitree G1 questions. The third path provides a quickstart guide for AI agents to answer Unitree G1 questions with local evidence."
+      },
+      "codex": {
+        "summary": "Follow AGENTS + SKILL workflow: refresh sources, query index, then answer with explicit citations and Verified/Inference separation.",
+        "verified": [
+          "AGENTS.md defines the mandatory refresh, verification, retrieval, and response format workflow.",
+          "The skill and AI quickstart reinforce local evidence retrieval and citation-first output."
+        ],
+        "inference": [
+          "This structure reduces hallucination risk because agents must anchor claims to local files and measurable retrieval quality checks."
+        ],
+        "citations": [
+          "AGENTS.md",
+          "skills/unitree-g1-expert/SKILL.md",
+          "docs/ai-agent-quickstart.md"
+        ]
+      }
+    },
+    {
+      "id": "g1_repo_lock_intent",
+      "query": "Which file explains repo_lock and which script builds repo_lock artifacts?",
+      "difficulty": "medium",
+      "expected_path_patterns": [
+        "docs/verification/repo_lock.md",
+        "scripts/build_repo_lock.py"
+      ],
+      "retrieval": {
+        "pass": false,
+        "reason": "no expected path pattern found in top-k",
+        "top_paths": [
+          "data/repos/kinect_teleoperate/src/cmake/FetchContent.cmake",
+          "data/repos/unitree_legged_sdk/python_wrapper/third-party/pybind11/docs/compiling.rst",
+          "data/repos/unitree_actuator_sdk/thirdparty/pybind11/docs/advanced/cast/stl.rst"
+        ]
+      },
+      "llama": {
+        "model": "llama3.1",
+        "pass": false,
+        "precision": 0.0,
+        "recall": 0.0,
+        "selected_paths": [
+          "path=data/repos/unitree_legged_sdk/python_wrapper/third-party/pybind11/docs/compiling.rst",
+          "path=data/repos/unitree_actuator_sdk/thirdparty/pybind11/docs/advanced/cast/stl.rst"
+        ],
+        "rationale": "The first path explains how to use PEP 518's pyproject.toml file to ensure that pybind11 is available during compilation, which is relevant to repo_lock. The second path provides information on STL containers and automatic conversion, which is related to building repo_lock artifacts."
+      },
+      "codex": {
+        "summary": "The repo_lock report is documented in docs/verification/repo_lock.md and generated by scripts/build_repo_lock.py.",
+        "verified": [
+          "Repo lock markdown reports total repos, working clone presence, mirror presence, and HEAD values.",
+          "The build script explicitly writes repo_lock JSON and markdown outputs under docs/verification."
+        ],
+        "inference": [
+          "Because this query failed in the current benchmark run, retrieval ranking needs tuning for repo-lock specific intents."
+        ],
+        "citations": [
+          "docs/verification/repo_lock.md",
+          "scripts/build_repo_lock.py"
+        ]
+      }
+    }
+  ]
+}

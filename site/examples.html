@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Examples | Unitree G1 Knowledge Hub</title>
+    <meta
+      name="description"
+      content="Question-by-question examples comparing Codex grounded answers and Llama source-selection output."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+
+    <main class="page">
+      <nav class="topnav mono reveal">
+        <a href="./index.html">Overview</a>
+        <a href="./how-we-design.html">How We Design</a>
+        <a href="./examples.html" class="active">Examples</a>
+      </nav>
+
+      <header class="hero reveal delay-1">
+        <p class="eyebrow">Demonstration</p>
+        <h1>Example questions with Codex and Llama outputs</h1>
+        <p class="subtext">
+          Each case shows benchmark question intent, Codex-style grounded answer structure, and the
+          actual Llama source-selection output captured from evaluation artifacts.
+        </p>
+      </header>
+
+      <section class="panel reveal delay-2">
+        <div class="panel-head">
+          <h2>Example Set</h2>
+          <span class="hint">Curated from Ollama+Codex benchmark run</span>
+        </div>
+        <p class="hint mono" id="examplesMeta">Loading example metadata...</p>
+        <div id="examplesList" class="examples-list"></div>
+      </section>
+
+      <footer class="foot mono">
+        Data source: site/data/benchmark_examples.json
+      </footer>
+    </main>
+
+    <script src="./assets/examples.js"></script>
+  </body>
+</html>

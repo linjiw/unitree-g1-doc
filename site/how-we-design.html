@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How We Design Tests | Unitree G1 Knowledge Hub</title>
+    <meta
+      name="description"
+      content="Methodology for Unitree G1 retrieval and Llama source-selection benchmarks."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+
+    <main class="page">
+      <nav class="topnav mono reveal">
+        <a href="./index.html">Overview</a>
+        <a href="./how-we-design.html" class="active">How We Design</a>
+        <a href="./examples.html">Examples</a>
+      </nav>
+
+      <header class="hero reveal delay-1">
+        <p class="eyebrow">Methodology</p>
+        <h1>How we design retrieval and Llama benchmark tests</h1>
+        <p class="subtext">
+          We test both retrieval quality and model source-selection quality. The objective is not
+          free-form text fluency; it is grounded source selection with verifiable file-path
+          citations for Unitree G1 questions.
+        </p>
+      </header>
+
+      <section class="panel reveal delay-2 prose">
+        <h2>Evaluation Architecture</h2>
+        <ol>
+          <li>Sync and verify sources from manifest and official repos.</li>
+          <li>Build a local index (<code>data/index/knowledge_index.jsonl</code>).</li>
+          <li>Evaluate lexical retrieval on benchmark question cases.</li>
+          <li>Evaluate model source-selection from retrieved candidates.</li>
+          <li>Track quality gates and failed case IDs to guide improvements.</li>
+        </ol>
+      </section>
+
+      <section class="panel reveal delay-3 prose">
+        <h2>Question Design Rules</h2>
+        <p>
+          Questions are generated with Llama and curated by Codex into a controlled YAML benchmark.
+          Each question includes:
+        </p>
+        <ul>
+          <li><code>id</code> in snake_case</li>
+          <li>natural-language question text</li>
+          <li><code>expected_path_patterns</code> (1-2 target evidence paths)</li>
+          <li><code>difficulty</code> (easy/medium/hard)</li>
+        </ul>
+        <p>
+          Coverage areas: SDK2, SDK2 Python, DDS interfaces, ROS2 examples, sim2sim/sim2real,
+          deployment strategy, verification status, repo lock/coverage, and skill usage.
+        </p>
+      </section>
+
+      <section class="panel reveal delay-3 prose">
+        <h2>Scoring Logic</h2>
+        <h3>Retriever Test</h3>
+        <ul>
+          <li>Top-K lexical search over the local index (default K=8).</li>
+          <li>A case passes if any expected path pattern appears in top-K results.</li>
+          <li>Source types are weighted (<code>support_doc</code>, <code>curated_doc</code>, <code>skill_doc</code>, etc.).</li>
+          <li>Strict mode fails CI/local run when pass rate is below configured threshold.</li>
+        </ul>
+        <h3>Llama Source-Selection Test</h3>
+        <ul>
+          <li>Retriever first gathers candidates (top-K then dedup to candidate set).</li>
+          <li>Llama must return JSON with selected paths and rationale only.</li>
+          <li>A case passes if at least one selected path matches expected patterns.</li>
+          <li>Precision and recall are computed per case and aggregated.</li>
+        </ul>
+      </section>
+
+      <section class="panel reveal delay-3 prose">
+        <h2>Why This Repo Setup Helps Codex and Agents</h2>
+        <ul>
+          <li>
+            <code>AGENTS.md</code> defines a deterministic workflow: sync, verify, retrieve, and
+            answer with citations.
+          </li>
+          <li>
+            <code>skills/unitree-g1-expert/SKILL.md</code> enforces grounding priority and
+            Verified/Inference separation.
+          </li>
+          <li>
+            Verification artifacts (`g1_docs_verification`, `repo_lock`, `coverage_report`) add
+            environment-aware reliability constraints.
+          </li>
+          <li>
+            Benchmarks include skill-usage and ops-level questions so agent behavior is tested on
+            practical, not purely synthetic, tasks.
+          </li>
+        </ul>
+        <p class="hint mono">
+          Important caveat: support.unitree.com G1 pages are currently blocked in this environment;
+          this is surfaced in verification reports and site verdicts.
+        </p>
+      </section>
+
+      <section class="panel reveal delay-3">
+        <div class="panel-head">
+          <h2>Current Gates and Results</h2>
+          <span class="hint">Loaded from latest verification artifacts</span>
+        </div>
+        <div id="designBenchSummary" class="bench-grid"></div>
+        <h3 class="section-subhead">Test Commands</h3>
+        <div id="designTests" class="tests-list"></div>
+      </section>
+
+      <footer class="foot mono">
+        Method page source: scripts/eval_retrieval.py, scripts/eval_openai_compatible.py,
+        scripts/generate_question_bank.py.
+      </footer>
+    </main>
+
+    <script src="./assets/how-design.js"></script>
+  </body>
+</html>
